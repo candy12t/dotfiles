@@ -1,0 +1,5 @@
+[user]
+	name = candy12t
+	email = candy12t@gmail.com
+[core]
+	excludesfile = ~/.gitignore_global

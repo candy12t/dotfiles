@@ -1,0 +1,9 @@
+*~
+.DS_Store
+.devcontainer/
+
+__pycache__/
+*.pyc
+venv/
+
+db.sqlite3
