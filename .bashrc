@@ -1,4 +1,5 @@
 alias ls='ls -FG'
+alias la='ls -a'
 alias ll='ls -al'
 
 
