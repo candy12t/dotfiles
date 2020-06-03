@@ -1,0 +1,14 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.fontSize": 18,
+    "editor.fontFamily": "HackGen",
+    "workbench.colorTheme": "GitHub Dark",
+    "editor.renderWhitespace": "boundary",
+    "editor.wordWrap": "wordWrapColumn",
+    "files.exclude": {
+        "**/__pycache__": true,
+        "**/.vscode": true,
+        "**/venv": true
+    },
+    "terminal.integrated.fontSize": 18
+}
