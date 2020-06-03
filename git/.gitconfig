@@ -3,3 +3,4 @@
 	email = candy12t@gmail.com
 [core]
 	excludesfile = ~/.gitignore_global
+	quotepath = false
