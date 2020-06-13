@@ -6,3 +6,4 @@
 	quotepath = false
 [alias]
 	lol = log --oneline
+	stt = status
