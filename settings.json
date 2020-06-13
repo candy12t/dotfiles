@@ -4,12 +4,15 @@
     "editor.fontFamily": "HackGen",
     "workbench.colorTheme": "GitHub Dark",
     "editor.renderWhitespace": "boundary",
-    "files.exclude": {
-        "**/__pycache__": true,
-        "**/.vscode": true,
-        "**/venv": true
-    },
     "terminal.integrated.fontSize": 18,
     "editor.insertSpaces": false,
-    "editor.wordWrap": "bounded"
+    "workbench.iconTheme": "vscode-icons",
+    "files.exclude": {
+        ".vscode/": true,
+        "**/__pycache__": true
+    },
+    "editor.wordWrapColumn": 100,
+    "editor.wordWrap": "bounded",
+    "liveServer.settings.donotShowInfoMsg": true,
+    "window.zoomLevel": 0
 }
