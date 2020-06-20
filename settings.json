@@ -14,5 +14,6 @@
     "editor.wordWrapColumn": 100,
     "editor.wordWrap": "bounded",
     "liveServer.settings.donotShowInfoMsg": true,
-    "window.zoomLevel": 0
+    "window.zoomLevel": 0,
+    "files.insertFinalNewline": true
 }
