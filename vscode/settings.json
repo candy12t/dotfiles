@@ -9,7 +9,8 @@
     "workbench.iconTheme": "vscode-icons",
     "files.exclude": {
         ".vscode/": true,
-        "**/__pycache__": true
+        "**/__pycache__": true,
+        "**/venv/": true
     },
     "editor.wordWrapColumn": 100,
     "editor.wordWrap": "bounded",
