@@ -4,6 +4,8 @@ fpath=($HOME/.zsh/completion $fpath)
 autoload -U compinit
 compinit -u
 
+precmd() { print "" }
+
 alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew' 
 alias ls='ls -FG'
 alias la='ls -a'
@@ -24,6 +26,5 @@ source ~/.git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=1
 GIT_PS1_SHOWUNTRACKEDFILES=1
 
-PS1='
-%F{magenta}%*%f %F{cyan}%~%f%B%F{green}$(__git_ps1 " [%s]")%f%b
+PS1='%F{magenta}%*%f %F{cyan}%~%f%B%F{green}$(__git_ps1 " [%s]")%f%b
 🤔.oO( '
