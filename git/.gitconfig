@@ -7,3 +7,5 @@
 [alias]
 	lol = log --oneline
 	stt = status
+	cm = commit -m
+	cam = commit --amend -m
