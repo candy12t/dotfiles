@@ -4,13 +4,14 @@ DavidAnson.vscode-markdownlint
 donjayamanne.githistory
 eamodio.gitlens
 GitHub.github-vscode-theme
-golang.Go
+golang.go
+hediet.vscode-drawio
 ms-azuretools.vscode-docker
 MS-CEINTL.vscode-language-pack-ja
 ms-python.python
+ms-python.vscode-pylance
 ms-vscode-remote.remote-containers
 oderwat.indent-rainbow
 ritwickdey.LiveServer
 shd101wyy.markdown-preview-enhanced
-tht13.python
 vscode-icons-team.vscode-icons
