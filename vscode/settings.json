@@ -16,5 +16,10 @@
     "editor.wordWrap": "bounded",
     "liveServer.settings.donotShowInfoMsg": true,
     "window.zoomLevel": 0,
-    "files.insertFinalNewline": true
+    "files.insertFinalNewline": true,
+    "python.venvPath": "${workspaceFolder}/venv/bin/python",
+    "python.venvFolders": [
+        "venv"
+    ],
+    "python.languageServer": "Pylance"
 }
