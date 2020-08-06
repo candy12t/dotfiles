@@ -6,7 +6,7 @@ brew "cmatrix"
 brew "curl"
 brew "docker"
 brew "git"
-brew "goenv", args: ["HEAD"]
+brew "go"
 brew "htop"
 brew "pyenv"
 brew "vim"

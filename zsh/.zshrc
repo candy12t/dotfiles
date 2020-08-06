@@ -15,12 +15,8 @@ export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
 
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$GOENV_ROOT/bin:$PATH"
-eval "$(goenv init -)"
-export GOPATH="$HOME/github.com/go"
+export GOPATH=$HOME/go
 export PATH="$PATH:$GOPATH/bin"
-export GOENV_DISABLE_GOPATH=1
 
 setopt PROMPT_SUBST
 source ~/.git-prompt.sh
