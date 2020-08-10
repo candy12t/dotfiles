@@ -1,9 +1,12 @@
 [[plugins]]
-repo = 'fatih/vim-go'
-on_fit = 'go'
+repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'Shougo/dein.vim'
+repo = 'fatih/vim-go'
+on_fit = 'go'
+hook_add = '''
+    autocmd FileType go setl nolist
+'''
 
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
