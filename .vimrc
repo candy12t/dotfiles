@@ -176,7 +176,7 @@ let g:netrw_timefmt='%Y/%m/%d(%a) %H:%M:%S'
 
 " vim-go
 let g:go_fmt_command = 'goimports'
-
+let g:go_metalinter_auntosave = 1
 
 " indentLine
 let g:indentLine_color = 239
