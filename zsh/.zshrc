@@ -18,6 +18,9 @@ eval "$(pyenv init -)"
 export GOPATH=$HOME/go
 export PATH="$PATH:$GOPATH/bin"
 
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 setopt PROMPT_SUBST
 source ~/.git-prompt.sh
 GIT_PS1_SHOWDIRTYSTATE=1
