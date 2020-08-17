@@ -8,8 +8,8 @@ precmd() { print "" }
 
 alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew' 
 alias ls='ls -FG'
-alias la='ls -a'
-alias ll='ls -al'
+alias la='ls -A'
+alias ll='ls -Al'
 
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
