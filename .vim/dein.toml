@@ -2,17 +2,25 @@
 repo = 'Shougo/dein.vim'
 
 [[plugins]]
-repo = 'fatih/vim-go'
-on_fit = 'go'
-hook_add = '''
-    autocmd FileType go setl nolist
-'''
-
-[[plugins]]
 repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 
 [[plugins]]
-repo = 'Yggdroot/indentLine'
+repo = 'nathanaelkane/vim-indent-guides'
+
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
