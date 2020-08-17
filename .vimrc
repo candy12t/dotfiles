@@ -71,6 +71,9 @@ set backspace=indent,eol,start
 " クリップボードの共有
 set clipboard=unnamed
 
+" 入力モードで素早くjjと入力したときはESC
+inoremap jj <Esc>
+
 " ファイル形式別プラグインとインデントを有効
 filetype plugin indent on
 
@@ -81,6 +84,7 @@ syntax enable
 
 " カラースキーム"
 colorscheme iceberg
+set bg=dark
 
 " タイトル表示
 set title
@@ -152,14 +156,7 @@ set autoindent
 " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 set smartindent
 
-" 行頭以外のtab文字の表示幅
-set tabstop=4
-
-" 行頭でのtabの表示幅
-set shiftwidth=4
-
-" tab文字を半角スペースにする
-set expandtab
+autocmd FileType ruby set ts=2 sw=2 expandtab
 
 
 " 挿入モードでのカーソル移動
@@ -174,15 +171,6 @@ let g:netrw_sizestyle='H'
 let g:netrw_timefmt='%Y/%m/%d(%a) %H:%M:%S'
 
 
-" vim-go
-let g:go_fmt_command = 'goimports'
-let g:go_metalinter_auntosave = 1
-
-" indentLine
-let g:indentLine_color = 239
-let g:indentLine_char = '|'
-
-
 " lightline
 let g:lightline = {
       \ 'colorscheme': 'wombat',
@@ -194,3 +182,5 @@ let g:lightline = {
       \   'gitbranch': 'FugitiveHead'
       \ },
       \ }
+
+let g:indent_guides_enable_on_vim_startup = 1
