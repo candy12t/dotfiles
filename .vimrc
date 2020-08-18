@@ -167,11 +167,11 @@ inoremap <silent> <C-f> <Right>
 inoremap <silent> <C-b> <Left>
 
 
-" netrwツリー表示を有効にする
-let g:netrw_liststyle=1
-let g:netrw_banner=0
-let g:netrw_sizestyle='H'
-let g:netrw_timefmt='%Y/%m/%d(%a) %H:%M:%S'
+" nerdtreeでドットファイル表示
+let NERDTreeShowHidden=1
+
+" nerdtreeの表示/非表示
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 
 " airlineの設定
@@ -182,5 +182,6 @@ let g:airline_powerline_fonts = 1
 " airlineのタブ移動
 nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
+
 
 let g:indent_guides_enable_on_vim_startup = 1
