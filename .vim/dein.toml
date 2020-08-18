@@ -14,6 +14,9 @@ repo = 'vim-airline/vim-airline-themes'
 repo = 'tpope/vim-fugitive'
 
 [[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+[[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
 
 [[plugins]]
