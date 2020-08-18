@@ -174,16 +174,13 @@ let g:netrw_sizestyle='H'
 let g:netrw_timefmt='%Y/%m/%d(%a) %H:%M:%S'
 
 
-" lightline
-let g:lightline = {
-      \ 'colorscheme': 'wombat',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
+" airlineの設定
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme = "papercolor"
+let g:airline_powerline_fonts = 1
+
+" airlineのタブ移動
+nmap <C-p> <Plug>AirlineSelectPrevTab
+nmap <C-n> <Plug>AirlineSelectNextTab
 
 let g:indent_guides_enable_on_vim_startup = 1
