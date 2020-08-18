@@ -5,7 +5,13 @@ repo = 'Shougo/dein.vim'
 repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
-repo = 'itchyny/lightline.vim'
+repo = 'vim-airline/vim-airline'
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
+repo = 'tpope/vim-fugitive'
 
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
