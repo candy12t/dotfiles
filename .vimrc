@@ -156,7 +156,10 @@ set autoindent
 " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 set smartindent
 
+" filetypeごとのインデントの設定
 autocmd FileType ruby set ts=2 sw=2 expandtab
+autocmd FileType python set ts=4 sw=4 expandtab
+autocmd FileType go set ts=4 sw=4
 
 
 " 挿入モードでのカーソル移動
