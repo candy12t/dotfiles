@@ -157,9 +157,9 @@ set autoindent
 set smartindent
 
 " filetypeごとのインデントの設定
-autocmd FileType ruby set ts=2 sw=2 expandtab
-autocmd FileType python set ts=4 sw=4 expandtab
-autocmd FileType go set ts=4 sw=4
+autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+autocmd FileType python set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+autocmd FileType go set tabstop=4 shiftwidth=4 softtabstop=4
 
 
 " 挿入モードでのカーソル移動
