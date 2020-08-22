@@ -20,7 +20,7 @@ repo = 'airblade/vim-gitgutter'
 repo = 'scrooloose/nerdtree'
 
 [[plugins]]
-repo = 'nathanaelkane/vim-indent-guides'
+repo = 'Yggdroot/indentLine'
 
 [[plugins]]
 repo = 'prabirshrestha/async.vim'
