@@ -9,3 +9,4 @@
 	st = status
 	cm = commit -m
 	cam = commit --amend -m
+	df = diff
