@@ -160,6 +160,9 @@ set smartindent
 autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType python set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 autocmd FileType go set tabstop=4 shiftwidth=4 softtabstop=4
+autocmd FileType html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+
+autocmd BufNewFile,BufRead *.html.erb set filetype=html
 
 
 " 挿入モードでのカーソル移動
