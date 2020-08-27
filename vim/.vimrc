@@ -179,7 +179,7 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 " airlineの設定
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = "papercolor"
+let g:airline_theme = "raven"
 let g:airline_powerline_fonts = 1
 
 " airlineのタブ移動
