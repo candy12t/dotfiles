@@ -71,6 +71,12 @@ set backspace=indent,eol,start
 " クリップボードの共有
 set clipboard=unnamed
 
+" 対応する括弧をハイライト
+set showmatch
+
+" 反映時間
+set updatetime=250
+
 " 入力モードで素早くjjと入力したときはESC
 inoremap jj <Esc>
 
@@ -83,7 +89,8 @@ filetype plugin indent on
 syntax enable
 
 " カラースキーム"
-colorscheme iceberg
+set t_Co=256
+colorscheme gruvbox
 set bg=dark
 
 " タイトル表示
