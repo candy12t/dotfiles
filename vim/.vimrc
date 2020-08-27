@@ -163,6 +163,11 @@ set autoindent
 " 改行時に入力された行の末尾に合わせて次の行のインデントを増減する
 set smartindent
 
+set tabstop=2
+
+set shiftwidth=2
+
+set softtabstop=2
 " filetypeごとのインデントの設定
 autocmd FileType ruby set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd FileType python set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
