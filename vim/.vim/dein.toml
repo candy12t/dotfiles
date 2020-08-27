@@ -41,4 +41,4 @@ repo = 'mattn/vim-lsp-settings'
 repo = 'mattn/vim-goimports'
 
 [[plugins]]
-repo = 'tomtom/tcomment_vim'
+repo = 'tpope/vim-commentary'
