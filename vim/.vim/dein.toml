@@ -42,3 +42,6 @@ repo = 'mattn/vim-goimports'
 
 [[plugins]]
 repo = 'tpope/vim-commentary'
+
+[[plugins]]
+repo = 'morhetz/gruvbox'
