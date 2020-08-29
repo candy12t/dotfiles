@@ -22,7 +22,8 @@ eval "$(pyenv init -)"
 export GOPATH=$HOME/go
 export PATH="$PATH:$GOPATH/bin"
 
-export PATH="$HOME/.rbenv/bin:$PATH"
+export RBENV_ROOT="$HOME/.rbenv"
+export PATH="$RBENV_ROOT/bin:$PATH"
 eval "$(rbenv init -)"
 
 setopt PROMPT_SUBST
