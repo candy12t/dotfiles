@@ -6,8 +6,12 @@ compinit -u
 
 precmd() { print "" }
 
+if [ $(uname) = 'Linux' ]; then
+	alias ls='ls -F --color'
+else
+	alias ls='ls -FG'
+fi
 alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew' 
-alias ls='ls -FG'
 alias la='ls -A'
 alias ll='ls -Al'
 
