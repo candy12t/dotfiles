@@ -1,10 +1,13 @@
-zstyle ':completion:*:*:git:*' script ~/.zsh/completion/.git-completion.bash
-fpath=($HOME/.zsh/completion $fpath)
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+# zstyle ':completion:*:*:git:*' script ~/.zsh/completion/.git-completion.bash
+# fpath=($HOME/.zsh/completion $fpath)
 
 autoload -U compinit
 compinit -u
 
-precmd() { print "" }
+# precmd() { print "" }
 
 if [ $(uname) = 'Linux' ]; then
 	alias ls='ls -F --color'
@@ -26,10 +29,14 @@ export RBENV_ROOT="$HOME/.rbenv"
 export PATH="$RBENV_ROOT/bin:$PATH"
 eval "$(rbenv init -)"
 
-setopt PROMPT_SUBST
-source ~/.git-prompt.sh
-GIT_PS1_SHOWDIRTYSTATE=1
-GIT_PS1_SHOWUNTRACKEDFILES=1
+export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
-PS1='%F{magenta}%*%f %F{cyan}%~%f%B%F{green}$(__git_ps1 " [%s]")%f%b
-🤔.oO( '
+eval "$(starship init zsh)"
+
+# setopt PROMPT_SUBST
+# source ~/.git-prompt.sh
+# GIT_PS1_SHOWDIRTYSTATE=1
+# GIT_PS1_SHOWUNTRACKEDFILES=1
+
+# PS1='%F{magenta}%*%f %F{cyan}%~%f%B%F{green}$(__git_ps1 " [%s]")%f%b
+# 🤔.oO( '
