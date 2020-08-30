@@ -12,4 +12,10 @@ done
 
 chsh -s `which zsh`
 git clone --recursive https://github.com/sorin-ionescu/prezto.git "${ZDOTDIR:-$HOME}/.zprezto"
-curl -fsSL https://starship.rs/install.sh | bash
+
+if [ $(uname) = 'Linux' ]; then
+	curl -fsSL https://starship.rs/install.sh | bash
+else
+	brew install starship
+fi
+
