@@ -32,6 +32,7 @@ eval "$(rbenv init -)"
 export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 
 eval "$(starship init zsh)"
+export STARSHIP_CONFIG=$HOME/.starship.toml
 
 # setopt PROMPT_SUBST
 # source ~/.git-prompt.sh
