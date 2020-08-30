@@ -9,30 +9,40 @@ compinit -u
 
 # precmd() { print "" }
 
-if [ $(uname) = 'Linux' ]; then
+if [ $(uname -s) = 'Linux' ];then
 	alias ls='ls -F --color'
 else
 	alias ls='ls -FG'
+	alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew' 
 fi
-alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew' 
 alias la='ls -A'
 alias ll='ls -Al'
 
 export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
+if [ -e ${PYENV_ROOT} ];then
+	export PATH="$PYENV_ROOT/bin:$PATH"
+	eval "$(pyenv init -)"
+fi
 
 export GOPATH=$HOME/go
-export PATH="$PATH:$GOPATH/bin"
+if [ -e ${GOPATH} ];then
+	export PATH="$PATH:$GOPATH/bin"
+fi
 
 export RBENV_ROOT="$HOME/.rbenv"
-export PATH="$RBENV_ROOT/bin:$PATH"
-eval "$(rbenv init -)"
+if [ -e ${RBENV_ROOT} ];then
+	export PATH="$RBENV_ROOT/bin:$PATH"
+	eval "$(rbenv init -)"
+fi
 
-export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+if [ -d "/usr/local/opt/postgresql@9.6" ];then
+	export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+fi
 
-eval "$(starship init zsh)"
-export STARSHIP_CONFIG=$HOME/.starship.toml
+if [ -x $(which starship) ];then
+	eval "$(starship init zsh)"
+	export STARSHIP_CONFIG=$HOME/.starship.toml
+fi
 
 # setopt PROMPT_SUBST
 # source ~/.git-prompt.sh
