@@ -12,7 +12,6 @@
         "**/__pycache__": true,
         "**/venv/": true
     },
-    "editor.wordWrapColumn": 100,
     "editor.wordWrap": "bounded",
     "liveServer.settings.donotShowInfoMsg": true,
     "window.zoomLevel": 0,
