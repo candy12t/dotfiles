@@ -45,3 +45,6 @@ repo = 'tpope/vim-commentary'
 
 [[plugins]]
 repo = 'morhetz/gruvbox'
+
+[[plugins]]
+repo = 'bronson/vim-trailing-whitespace'
