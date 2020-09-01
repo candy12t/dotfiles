@@ -77,6 +77,8 @@ set showmatch
 " 反映時間
 set updatetime=250
 
+" ESCキー押してからのタイムラグ(default=100)
+set ttimeoutlen=50
 " 入力モードで素早くjjと入力したときはESC
 inoremap jj <Esc>
 
@@ -182,7 +184,7 @@ inoremap <silent> <C-f> <Right>
 inoremap <silent> <C-b> <Left>
 
 
-" nerdtreeでドットファイル表示
+" nerdtreeでドットファイル表示
 let NERDTreeShowHidden=1
 
 " nerdtreeの表示/非表示
