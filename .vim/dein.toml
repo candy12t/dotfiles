@@ -1,7 +1,9 @@
+# プラグイン管理
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
 
+# カラースキーム
 [[plugins]]
 repo = 'cocopon/iceberg.vim'
 
@@ -15,6 +17,7 @@ repo = 'tomasr/molokai'
 repo = 'morhetz/gruvbox'
 
 
+# ステータスバー
 [[plugins]]
 repo = 'vim-airline/vim-airline'
 
@@ -22,6 +25,7 @@ repo = 'vim-airline/vim-airline'
 repo = 'vim-airline/vim-airline-themes'
 
 
+# Git
 [[plugins]]
 repo = 'tpope/vim-fugitive'
 
@@ -29,22 +33,27 @@ repo = 'tpope/vim-fugitive'
 repo = 'airblade/vim-gitgutter'
 
 
+# ファイラー
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 
 
+# インデント可視化
 [[plugins]]
 repo = 'Yggdroot/indentLine'
 
 
+# コメント
 [[plugins]]
 repo = 'tpope/vim-commentary'
 
 
+# 無駄なスペース削除
 [[plugins]]
 repo = 'bronson/vim-trailing-whitespace'
 
 
+# LSP
 [[plugins]]
 repo = 'prabirshrestha/async.vim'
 
@@ -61,5 +70,10 @@ repo = 'prabirshrestha/vim-lsp'
 repo = 'mattn/vim-lsp-settings'
 
 
+[[plugins]]
+repo = 'dense-analysis/ale'
+
+
+# Golang
 [[plugins]]
 repo = 'mattn/vim-goimports'
