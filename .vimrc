@@ -180,8 +180,14 @@ autocmd BufNewFile,BufRead *.html.erb set filetype=html
 
 
 " 挿入モードでのカーソル移動
-inoremap <silent> <C-f> <Right>
-inoremap <silent> <C-b> <Left>
+imap <C-f> <Right>
+imap <C-b> <Left>
+imap <C-p> <Up>
+imap <C-n> <Down>
+imap <C-a> <Home>
+imap <C-e> <End>
+imap <C-d> <Del>
+imap <C-h> <BS>
 
 
 " nerdtreeでドットファイル表示
