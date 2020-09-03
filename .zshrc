@@ -17,6 +17,7 @@ else
 fi
 alias la='ls -A'
 alias ll='ls -Al'
+alias t='tmux'
 
 export PYENV_ROOT="$HOME/.pyenv"
 if [ -e ${PYENV_ROOT} ];then
