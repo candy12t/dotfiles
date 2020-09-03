@@ -196,7 +196,7 @@ vnoremap < <gv
 
 
 " 現在のバッファを削除
-nmap bd :bd<CR>
+nmap <Leader>bd :bd<CR>
 
 
 " バッファの切替
