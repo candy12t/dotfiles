@@ -200,3 +200,13 @@ let g:airline_powerline_fonts = 1
 nmap <C-p> <Plug>AirlineSelectPrevTab
 nmap <C-n> <Plug>AirlineSelectNextTab
 
+
+let g:ale_linters = {
+	\ 'python': ['flake8'],
+	\ }
+
+let g:ale_fixers = {
+	\ 'python': ['autopep8', 'black', 'isort'],
+	\ }
+
+let g:ale_fix_on_save = 1
