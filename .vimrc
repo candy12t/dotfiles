@@ -199,6 +199,11 @@ vnoremap < <gv
 nmap bd :bd<CR>
 
 
+" バッファの切替
+nnoremap <silent> <S-Tab> :bprev<CR>
+nnoremap <silent> <Tab> :bnext<CR>
+
+
 " 変更点へ移動
 nmap <C-p> <Plug>(GitGutterPrevHunk)
 nmap <C-n> <Plug>(GitGutterNextHunk)
@@ -215,10 +220,6 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "raven"
 let g:airline_powerline_fonts = 1
-
-" airlineのタブ移動
-nmap <C-p> <Plug>AirlineSelectPrevTab
-nmap <C-n> <Plug>AirlineSelectNextTab
 
 
 let g:ale_linters = {
