@@ -190,6 +190,20 @@ imap <C-d> <Del>
 imap <C-h> <BS>
 
 
+" visulaモードでインデント調整後に選択範囲を開放しない
+vnoremap > >gv
+vnoremap < <gv
+
+
+" 現在のバッファを削除
+nmap bd :bd<CR>
+
+
+" 変更点へ移動
+nmap <C-p> <Plug>(GitGutterPrevHunk)
+nmap <C-n> <Plug>(GitGutterNextHunk)
+
+
 " nerdtreeでドットファイル表示
 let NERDTreeShowHidden=1
 
