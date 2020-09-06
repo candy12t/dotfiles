@@ -1,5 +1,5 @@
 if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
-  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+	source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 # zstyle ':completion:*:*:git:*' script ~/.zsh/completion/.git-completion.bash
 # fpath=($HOME/.zsh/completion $fpath)
@@ -7,13 +7,16 @@ fi
 autoload -U compinit
 compinit -u
 
+[[ $- != *i* ]] && return
+[[ -z "$TMUX" ]] && exec tmux
+
 # precmd() { print "" }
 
 if [ $(uname -s) = 'Linux' ];then
 	alias ls='ls -F --color'
 else
 	alias ls='ls -FG'
-	alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew' 
+	alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew'
 fi
 alias la='ls -A'
 alias ll='ls -Al'
