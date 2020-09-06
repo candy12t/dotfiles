@@ -94,6 +94,8 @@ syntax enable
 set t_Co=256
 colorscheme iceberg
 set bg=dark
+
+" 背景透過
 highlight Normal ctermbg=none
 highlight NonText ctermbg=none
 highlight LineNr ctermbg=none
@@ -111,6 +113,8 @@ set relativenumber
 
 " カーソル強調
 set cursorline
+hi clear CursorLine
+hi CursorLineNr term=bold cterm=NONE ctermfg=228 ctermbg=NONE
 
 " ビープ音の可視化
 set visualbell
@@ -158,6 +162,16 @@ set gdefault
 
 " ECSキー2回押してハイライトの切り替え
 nnoremap <silent><ESC><ESC> :<C-u>set nohlsearch!<CR>
+
+
+"-------------画面分割-------------
+nnoremap ss :split<CR><C-w>w
+nnoremap sv :vsplit<CR><C-w>w
+
+nnoremap sj <C-w>j
+nnoremap sk <C-w>k
+nnoremap sl <C-w>l
+nnoremap sh <C-w>h
 
 
 "-------------タブ/インデント-------------
