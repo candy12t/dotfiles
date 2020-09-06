@@ -7,8 +7,8 @@ fi
 autoload -U compinit
 compinit -u
 
-[[ $- != *i* ]] && return
-[[ -z "$TMUX" ]] && exec tmux
+# [[ $- != *i* ]] && return
+# [[ -z "$TMUX" ]] && exec tmux
 
 # precmd() { print "" }
 
