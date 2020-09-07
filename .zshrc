@@ -28,8 +28,13 @@ if [ -e ${PYENV_ROOT} ];then
 	eval "$(pyenv init -)"
 fi
 
-export GOPATH=$HOME/go
-if [ -e ${GOPATH} ];then
+export GOENV_ROOT="$HOME/.goenv"
+if [ -e ${GOENV_ROOT} ];then
+	export GOENV_DISABLE_GOPATH=1
+	export PATH="$GOENV_ROOT/bin:$PATH"
+	eval "$(goenv init -)"
+	export GOPATH=$HOME/go
+	export PATH="$GOROOT/bin:$PATH"
 	export PATH="$PATH:$GOPATH/bin"
 fi
 
