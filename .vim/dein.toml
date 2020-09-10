@@ -69,7 +69,11 @@ repo = 'prabirshrestha/vim-lsp'
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
 
+[[plugins]]
+repo = 'mattn/vim-lsp-icons'
 
+
+# ale
 [[plugins]]
 repo = 'dense-analysis/ale'
 
@@ -77,3 +81,8 @@ repo = 'dense-analysis/ale'
 # Golang
 [[plugins]]
 repo = 'mattn/vim-goimports'
+
+
+# Ruby
+[[plugins]]
+repo = 'tpope/vim-endwise'
