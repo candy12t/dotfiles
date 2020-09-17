@@ -198,6 +198,9 @@ autocmd FileType html set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 autocmd BufNewFile,BufRead *.html.erb set filetype=html
 
 
+let mapleader = ","
+
+
 " 挿入モードでのカーソル移動
 imap <C-f> <Right>
 imap <C-b> <Left>
