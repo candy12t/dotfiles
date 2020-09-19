@@ -88,6 +88,10 @@ repo = 'junegunn/fzf.vim'
 merged = 0
 
 
+[[plugins]]
+repo = 'simeji/winresizer'
+
+
 # Golang
 [[plugins]]
 repo = 'mattn/vim-goimports'

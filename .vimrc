@@ -172,6 +172,7 @@ nnoremap sj <C-w>j
 nnoremap sk <C-w>k
 nnoremap sl <C-w>l
 nnoremap sh <C-w>h
+nnoremap sc <C-w>c
 
 
 "-------------タブ/インデント-------------
@@ -235,7 +236,7 @@ nmap <C-n> <Plug>(GitGutterNextHunk)
 let NERDTreeShowHidden=1
 
 " nerdtreeの表示/非表示
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+nnoremap <silent><C-a> :NERDTreeToggle<CR>
 
 
 " airlineの設定
