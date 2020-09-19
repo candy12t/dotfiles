@@ -78,6 +78,16 @@ repo = 'mattn/vim-lsp-icons'
 repo = 'dense-analysis/ale'
 
 
+# fzf
+[[plugins]]
+repo = 'junegunn/fzf'
+build = './install --all'
+
+[[plugins]]
+repo = 'junegunn/fzf.vim'
+merged = 0
+
+
 # Golang
 [[plugins]]
 repo = 'mattn/vim-goimports'

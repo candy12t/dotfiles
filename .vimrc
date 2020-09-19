@@ -243,6 +243,19 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme = "raven"
 let g:airline_powerline_fonts = 1
 
+nnoremap <Leader>r :<C-u>silent call <SID>find_rip_grep()<CR>
+nnoremap <Leader>g :GFiles<CR>
+nnoremap <Leader>G :GFiles?<CR>
+nnoremap <Leader>f :Files<CR>
+function! s:find_rip_grep() abort
+		call fzf#vim#grep(
+                \   'rg --column --color=always --ignore-file line-number --no-heading --hidden --glob "!.git" .+',
+                \   1,
+                \   fzf#vim#with_preview({'options': '--delimiter : --nth 4..'}, 'right:50%', '?'),
+                \   0,
+                \ )
+endfunction
+
 
 let g:ale_linters = {
 	\ 'python': ['flake8'],

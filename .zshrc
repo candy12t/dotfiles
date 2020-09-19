@@ -67,6 +67,10 @@ if [ -d "/usr/local/opt/postgresql@9.6" ];then
 	export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 fi
 
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
+export FZF_DEFAULT_OPTS='--height 40% --border --reverse'
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 if [ -x $(which starship) ];then
 	eval "$(starship init zsh)"
 	export STARSHIP_CONFIG=$HOME/.starship.toml
