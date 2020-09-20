@@ -258,6 +258,13 @@ function! s:find_rip_grep() abort
 endfunction
 
 
+nmap <Leader> <Plug>(easymotion-prefix)
+let g:EasyMotion_do_mapping = 0
+nmap <Leader>w <Plug>(easymotion-jumptoanywhere)
+nmap <Leader>jk <Plug>(easymotion-sol-bd-jk)
+nmap <Leader>s <Plug>(easymotion-s2)
+
+
 let g:ale_linters = {
 	\ 'python': ['flake8'],
 	\ }

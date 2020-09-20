@@ -88,6 +88,12 @@ repo = 'junegunn/fzf.vim'
 merged = 0
 
 
+# move cursol
+[[plugins]]
+repo = 'easymotion/vim-easymotion'
+
+
+# widow risize
 [[plugins]]
 repo = 'simeji/winresizer'
 
