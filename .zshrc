@@ -68,7 +68,7 @@ if [ -d "/usr/local/opt/postgresql@9.6" ];then
 fi
 
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_DEFAULT_OPTS='--height 40% --border --reverse'
+export FZF_DEFAULT_OPTS='--height 40% --border horizontal --reverse --pointer "->" --preview "bat --color=always --style=header,grid -r :10 {}"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 if [ -x $(which starship) ];then
