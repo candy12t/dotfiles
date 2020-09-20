@@ -265,6 +265,9 @@ nmap <Leader>jk <Plug>(easymotion-sol-bd-jk)
 nmap <Leader>s <Plug>(easymotion-s2)
 
 
+nnoremap <silent> <Leader>t :vert rightbelow term ++close tig status<CR>
+
+
 let g:ale_linters = {
 	\ 'python': ['flake8'],
 	\ }
