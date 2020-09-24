@@ -243,7 +243,7 @@ nmap <C-n> <Plug>(GitGutterNextHunk)
 let NERDTreeShowHidden=1
 
 " nerdtreeの表示/非表示
-nnoremap <silent><C-a> :NERDTreeToggle<CR>
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 
 " airlineの設定
