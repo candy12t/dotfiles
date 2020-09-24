@@ -93,11 +93,6 @@ merged = 0
 repo = 'easymotion/vim-easymotion'
 
 
-# widow risize
-[[plugins]]
-repo = 'simeji/winresizer'
-
-
 # Golang
 [[plugins]]
 repo = 'mattn/vim-goimports'
