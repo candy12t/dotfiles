@@ -85,6 +85,13 @@ inoremap jj <Esc>
 " ファイル形式別プラグインとインデントを有効
 filetype plugin indent on
 
+inoremap ' ''<Left>
+inoremap " ""<Left>
+inoremap ( ()<Left>
+inoremap [ []<Left>
+inoremap { {}<Left>
+inoremap < <><Left>
+
 
 "-------------見た目-------------
 " シンタックスハイライト 有効
