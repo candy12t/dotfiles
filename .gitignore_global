@@ -9,7 +9,4 @@ venv/
 
 db.sqlite3
 
-*.env
-*.dev
-*.db
-*.prod
+*.env*
