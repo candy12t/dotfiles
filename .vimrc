@@ -120,8 +120,8 @@ set relativenumber
 
 " カーソル強調
 set cursorline
-hi clear CursorLine
-hi CursorLineNr term=bold cterm=NONE ctermfg=228 ctermbg=NONE
+" hi clear CursorLine
+" hi CursorLineNr term=bold cterm=NONE ctermfg=228 ctermbg=NONE
 
 " ビープ音の可視化
 set visualbell
