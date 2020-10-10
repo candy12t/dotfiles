@@ -1,5 +1,5 @@
 [character]
-error_symbol = "x"
+error_symbol ="[✗](bold red)"
 use_symbol_for_status = true
 
 [cmd_duration]
