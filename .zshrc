@@ -21,6 +21,7 @@ fi
 alias la='ls -A'
 alias ll='ls -Al'
 alias t='tmux'
+alias ts='tig status'
 
 alias dk='docker'
 alias dki='docker images'
@@ -67,9 +68,11 @@ if [ -d "/usr/local/opt/postgresql@9.6" ];then
 	export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 fi
 
+
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_DEFAULT_OPTS='--height 40% --border horizontal --reverse --pointer "->" --preview "bat --color=always --style=header,grid -r :10 {}"'
+export FZF_DEFAULT_OPTS='--height 60% --border horizontal --reverse --preview "bat --color=always --style=grid -r :15 {}"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
 
 if [ -x $(which starship) ];then
 	eval "$(starship init zsh)"
