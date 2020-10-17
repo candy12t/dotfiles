@@ -16,6 +16,9 @@ repo = 'tomasr/molokai'
 [[plugins]]
 repo = 'morhetz/gruvbox'
 
+[[plugins]]
+repo = 'ghifarit53/tokyonight-vim'
+
 
 # ステータスバー
 [[plugins]]

@@ -99,7 +99,13 @@ syntax enable
 
 " カラースキーム"
 set t_Co=256
-colorscheme iceberg
+
+set termguicolors
+colorscheme tokyonight
+let g:tokyonight_menu_selection_background = 'blue'
+let g:tokyonight_disable_italic_comment = 1
+
+" colorscheme iceberg
 set bg=dark
 
 " 背景透過
@@ -249,7 +255,8 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
 " airlineの設定
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme = "raven"
+" let g:airline_theme = "raven"
+let g:airline_theme = "tokyonight"
 let g:airline_powerline_fonts = 1
 
 nnoremap <Leader>r :<C-u>silent call <SID>find_rip_grep()<CR>
