@@ -282,6 +282,7 @@ nmap <Leader>s <Plug>(easymotion-s2)
 
 nnoremap <silent> <Leader>t :vert rightbelow term ++close tig status<CR>
 
+nmap <Leader>l :LspDefinition<CR>
 
 nnoremap <Leader>d :Gdiff<CR>
 
