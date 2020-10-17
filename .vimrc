@@ -291,7 +291,7 @@ let g:ale_linters = {
 	\ }
 
 let g:ale_fixers = {
-	\ 'python': ['autopep8', 'black', 'isort'],
+	\ 'python': ['isort'],
 	\ }
 
 let g:ale_fix_on_save = 1
