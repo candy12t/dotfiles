@@ -100,7 +100,7 @@ syntax enable
 " カラースキーム"
 set t_Co=256
 
-set termguicolors
+" set termguicolors
 colorscheme tokyonight
 let g:tokyonight_menu_selection_background = 'blue'
 let g:tokyonight_disable_italic_comment = 1
