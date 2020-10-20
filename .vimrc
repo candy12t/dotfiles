@@ -93,6 +93,14 @@ inoremap { {}<Left>
 inoremap < <><Left>
 
 
+" 補完表示時のEnterで改行しない
+inoremap <expr><CR> pumvisible() ? "<C-y>" : "<CR>"
+
+set completeopt=menuone,noinsert
+inoremap <expr><C-n> pumvisible() ? "<Down>" : "<C-n>"
+inoremap <expr><C-p> pumvisible() ? "<Up>" : "<C-p>"
+
+
 "-------------見た目-------------
 " シンタックスハイライト 有効
 syntax enable
