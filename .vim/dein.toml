@@ -99,8 +99,3 @@ repo = 'easymotion/vim-easymotion'
 # Golang
 [[plugins]]
 repo = 'mattn/vim-goimports'
-
-
-# Ruby
-[[plugins]]
-repo = 'tpope/vim-endwise'
