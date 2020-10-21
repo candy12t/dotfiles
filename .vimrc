@@ -85,13 +85,6 @@ inoremap jj <Esc>
 " ファイル形式別プラグインとインデントを有効
 filetype plugin indent on
 
-inoremap ' ''<Left>
-inoremap " ""<Left>
-inoremap ( ()<Left>
-inoremap [ []<Left>
-inoremap { {}<Left>
-inoremap < <><Left>
-
 
 " 補完表示時のEnterで改行しない
 inoremap <expr><CR> pumvisible() ? "<C-y>" : "<CR>"

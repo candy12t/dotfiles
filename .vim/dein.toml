@@ -96,6 +96,9 @@ merged = 0
 repo = 'easymotion/vim-easymotion'
 
 
+[[plugins]]
+repo = 'jiangmiao/auto-pairs'
+
 # Golang
 [[plugins]]
 repo = 'mattn/vim-goimports'
