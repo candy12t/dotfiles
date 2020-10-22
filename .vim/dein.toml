@@ -72,9 +72,6 @@ repo = 'prabirshrestha/vim-lsp'
 [[plugins]]
 repo = 'mattn/vim-lsp-settings'
 
-[[plugins]]
-repo = 'mattn/vim-lsp-icons'
-
 
 # ale
 [[plugins]]
@@ -98,6 +95,11 @@ repo = 'easymotion/vim-easymotion'
 
 [[plugins]]
 repo = 'jiangmiao/auto-pairs'
+
+
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+
 
 # Golang
 [[plugins]]
