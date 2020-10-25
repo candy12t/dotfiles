@@ -21,7 +21,8 @@ set backspace=indent,eol,start " バックスペースキーの有効
 set clipboard+=unnamed         " クリップボードの共有
 set showmatch                  " 対応する括弧をハイライト
 set ttimeoutlen=50             " ESCキー押してからのタイムラグ(default=100)
-set helplang=ja
+set helplang=ja                " ヘルプを日本語
+set updatetime=250             " 反映時間
 
 
 
@@ -35,8 +36,7 @@ let g:tokyonight_disable_italic_comment = 1
 set bg=dark
 
 set title          " タイトル表示
-set number         " 行番号表示
-set relativenumber " 相対行番号表示
+" set number         " 行番号表示
 set cursorline     " カーソル強調
 set scrolloff=100  " カーソルが常に中央
 set laststatus=2   " ステータス行表示
