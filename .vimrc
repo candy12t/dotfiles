@@ -8,11 +8,6 @@ syntax enable " シンタックスハイライト 有効
 set fenc=utf-8
 set encoding=utf-8
 
-" 自動保存
-set autowrite
-autocmd CursorHold *  wall
-autocmd CursorHoldI *  wall
-
 set nobackup                   " バックアップファイルを作らない
 set noswapfile                 " スワップファイルを作らない
 set autoread                   " 編集中のファイルが変更されたら自動で読み直す
