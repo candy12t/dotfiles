@@ -20,6 +20,7 @@ else
 fi
 alias la='ls -A'
 alias ll='ls -Al'
+alias g='git'
 alias t='tmux'
 alias ts='tig status'
 
