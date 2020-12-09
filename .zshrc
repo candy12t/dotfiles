@@ -80,6 +80,9 @@ if [ -x $(which starship) ];then
 	export STARSHIP_CONFIG=$HOME/.starship.toml
 fi
 
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
+source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
+
 # setopt PROMPT_SUBST
 # source ~/.git-prompt.sh
 # GIT_PS1_SHOWDIRTYSTATE=1
