@@ -84,6 +84,8 @@ let mapleader = " "
 " 入力モードで素早くjjと入力したときはESC
 inoremap jj <Esc>
 
+noremap x "_x
+
 " 補完表示時のEnterで改行しない
 inoremap <expr><CR> pumvisible() ? "<C-y>" : "<CR>"
 set completeopt=menuone,noinsert
