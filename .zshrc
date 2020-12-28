@@ -65,6 +65,12 @@ if [ -e ${RBENV_ROOT} ];then
 	eval "$(rbenv init -)"
 fi
 
+export NODENV_ROOT="$HOME/.nodenv"
+if [ -e ${NODENV_ROOT} ];then
+  export PATH="$NODENV_ROOT/bin:$PATH"
+  eval "$(nodenv init -)"
+fi
+
 if [ -d "/usr/local/opt/postgresql@9.6" ];then
 	export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
 fi
