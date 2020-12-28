@@ -71,6 +71,7 @@ augroup fileTypeIndent
   autocmd FileType vim        setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType sh         setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType yaml       setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType bash       setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
   autocmd BufNewFile,BufRead *.html.erb setlocal filetype=html
 augroup END
