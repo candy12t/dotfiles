@@ -17,24 +17,6 @@ alias g='git'
 alias t='tmux'
 alias ts='tig status'
 
-alias dk='docker'
-alias dki='docker images'
-alias dkrmi='docker rmi'
-alias dkrm='docker rm'
-alias dkp='docker ps'
-alias dkP='docker ps -a'
-
-alias dkc='docker-compose'
-alias dkcl='docker-compose logs'
-alias dkcL='docker-compose logs -ft'
-alias dkcb='docker-compose build'
-alias dkcd='docker-compose down'
-alias dkcD='docker-compose down -v'
-alias dkcR='docker-compose run --rm'
-alias dkcu='docker-compose up'
-alias dkcU='docker-compose up -d'
-alias dkcp='docker-compose ps'
-
 
 export PYENV_ROOT="$HOME/.pyenv"
 if [ -e ${PYENV_ROOT} ];then
