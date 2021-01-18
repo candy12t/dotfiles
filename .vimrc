@@ -128,6 +128,7 @@ nnoremap <silent> <Tab> :bnext<CR>
 " 変更点へ移動
 nmap <C-p> <Plug>(GitGutterPrevHunk)
 nmap <C-n> <Plug>(GitGutterNextHunk)
+let g:gitgutter_enabled = 0
 
 
 " nerdtreeでドットファイル表示
@@ -170,7 +171,6 @@ nnoremap <silent> <Leader>t :vert rightbelow term ++close tig status<CR>
 
 nmap <Leader>l :LspDefinition<CR>
 
-nnoremap <Leader>d :Gdiff<CR>
 
 let g:ale_linters = {
   \ 'python': ['flake8'],
