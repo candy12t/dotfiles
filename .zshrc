@@ -9,7 +9,7 @@ if [ $(uname -s) = 'Linux' ]; then
   alias ls='ls -F --color'
 else
   alias ls='ls -FG'
-  alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin brew'
+  alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin brew'
 fi
 alias la='ls -A'
 alias ll='ls -Al'
