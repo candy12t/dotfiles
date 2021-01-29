@@ -578,6 +578,15 @@
 			<key>Text</key>
 			<string>b</string>
 		</dict>
+		<key>0x64-0x80000-0x2</key>
+		<dict>
+			<key>Action</key>
+			<integer>10</integer>
+			<key>Label</key>
+			<string></string>
+			<key>Text</key>
+			<string>d</string>
+		</dict>
 		<key>0x66-0x80000-0x3</key>
 		<dict>
 			<key>Action</key>
