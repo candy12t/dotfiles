@@ -133,7 +133,7 @@ let g:gitgutter_enabled = 0
 
 " nerdtreeでドットファイル表示
 let NERDTreeShowHidden=1
-let NERDTreeIgnore = ['.git', '__pycache__', '.pyc', 'venv']
+let NERDTreeIgnore = ['.git/', '__pycache__/', '.pyc', 'venv/']
 " nerdtreeの表示/非表示
 nnoremap <silent><C-e> :NERDTreeToggle<CR>
 
