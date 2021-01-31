@@ -8,7 +8,11 @@ __pycache__/
 *.pyc
 venv/
 
+/* django */
 db.sqlite3
+
+/* node */
+/node_modules
 
 *.env*
 
