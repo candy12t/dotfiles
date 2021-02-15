@@ -8,15 +8,6 @@ repo = 'Shougo/dein.vim'
 repo = 'cocopon/iceberg.vim'
 
 [[plugins]]
-repo = 'joshdick/onedark.vim'
-
-[[plugins]]
-repo = 'tomasr/molokai'
-
-[[plugins]]
-repo = 'morhetz/gruvbox'
-
-[[plugins]]
 repo = 'ghifarit53/tokyonight-vim'
 
 
