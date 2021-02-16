@@ -125,11 +125,6 @@ nnoremap <silent> <S-Tab> :bprev<CR>
 nnoremap <silent> <Tab> :bnext<CR>
 
 
-" 変更点へ移動
-nmap <C-p> <Plug>(GitGutterPrevHunk)
-nmap <C-n> <Plug>(GitGutterNextHunk)
-let g:gitgutter_enabled = 0
-
 
 " nerdtreeでドットファイル表示
 let NERDTreeShowHidden=1
