@@ -33,7 +33,7 @@ set bg=dark
 set title          " タイトル表示
 " set number         " 行番号表示
 set cursorline     " カーソル強調
-set scrolloff=100  " カーソルが常に中央
+" set scrolloff=100  " カーソルが常に中央
 set laststatus=2   " ステータス行表示
 set wildmenu       " コマンドライン補完
 set ruler          " 右下にカーソル位置を表示
@@ -106,12 +106,9 @@ nnoremap sc <C-w>c
 " 挿入モードでのカーソル移動
 imap <C-f> <Right>
 imap <C-b> <Left>
-imap <C-p> <Up>
-imap <C-n> <Down>
 imap <C-a> <Home>
 imap <C-e> <End>
 imap <C-d> <Del>
-imap <C-h> <BS>
 
 " visulaモードでインデント調整後に選択範囲を開放しない
 vnoremap > >gv
@@ -160,9 +157,6 @@ endfunction
 nmap <Leader> <Plug>(easymotion-prefix)
 let g:EasyMotion_do_mapping = 0
 nmap <Leader>jk <Plug>(easymotion-sol-bd-jk)
-
-
-nnoremap <silent> <Leader>t :vert rightbelow term ++close tig status<CR>
 
 nmap <Leader>l :LspDefinition<CR>
 
