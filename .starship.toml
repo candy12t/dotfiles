@@ -4,3 +4,18 @@ use_symbol_for_status = true
 
 [cmd_duration]
 disabled = true
+
+[gcloud]
+disabled = true
+
+[rust]
+symbol = " "
+
+[golang]
+symbol = "ﳑ "
+
+[python]
+symbol = " "
+
+[ruby]
+symbol = " "
