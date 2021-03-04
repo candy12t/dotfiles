@@ -68,6 +68,7 @@ augroup fileTypeIndent
   autocmd FileType ruby       setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType html       setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
+  autocmd FileType typescript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType vim        setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType sh         setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType yaml       setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
