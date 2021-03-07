@@ -31,9 +31,9 @@ if [ -e ${GOENV_ROOT} ]; then
   export PATH="$GOENV_ROOT/bin:$PATH"
   eval "$(goenv init -)"
   export PATH="$GOROOT/bin:$PATH"
-  export PATH="$PATH:$GOPATH/bin"
   export GOENV_DISABLE_GOPATH=1
   export GOPATH=$HOME/dev/go
+  export PATH="$PATH:$GOPATH/bin"
 fi
 
 # ruby
