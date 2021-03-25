@@ -104,6 +104,9 @@ nnoremap sl <C-w>l
 nnoremap sh <C-w>h
 nnoremap sc <C-w>c
 
+nnoremap j gj
+nnoremap k gk
+
 " 挿入モードでのカーソル移動
 imap <C-f> <Right>
 imap <C-b> <Left>
