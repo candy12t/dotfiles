@@ -127,14 +127,15 @@ nnoremap <silent> <Tab> :bnext<CR>
 
 
 
-" nerdtreeでドットファイル表示
-let NERDTreeShowHidden=1
+"-------------plugin setting-------------"
+
+" nerdtree
+let NERDTreeShowHidden=1 "nerdtreeでドットファイル表示
 let NERDTreeIgnore = ['.git$', '__pycache__', '.pyc', 'venv', 'node_modules']
-" nerdtreeの表示/非表示
-nnoremap <silent><C-e> :NERDTreeToggle<CR>
+nnoremap <silent><C-e> :NERDTreeToggle<CR> " nerdtreeの表示/非表示
 
 
-" airlineの設定
+" airline
 let g:airline#extensions#tabline#enabled = 1
 " let g:airline_theme = "raven"
 let g:airline_theme = "tokyonight"
@@ -144,6 +145,7 @@ endif
 let g:airline_symbols.branch = ''
 
 
+" fzf
 nnoremap <Leader>r :<C-u>silent call <SID>find_rip_grep()<CR>
 nnoremap <Leader>g :GFiles<CR>
 nnoremap <Leader>G :GFiles?<CR>
@@ -158,13 +160,17 @@ function! s:find_rip_grep() abort
 endfunction
 
 
+" easymotion
 nmap <Leader> <Plug>(easymotion-prefix)
 let g:EasyMotion_do_mapping = 0
 nmap <Leader>jk <Plug>(easymotion-sol-bd-jk)
 
+
+" lsp
 nmap <Leader>l :LspDefinition<CR>
 
 
+" ale
 let g:ale_linters = {
   \ 'python': ['flake8'],
   \ }
