@@ -2,5 +2,13 @@
 
 # https://github.com/sharkdp/bat
 
-curl -LO https://github.com/sharkdp/bat/releases/download/v0.18.0/bat_0.18.0_amd64.deb
-sudo dpkg -i bat_0.18.0_amd64.deb
+set -eu
+
+version=0.18.0
+deb="bat_${version}_amd64.deb"
+
+if [ ! -f "${deb}" ]; then
+  wget "https://github.com/sharkdp/bat/releases/download/v${version}/${deb}" -O "${deb}"
+fi
+
+sudo dpkg -i "${deb}"

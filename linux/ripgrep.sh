@@ -2,5 +2,13 @@
 
 # https://github.com/BurntSushi/ripgrep
 
-curl -LO https://github.com/BurntSushi/ripgrep/releases/download/12.1.1/ripgrep_12.1.1_amd64.deb
-sudo dpkg -i ripgrep_12.1.1_amd64.deb
+set -eu
+
+version=12.1.1
+deb="ripgrep_${version}_amd64.deb"
+
+if [ ! -f "${deb}" ]; then
+  wget "https://github.com/BurntSushi/ripgrep/releases/download/${version}/${deb}" -O "${deb}"
+fi
+
+sudo dpkg -i "${deb}"
