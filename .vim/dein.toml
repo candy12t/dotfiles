@@ -92,3 +92,8 @@ repo = 'mattn/vim-goimports'
 # Ruby
 [[plugins]]
 repo = 'slim-template/vim-slim'
+
+
+# Rust
+[[plugins]]
+repo = 'rust-lang/rust.vim'

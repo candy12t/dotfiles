@@ -65,6 +65,7 @@ augroup fileTypeIndent
   autocmd!
   autocmd FileType go         setlocal tabstop=4 shiftwidth=4 softtabstop=4
   autocmd FileType python     setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+  autocmd FileType rust       setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType ruby       setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType html       setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
   autocmd FileType javascript setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
@@ -168,6 +169,11 @@ nmap <Leader>jk <Plug>(easymotion-sol-bd-jk)
 
 " lsp
 nmap <Leader>l :LspDefinition<CR>
+let g:lsp_diagnostics_echo_cursor = 1
+
+
+" rust.vim
+let g:rustfmt_autosave = 1
 
 
 " ale
