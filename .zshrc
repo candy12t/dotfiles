@@ -65,7 +65,6 @@ export FZF_DEFAULT_OPTS='--height 60% --border horizontal --reverse --preview "b
 # starship
 if [ -x $(which starship) ]; then
   eval "$(starship init zsh)"
-  export STARSHIP_CONFIG=$HOME/.starship.toml
 fi
 
 # gcloud
