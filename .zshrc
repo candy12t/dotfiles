@@ -22,7 +22,7 @@ alias ts='tig status'
 export PYENV_ROOT="$HOME/.pyenv"
 if [ -e ${PYENV_ROOT} ]; then
   export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init -)"
+  eval "$(pyenv init --path)"
 fi
 
 # go
