@@ -19,8 +19,10 @@ function create_symbolic_link () {
   done
 }
 
-if [ ! -d ${config} ]; then
-  mkdir ${config}
+if [ ! -e "${HOME}/${config}" ]; then
+  mkdir "${HOME}/${config}"
+  echo "make directory: ${HOME}/${config}"
 fi
+
 create_symbolic_link "${config_files[@]}"
 create_symbolic_link "${dotfiles[@]}"
