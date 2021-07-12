@@ -128,6 +128,15 @@ nnoremap <silent> <Tab> :bnext<CR>
 
 
 
+"-------------その他-------------
+" スペルチェック
+augroup SpellCheck
+  autocmd!
+  autocmd FileType gitcommit setlocal spell
+augroup END
+
+
+
 "-------------plugin setting-------------"
 
 " nerdtree
