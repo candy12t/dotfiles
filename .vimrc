@@ -1,6 +1,63 @@
-execute 'source' expand('~/dotfiles/.vim/.plugin.vim')
 filetype plugin indent on " ファイル形式別プラグインとインデントを有効
 syntax enable " シンタックスハイライト 有効
+
+
+call plug#begin('~/.vim/plugged')
+
+" colorscheme
+Plug 'cocopon/iceberg.vim'
+Plug 'ghifarit53/tokyonight-vim'
+
+" statusbar
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+" filer
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle'  }
+
+" visualize indent
+Plug 'Yggdroot/indentLine'
+
+" comment
+Plug 'tpope/vim-commentary'
+
+" remove wasted space
+Plug 'bronson/vim-trailing-whitespace'
+
+" LSP
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+
+" ale
+Plug 'dense-analysis/ale'
+
+" fzf
+Plug 'junegunn/fzf', { 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
+
+" jump cursol
+Plug 'easymotion/vim-easymotion'
+
+" complete pairs of brackets
+Plug 'jiangmiao/auto-pairs'
+
+" vim doc ver.ja
+Plug 'vim-jp/vimdoc-ja'
+
+" Go
+Plug 'mattn/vim-goimports'
+
+" Ruby
+Plug 'tpope/vim-endwise'
+Plug 'slim-template/vim-slim'
+
+" Rust
+Plug 'rust-lang/rust.vim'
+
+call plug#end()
 
 
 "-------------一般-------------
