@@ -1,0 +1,4 @@
+err$
+	if err != nil {
+		return {{_cursor_}}
+	}

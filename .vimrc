@@ -44,6 +44,9 @@ Plug 'easymotion/vim-easymotion'
 " complete pairs of brackets
 Plug 'jiangmiao/auto-pairs'
 
+" sonictemplate
+Plug 'mattn/vim-sonictemplate'
+
 " vim doc ver.ja
 Plug 'vim-jp/vimdoc-ja'
 
@@ -225,6 +228,12 @@ function! s:find_rip_grep() abort
                 \   0,
                 \ )
 endfunction
+
+
+" sonictemplate
+let g:sonictemplate_vim_template_dir = '~/.vim/sonictemplate'
+imap <silent> <C-y> <plug>(sonictemplate-postfix)
+noremap <Leader>t :Template<space>
 
 
 " easymotion
