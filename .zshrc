@@ -80,3 +80,7 @@ export CARGO_ROOT="$HOME/.cargo"
 if [ -e ${CARGO_ROOT} ]; then
   source "$HOME/.cargo/env"
 fi
+
+if [ -x $(which direnv) ]; then
+  eval "$(direnv hook zsh)"
+fi
