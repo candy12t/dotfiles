@@ -117,13 +117,16 @@ nnoremap <silent><ESC><ESC> :<C-u>set nohlsearch!<CR>
 
 
 "-------------タブ/インデント-------------
+set listchars=tab:»-,space:-,eol:↲,
+set list
 set autoindent smartindent
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
 
 " filetypeごとのインデントの設定
 augroup fileTypeIndent
   autocmd!
-  autocmd FileType go         setlocal tabstop=4 shiftwidth=4 softtabstop=4
+  autocmd FileType go         setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
+  autocmd FileType stpl       setlocal tabstop=4 shiftwidth=4 softtabstop=4 noexpandtab
   autocmd FileType python     setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType rust       setlocal tabstop=4 shiftwidth=4 softtabstop=4 expandtab
   autocmd FileType ruby       setlocal tabstop=2 shiftwidth=2 softtabstop=2 expandtab
