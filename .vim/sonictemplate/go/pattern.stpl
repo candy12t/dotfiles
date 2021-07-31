@@ -1,4 +1,14 @@
+\(\S.*\)\.err$
+	if err := {{$1}}; err != nil {
+		{{_cursor_}}
+	}
+
 err$
 	if err != nil {
 		return {{_cursor_}}
+	}
+
+\(\S.*\)\.handler$
+	func {{$1}}(w http.ResponseWriter, r *http.Request) {
+		{{_cursor_}}
 	}
