@@ -28,3 +28,5 @@ fi
 create_symbolic_link "${config_files[@]}"
 create_symbolic_link "${dotfiles[@]}"
 create_symbolic_link "${vim[@]}"
+
+exit 0;
