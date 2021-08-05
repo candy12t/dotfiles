@@ -5,7 +5,7 @@
 
 err$
 	if err != nil {
-		return {{_cursor_}}
+		{{_cursor_}}
 	}
 
 \(\S.*\)\.handler$
