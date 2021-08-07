@@ -235,7 +235,6 @@ endfunction
 
 " sonictemplate
 let g:sonictemplate_vim_template_dir = '~/.vim/sonictemplate'
-imap <silent> <C-y> <plug>(sonictemplate-postfix)
 noremap <Leader>t :Template<space>
 
 
