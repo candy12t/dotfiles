@@ -12,3 +12,15 @@ err$
 	func {{$1}}(w http.ResponseWriter, r *http.Request) {
 		{{_cursor_}}
 	}
+
+\(\S.*\)\.Test$
+	func Test{{$1}}(t *testing.T) {
+		tests := []struct {
+			input    string
+			expected string
+		}{
+			{{{_cursor_}}},
+		}
+		for i, tt := range tests {
+		}
+	}
