@@ -16,6 +16,7 @@ alias ll='ls -Al'
 alias g='git'
 alias t='tmux'
 alias ts='tig status'
+alias :q='exit'
 
 
 # python
