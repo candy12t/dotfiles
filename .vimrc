@@ -147,9 +147,6 @@ augroup END
 " <Leader>をスペースに変更
 let mapleader = " "
 
-" 入力モードで素早くjjと入力したときはESC
-inoremap jj <Esc>
-
 noremap x "_x
 
 " 補完表示時のEnterで改行しない
