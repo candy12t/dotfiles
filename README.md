@@ -2,10 +2,10 @@
 
 My dotfiles
 
-## Setup
+## Install
 
 ```shell
 git clone https://github.com/candy12t/dotfiles.git
 cd dotfiles
-./setup.sh
+./install.sh
 ```
