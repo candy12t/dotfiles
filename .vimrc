@@ -246,6 +246,10 @@ nmap <Leader>l :LspDefinition<CR>
 let g:lsp_diagnostics_echo_cursor = 1
 
 
+" vim-goimports
+let g:goimports_show_loclist = 0
+
+
 " rust.vim
 let g:rustfmt_autosave = 1
 
