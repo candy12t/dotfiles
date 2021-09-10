@@ -1,14 +1,60 @@
-[character]
-error_symbol ="[✗](bold red)"
-
-[cmd_duration]
-disabled = true
-
-[gcloud]
-disabled = true
-
-[rust]
-symbol = " "
+format = """
+$time\
+$username\
+$hostname\
+$shlvl\
+$kubernetes\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_metrics\
+$git_status\
+$hg_branch\
+$docker_context\
+$cmake\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$helm\
+$java\
+$julia\
+$kotlin\
+$nim\
+$nodejs\
+$ocaml\
+$perl\
+$php\
+$purescript\
+$python\
+$red\
+$ruby\
+$rust\
+$scala\
+$swift\
+$terraform\
+$vlang\
+$vagrant\
+$zig\
+$nix_shell\
+$conda\
+$memory_usage\
+$aws\
+$openstack\
+$env_var\
+$crystal\
+$custom\
+$line_break\
+$lua\
+$jobs\
+$status\
+$shell\
+$character"""
 
 [golang]
 symbol = "ﳑ "
@@ -18,3 +64,11 @@ symbol = " "
 
 [ruby]
 symbol = " "
+
+[rust]
+symbol = " "
+
+[time]
+disabled = false
+format = '[\[$time\]]($style) '
+style = "bold blue"
