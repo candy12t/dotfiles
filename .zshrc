@@ -100,10 +100,15 @@ fbr() {
 }
 
 fad() {
-  local adds selected_adds formated_adds
-  adds=$(git status -s -uall) &&
-  selected_adds=$(echo "$adds" | fzf -m) &&
-  formated_adds=$(echo "$selected_adds" | tr "\n" " " | sed -e "s/ M //g" -e "s/ D //g" -e "s/?? //g" -e "s/ $//g") &&
-  git add $(echo "$formated_adds") &&
-  echo "added '$formated_adds'"
+  local adds selected_adds
+  adds=$(git status -s -uall | grep -v -e "^. ") &&
+  selected_adds=$(echo "$adds" |
+    fzf -m --preview="echo {} | awk '{print \$2}' | xargs git diff --color" |
+    awk '{print $2}' |
+    tr '\n' ' ' |
+    sed "s/ $//")
+  if [[ -n "${selected_adds}" ]]; then
+    git add $(echo "$selected_adds") &&
+    echo "added '$selected_adds'"
+  fi
 }
