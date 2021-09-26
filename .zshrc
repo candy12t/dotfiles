@@ -90,3 +90,20 @@ if [ -d "$HOME/.bookmarks" ]; then
   export CDPATH=".:$HOME/.bookmarks:/"
   alias goto="cd -P"
 fi
+
+fbr() {
+  local branches branch
+  branches=$(git branch --all | grep -v HEAD) &&
+  branch=$(echo "$branches" |
+    fzf -d $(( 2 + $(wc -l <<< "$branches") )) +m) &&
+  git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
+}
+
+fad() {
+  local adds selected_adds formated_adds
+  adds=$(git status -s -uall) &&
+  selected_adds=$(echo "$adds" | fzf -m) &&
+  formated_adds=$(echo "$selected_adds" | tr "\n" " " | sed -e "s/ M //g" -e "s/ D //g" -e "s/?? //g" -e "s/ $//g") &&
+  git add $(echo "$formated_adds") &&
+  echo "added '$formated_adds'"
+}
