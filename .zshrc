@@ -101,9 +101,13 @@ fbr() {
 
 fad() {
   local adds selected_adds
-  adds=$(git status -s -uall | grep -v -e "^. ") &&
+  if [[ -x "$(which unbuffer)" ]]; then
+    adds=$(unbuffer git status -s -uall | grep -v -e "^. ")
+  else
+    adds=$(git status -s -uall | grep -v -e "^. ")
+  fi
   selected_adds=$(echo "$adds" |
-    fzf -m --preview="echo {} | awk '{print \$2}' | xargs git diff --color" |
+    fzf -m --ansi --preview="echo {} | awk '{print \$2}' | xargs git diff --color" |
     awk '{print $2}' |
     tr '\n' ' ' |
     sed "s/ $//")
