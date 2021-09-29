@@ -99,7 +99,7 @@ fbr() {
   git checkout $(echo "$branch" | sed "s/.* //" | sed "s#remotes/[^/]*/##")
 }
 
-fad() {
+fa() {
   local adds selected_adds
   if [[ -x "$(which unbuffer)" ]]; then
     adds=$(unbuffer git status -s -uall)
