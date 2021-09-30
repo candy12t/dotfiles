@@ -116,3 +116,14 @@ fa() {
     echo "added '$selected_adds'"
   fi
 }
+
+fl() {
+  local logs selected_log
+  logs=$(git log --oneline --color=always) &&
+  selected_log=$(echo "$logs" |
+    fzf --ansi +m --preview="echo {} | awk '{print \$1}' | xargs git log -1 -p --color=always | sed 's/@@.*@@//'" |
+    awk '{print $1}')
+  if [[ -n "${selected_log}" ]]; then
+    git log "${selected_log}" -p -1 --color=always | sed "s/@@.*@@//"
+  fi
+}
