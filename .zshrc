@@ -127,3 +127,13 @@ fl() {
     git log "${selected_log}" -p -1 --color=always | sed "s/@@.*@@//"
   fi
 }
+
+fgt() {
+  local bookmarks bookmark
+  bookmarks=$(ls ~/.bookmarks | sed "s/@$//")
+  bookmark=$(echo "${bookmarks}" |
+    fzf +m --preview '
+      __symlink_bookmark="$(echo {})";
+      readlink -n "$(echo ~/.bookmarks/${__symlink_bookmark})"')
+  cd -P "${bookmark}"
+}
