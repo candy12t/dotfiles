@@ -7,7 +7,7 @@ compinit -u
 
 if [ $(uname -s) = 'Linux' ]; then
   alias ls='ls -F --color'
-else
+elif [ $(uname -s) = 'Darwin' ]; then
   alias ls='ls -FG'
   alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin brew'
 fi
@@ -15,7 +15,6 @@ alias la='ls -A'
 alias ll='ls -Al'
 alias g='git'
 alias t='tmux'
-alias ts='tig status'
 alias :q='exit'
 
 
