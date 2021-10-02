@@ -136,3 +136,9 @@ fgt() {
       readlink -n "$(echo ~/.bookmarks/${__symlink_bookmark})"')
   cd -P "${bookmark}"
 }
+
+gd() {
+  local top_git_dir
+  top_git_dir=$(git rev-parse --show-toplevel)
+  cd "${top_git_dir}"
+}
