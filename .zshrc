@@ -131,7 +131,7 @@ fgt() {
   local bookmarks bookmark
   bookmarks=$(ls ~/.bookmarks | sed "s/@$//")
   bookmark=$(echo "${bookmarks}" |
-    fzf +m --preview '
+    fzf --ansi +m --preview '
       __symlink_bookmark="$(echo {})";
       readlink -n "$(echo ~/.bookmarks/${__symlink_bookmark})"')
   cd -P "${bookmark}"
