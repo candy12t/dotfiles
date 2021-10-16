@@ -2,7 +2,7 @@
 	name = Takumi Kanada
 	email = candy12t@gmail.com
 [core]
-	excludesfile = ~/.config/git/.gitignore
+	excludesfile = ~/.gitignore
 	quotepath = false
 	editor = vim
 [alias]
