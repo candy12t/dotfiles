@@ -5,9 +5,9 @@ fi
 autoload -U compinit
 compinit -u
 
-if [ $(uname -s) = 'Linux' ]; then
+if [ "$(uname -s)" = 'Linux' ]; then
   alias ls='ls -F --color'
-elif [ $(uname -s) = 'Darwin' ]; then
+elif [ "$(uname -s)" = 'Darwin' ]; then
   alias ls='ls -FG'
   alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin brew'
 fi
@@ -20,14 +20,14 @@ alias :q='exit'
 
 # python
 export PYENV_ROOT="$HOME/.pyenv"
-if [ -e ${PYENV_ROOT} ]; then
+if [ -e "${PYENV_ROOT}" ]; then
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init --path)"
 fi
 
 # go
 export GOENV_ROOT="$HOME/.goenv"
-if [ -e ${GOENV_ROOT} ]; then
+if [ -e "${GOENV_ROOT}" ]; then
   export PATH="$GOENV_ROOT/bin:$PATH"
   eval "$(goenv init -)"
   export PATH="$GOROOT/bin:$PATH"
@@ -38,14 +38,14 @@ fi
 
 # ruby
 export RBENV_ROOT="$HOME/.rbenv"
-if [ -e ${RBENV_ROOT} ]; then
+if [ -e "${RBENV_ROOT}" ]; then
   export PATH="$RBENV_ROOT/bin:$PATH"
   eval "$(rbenv init -)"
 fi
 
 # node
 export NODENV_ROOT="$HOME/.nodenv"
-if [ -e ${NODENV_ROOT} ]; then
+if [ -e "${NODENV_ROOT}" ]; then
   export PATH="$NODENV_ROOT/bin:$PATH"
   eval "$(nodenv init -)"
 fi
@@ -63,7 +63,7 @@ export FZF_DEFAULT_OPTS='--height 60% --border horizontal --reverse --preview "b
 
 
 # starship
-if [ -x $(which starship) ]; then
+if [ -x "$(which starship)" ]; then
   eval "$(starship init zsh)"
   export STARSHIP_CONFIG="$HOME/.starship/config.toml"
 fi
@@ -78,11 +78,11 @@ fi
 # how to install rustup (ref: "https://www.rust-lang.org/tools/install")
 # curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 export CARGO_ROOT="$HOME/.cargo"
-if [ -e ${CARGO_ROOT} ]; then
+if [ -e "${CARGO_ROOT}" ]; then
   source "$HOME/.cargo/env"
 fi
 
-if [ -x $(which direnv) ]; then
+if [ -x "$(which direnv)" ]; then
   eval "$(direnv hook zsh)"
 fi
 
@@ -140,6 +140,6 @@ fgt() {
 
 gd() {
   local top_git_dir
-  top_git_dir=$(git rev-parse --show-toplevel)
+  top_git_dir="$(git rev-parse --show-toplevel)"
   cd "${top_git_dir}"
 }
