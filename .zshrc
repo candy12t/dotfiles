@@ -50,6 +50,12 @@ if [ -e "${NODENV_ROOT}" ]; then
   eval "$(nodenv init -)"
 fi
 
+# volta
+export VOLTA_HOME="$HOME/.volta"
+if [ -e "${VOLTA_HOME}" ]; then
+  export PATH="$VOLTA_HOME/bin:$PATH"
+fi
+
 # postgresql@9.6
 if [ -d "/usr/local/opt/postgresql@9.6" ]; then
   export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
