@@ -56,6 +56,11 @@ if [ -e "${VOLTA_HOME}" ]; then
   export PATH="$VOLTA_HOME/bin:$PATH"
 fi
 
+# jdk
+if [ -d "/usr/local/jdk" ]; then
+  export PATH="/usr/local/jdk/bin:$PATH"
+fi
+
 # postgresql@9.6
 if [ -d "/usr/local/opt/postgresql@9.6" ]; then
   export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
