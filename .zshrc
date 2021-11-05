@@ -154,3 +154,8 @@ gd() {
   top_git_dir="$(git rev-parse --show-toplevel)"
   cd "${top_git_dir}"
 }
+
+gmi() {
+  local dir=${1:-$(pwd | tr '/' ' ' | awk '{ print $NF }')}
+  go mod init github.com/candy12t/"${dir}"
+}
