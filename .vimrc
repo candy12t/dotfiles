@@ -101,7 +101,7 @@ let g:tokyonight_disable_italic_comment = 1
 set bg=dark
 
 set title          " タイトル表示
-" set number         " 行番号表示
+set number         " 行番号表示
 set cursorline     " カーソル強調
 " set scrolloff=100  " カーソルが常に中央
 set laststatus=2   " ステータス行表示
