@@ -159,3 +159,9 @@ gmi() {
   local dir=${1:-$(pwd | tr '/' ' ' | awk '{ print $NF }')}
   go mod init github.com/candy12t/"${dir}"
 }
+
+gtc() {
+  go test $1 -coverprofile=cover.out
+  go tool cover -html=cover.out
+  rm -rf cover.out
+}
