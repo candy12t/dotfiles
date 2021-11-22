@@ -9,7 +9,12 @@ if [ "$(uname -s)" = 'Linux' ]; then
   alias ls='ls -F --color'
 elif [ "$(uname -s)" = 'Darwin' ]; then
   alias ls='ls -FG'
-  alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin brew'
+  if [ "$(uname -m)" = "arm64" ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+    export PATH="/opt/homebrew/bin:$PATH"
+  else
+    alias brew='PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin brew'
+  fi
 fi
 alias la='ls -A'
 alias ll='ls -Al'
