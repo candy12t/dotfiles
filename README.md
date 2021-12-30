@@ -2,10 +2,8 @@
 
 My dotfiles
 
-## Install
+## How to setup
 
 ```shell
-git clone https://github.com/candy12t/dotfiles.git
-cd dotfiles
-./install.sh
+curl https://raw.githubusercontent.com/candy12t/dotfiles/master/init.sh | bash
 ```

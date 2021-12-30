@@ -18,7 +18,9 @@ function main() {
 
 function __backup_dotfiles() {
   local f="$1"
-  [[ -e "${HOME}/${f}" ]] && mv "${HOME}/${f}" "${HOME}/${f}.backup"
+  if [ -e "${HOME}/${f}" ]; then
+    mv "${HOME}/${f}" "${HOME}/${f}.backup" && echo "backuped ${HOME}/${f}"
+  fi
 }
 
 function __create_symbolic_link() {
@@ -26,6 +28,6 @@ function __create_symbolic_link() {
   ln -s "${script_home}/${f}" "${HOME}/${f}" && echo "created symbolic link: ${f}"
 }
 
-main && echo "installation success!!"
+main
 
 exit 0;
