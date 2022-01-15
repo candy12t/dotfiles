@@ -127,7 +127,7 @@ nnoremap <silent><ESC><ESC> :<C-u>set nohlsearch!<CR>
 
 
 "-------------タブ/インデント-------------
-set listchars=tab:»-,space:-,eol:↲,
+set listchars=tab:»-,eol:↲,
 set list
 set autoindent smartindent
 set tabstop=2 shiftwidth=2 softtabstop=2 expandtab
