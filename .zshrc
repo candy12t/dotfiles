@@ -21,6 +21,7 @@ alias ll='ls -Al'
 alias g='git'
 alias t='tmux'
 alias :q='exit'
+alias gd='cd "$(git rev-parse --show-toplevel)"'
 
 
 # python
@@ -152,12 +153,6 @@ fgt() {
       __symlink_bookmark="$(echo {})";
       readlink -n "$(echo ~/.bookmarks/${__symlink_bookmark})"')
   cd -P "${bookmark}"
-}
-
-gd() {
-  local top_git_dir
-  top_git_dir="$(git rev-parse --show-toplevel)"
-  cd "${top_git_dir}"
 }
 
 gmi() {
