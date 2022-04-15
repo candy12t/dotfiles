@@ -1,72 +1,35 @@
-format = """
-$time\
-$username\
-$hostname\
-$shlvl\
-$kubernetes\
-$directory\
-$vcsh\
-$git_branch\
-$git_commit\
-$git_state\
-$git_metrics\
-$git_status\
-$hg_branch\
-$docker_context\
-$cmake\
-$dart\
-$deno\
-$dotnet\
-$elixir\
-$elm\
-$erlang\
-$golang\
-$helm\
-$java\
-$julia\
-$kotlin\
-$nim\
-$nodejs\
-$ocaml\
-$perl\
-$php\
-$purescript\
-$python\
-$red\
-$ruby\
-$rust\
-$scala\
-$swift\
-$terraform\
-$vlang\
-$vagrant\
-$zig\
-$nix_shell\
-$conda\
-$memory_usage\
-$aws\
-$openstack\
-$env_var\
-$crystal\
-$custom\
-$line_break\
-$lua\
-$jobs\
-$status\
-$shell\
-$character"""
+add_newline = true
+format = "$time$all"
+
+[aws]
+disabled = true
+
+[cmd_duration]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[gcloud]
+disabled = true
 
 [golang]
-symbol = "ﳑ "
+format = "with [Go ($version )]($style)"
+
+[nodejs]
+format = "with [Node ($version )]($style)"
+
+[package]
+disabled = true
 
 [python]
-symbol = " "
+format = "with [Python ($version )]($style)"
 
 [ruby]
-symbol = " "
+format = "with [Ruby ($version )]($style)"
 
 [rust]
-symbol = " "
+format = "with [Rust ($version )]($style)"
 
 [time]
 disabled = false
