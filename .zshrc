@@ -25,64 +25,72 @@ alias gd='cd "$(git rev-parse --show-toplevel)"'
 
 
 # python
-export PYENV_ROOT="$HOME/.pyenv"
-if [ -e "${PYENV_ROOT}" ]; then
+if [ -e "$HOME/.pyenv" ]; then
+  export PYENV_ROOT="$HOME/.pyenv"
   export PATH="$PYENV_ROOT/bin:$PATH"
   eval "$(pyenv init --path)"
 fi
 
 # go
-export GOENV_ROOT="$HOME/.goenv"
-if [ -e "${GOENV_ROOT}" ]; then
+if [ -e "$HOME/.goenv" ]; then
+  export GOENV_ROOT="$HOME/.goenv"
   export PATH="$GOENV_ROOT/bin:$PATH"
   eval "$(goenv init -)"
   export PATH="$GOROOT/bin:$PATH"
   export GOENV_DISABLE_GOPATH=1
   export GOPATH=$HOME/dev/go
+  export GO111MODULE=on
   export PATH="$PATH:$GOPATH/bin"
 fi
 
 # ruby
-export RBENV_ROOT="$HOME/.rbenv"
-if [ -e "${RBENV_ROOT}" ]; then
+if [ -e "$HOME/.rbenv" ]; then
+  export RBENV_ROOT="$HOME/.rbenv"
   export PATH="$RBENV_ROOT/bin:$PATH"
   eval "$(rbenv init -)"
 fi
 
 # node
-export NODENV_ROOT="$HOME/.nodenv"
-if [ -e "${NODENV_ROOT}" ]; then
+if [ -e "$HOME/.nodenv" ]; then
+  export NODENV_ROOT="$HOME/.nodenv"
   export PATH="$NODENV_ROOT/bin:$PATH"
   eval "$(nodenv init -)"
 fi
 
 # volta
-export VOLTA_HOME="$HOME/.volta"
-if [ -e "${VOLTA_HOME}" ]; then
+if [ -e "$HOME/.volta" ]; then
+  export VOLTA_HOME="$HOME/.volta"
   export PATH="$VOLTA_HOME/bin:$PATH"
 fi
 
 # jdk
 if [ -d "/usr/local/jdk" ]; then
-  export PATH="/usr/local/jdk/bin:$PATH"
+  export JAVA_HOME="/usr/local/jdk"
+  export PATH="$JAVA_HOME/bin:$PATH"
 fi
 
-# postgresql@9.6
-if [ -d "/usr/local/opt/postgresql@9.6" ]; then
-  export PATH="/usr/local/opt/postgresql@9.6/bin:$PATH"
+# rust
+# how to install rustup (ref: "https://www.rust-lang.org/tools/install")
+# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+if [ -e "$HOME/.cargo" ]; then
+  export CARGO_ROOT="$HOME/.cargo"
+  source "$HOME/.cargo/env"
 fi
-
 
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 60% --border horizontal --reverse --preview "bat --color=always --style=grid -r :15 {}"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-
 # starship
 if [ -x "$(which starship)" ]; then
   eval "$(starship init zsh)"
   export STARSHIP_CONFIG="$HOME/.starship/config.toml"
+fi
+
+# direnv
+if [ -x "$(which direnv)" ]; then
+  eval "$(direnv hook zsh)"
 fi
 
 # gcloud
@@ -91,21 +99,15 @@ if [ -d "/usr/local/Caskroom/google-cloud-sdk" ]; then
   source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
 fi
 
-# rust
-# how to install rustup (ref: "https://www.rust-lang.org/tools/install")
-# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-export CARGO_ROOT="$HOME/.cargo"
-if [ -e "${CARGO_ROOT}" ]; then
-  source "$HOME/.cargo/env"
-fi
-
-if [ -x "$(which direnv)" ]; then
-  eval "$(direnv hook zsh)"
-fi
-
+# bookmark
+# ref: https://threkk.medium.com/how-to-use-bookmarks-in-bash-zsh-6b8074e40774
 if [ -d "$HOME/.bookmarks" ]; then
   export CDPATH=".:$HOME/.bookmarks:/"
   alias goto="cd -P"
+fi
+
+if [ -e "$HOME/local" ]; then
+  export PATH="$HOME/local/bin:$PATH"
 fi
 
 fbr() {
