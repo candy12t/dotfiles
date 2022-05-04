@@ -14,8 +14,6 @@ db.sqlite3
 /* node */
 **/node_modules
 
-*.env
-
 /* Office */
 ~$*
 
