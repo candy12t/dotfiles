@@ -167,3 +167,11 @@ gtc() {
   go tool cover -html=cover.out
   rm -rf cover.out
 }
+
+ssh_change_profile() {
+  case $1 in
+    production-* | prod-* ) echo -e "\033]1337;SetProfile=production\a" ;;
+  esac
+  ssh $@
+}
+alias ssh='ssh_change_profile'
