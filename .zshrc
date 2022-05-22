@@ -38,7 +38,7 @@ if [ -e "$HOME/.goenv" ]; then
   eval "$(goenv init -)"
   export PATH="$GOROOT/bin:$PATH"
   export GOENV_DISABLE_GOPATH=1
-  export GOPATH=$HOME/dev/go
+  export GOPATH=$HOME/go
   export GO111MODULE=on
   export PATH="$PATH:$GOPATH/bin"
 fi
