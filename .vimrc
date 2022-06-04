@@ -15,8 +15,10 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin('~/.vim/plugged')
 
 " colorscheme
-Plug 'cocopon/iceberg.vim'
-Plug 'ghifarit53/tokyonight-vim'
+" Plug 'cocopon/iceberg.vim'
+" Plug 'ghifarit53/tokyonight-vim'
+" Plug 'mhartington/oceanic-next'
+Plug 'candy12t/oceanic-next'
 
 " statusbar
 Plug 'vim-airline/vim-airline'
@@ -95,9 +97,12 @@ set updatetime=250             " 反映時間
 " カラースキーム"
 set t_Co=256
 " colorscheme iceberg
-colorscheme tokyonight
-let g:tokyonight_menu_selection_background = 'blue'
-let g:tokyonight_disable_italic_comment = 1
+
+" colorscheme tokyonight
+" let g:tokyonight_menu_selection_background = 'blue'
+" let g:tokyonight_disable_italic_comment = 1
+
+colorscheme OceanicNext
 set bg=dark
 
 set title          " タイトル表示
@@ -218,7 +223,8 @@ nnoremap <silent><C-e> :NERDTreeToggle<CR> " nerdtreeの表示/非表示
 " airline
 let g:airline#extensions#tabline#enabled = 1
 " let g:airline_theme = "raven"
-let g:airline_theme = "tokyonight"
+" let g:airline_theme = "tokyonight"
+let g:ariline_thme = "oceanicnext"
 if !exists('g:airline_symbols')
   let g:airline_symbols = {}
 endif
