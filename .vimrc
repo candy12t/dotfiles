@@ -16,9 +16,9 @@ call plug#begin('~/.vim/plugged')
 
 " colorscheme
 " Plug 'cocopon/iceberg.vim'
-" Plug 'ghifarit53/tokyonight-vim'
+Plug 'ghifarit53/tokyonight-vim'
 " Plug 'mhartington/oceanic-next'
-Plug 'candy12t/oceanic-next'
+" Plug 'candy12t/oceanic-next'
 
 " statusbar
 Plug 'vim-airline/vim-airline'
@@ -98,11 +98,13 @@ set updatetime=250             " 反映時間
 set t_Co=256
 " colorscheme iceberg
 
-" colorscheme tokyonight
-" let g:tokyonight_menu_selection_background = 'blue'
-" let g:tokyonight_disable_italic_comment = 1
+colorscheme tokyonight
+let g:tokyonight_menu_selection_background = 'blue'
+let g:tokyonight_disable_italic_comment = 1
 
-colorscheme OceanicNext
+" colorscheme OceanicNext
+" let g:oceanic_next_terminal_italic = 1
+
 set bg=dark
 
 set title          " タイトル表示
