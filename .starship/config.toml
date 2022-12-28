@@ -1,5 +1,6 @@
 add_newline = true
 format = "$time$all"
+command_timeout = 2000
 
 [aws]
 disabled = true
@@ -14,24 +15,26 @@ disabled = true
 disabled = true
 
 [golang]
-format = "with [Go ($version )]($style)"
+format = '[Go ($version )]($style)'
+style = 'bold cyan'
 
 [nodejs]
-format = "with [Node ($version )]($style)"
+format = '[Node ($version )]($style)'
 
 [package]
 disabled = true
 
 [python]
-format = "with [Python ($version )]($style)"
+format = '[$pyenv_prefix($version )(\($virtualenv\) )]($style)'
+pyenv_version_name = true
 
 [ruby]
-format = "with [Ruby ($version )]($style)"
+format = '[Ruby ($version )]($style)'
 
 [rust]
-format = "with [Rust ($version )]($style)"
+format = '[Rust ($version )]($style)'
 
 [time]
 disabled = false
 format = '[\[$time\]]($style) '
-style = "bold blue"
+style = 'bold blue'
