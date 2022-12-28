@@ -2,19 +2,3 @@
 .DS_Store
 .devcontainer/
 .vscode/
-
-/* python */
-__pycache__/
-*.pyc
-venv/
-
-/* django */
-db.sqlite3
-
-/* node */
-**/node_modules
-
-/* Office */
-~$*
-
-vendor/
