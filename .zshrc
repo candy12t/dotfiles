@@ -110,6 +110,8 @@ if [ -e "$HOME/local" ]; then
   export PATH="$HOME/local/bin:$PATH"
 fi
 
+[ -e "/usr/local/opt/mysql-client" ] && export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+
 fbr() {
   local branches branch
   branches=$(git branch --all | grep -v HEAD) &&
