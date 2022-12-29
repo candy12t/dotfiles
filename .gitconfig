@@ -11,7 +11,10 @@
 	ss = status -s -uall
 	ssb = status -sb -uall
 	cm = commit -m
-  cv = commit -v
+	cv = commit -v
 	cam = commit --amend -m
 	df = diff
-  co = checkout
+	co = checkout
+[ghq]
+	root = ~/go/src
+	root = ~/dev
