@@ -133,24 +133,21 @@ fa() {
   fi
 }
 
-fl() {
-  local logs selected_log
-  logs=$(git log --oneline --color=always) &&
-  selected_log=$(echo "$logs" |
-    fzf --ansi +m --preview="echo {} | awk '{print \$1}' | xargs git log -1 -p --color=always | sed 's/@@.*@@//'" |
-    awk '{print $1}')
-  if [[ -n "${selected_log}" ]]; then
-    git log "${selected_log}" -p -1 --color=always | sed "s/@@.*@@//"
-  fi
+fshow() {
+  git log --graph --color=always \
+      --format="%C(auto)%h%d %s %C(black)%C(bold)%an(%ae) %cr" "$@" |
+  fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort --preview "echo {} | awk '{print \$2}' | xargs git log -1 -p --color=always" \
+      --bind "ctrl-m:execute:
+                (grep -o '[a-f0-9]\{7\}' | head -1 |
+                xargs -I % sh -c 'git show --color=always % | less -R') << 'FZF-EOF'
+                {}
+FZF-EOF"
 }
 
 fgt() {
   local bookmarks bookmark
-  bookmarks=$(ls ~/.bookmarks | sed "s/@$//")
-  bookmark=$(echo "${bookmarks}" |
-    fzf --ansi +m --preview '
-      __symlink_bookmark="$(echo {})";
-      readlink -n "$(echo ~/.bookmarks/${__symlink_bookmark})"')
+  bookmarks=$(ls ~/.bookmarks | sed "s/@$//") &&
+  bookmark=$(echo "${bookmarks}" | fzf --ansi +m --preview "") &&
   cd -P "${bookmark}"
 }
 
