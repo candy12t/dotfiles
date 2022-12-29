@@ -159,6 +159,13 @@ fgt() {
   cd -P "${bookmark}"
 }
 
+fq() {
+  local repository fullpath_repository
+  repository=$(ghq list | fzf +m --preview "") &&
+  fullpath_repository=$(ghq list --full-path --exact "${repository}") &&
+  cd "${fullpath_repository}"
+}
+
 gmi() {
   local dir=${1:-$(pwd | tr '/' ' ' | awk '{ print $NF }')}
   go mod init github.com/candy12t/"${dir}"
