@@ -59,8 +59,8 @@ if [ -e "$HOME/.volta" ]; then
 fi
 
 # jdk
-if [ -d "/usr/local/jdk" ]; then
-  export JAVA_HOME="/usr/local/jdk"
+if [ -d "$HOME/.jdk" ]; then
+  export JAVA_HOME="$HOME/.jdk"
   export PATH="$JAVA_HOME/bin:$PATH"
 fi
 

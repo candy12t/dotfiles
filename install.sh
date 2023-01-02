@@ -4,30 +4,33 @@ set -eu
 
 script_home="$(cd $(dirname $0); pwd)"
 cd "${script_home}"
+exe_time=$(date '+%Y%m%d%H%M%S')
 
-function main() {
-  for f in .??*; do
-    [[ "${f}" == ".git" ]] && continue
-    [[ "${f}" == ".DS_Store" ]] && continue
-    [[ "${f}" == ".gitignore" ]] && continue
-
-    __backup_dotfiles "${f}"
+main() {
+  for f in $(/bin/ls "${script_home}/config"); do
+    if [ -d "${script_home}/config/${f}" ]; then
+      mkdir -p "$HOME/.${f}"
+      for files in $(/bin/ls "${script_home}/config/${f}"); do
+        __backup_dotfiles ".${f}/${files}"
+        __create_symbolic_link "${f}/${files}"
+      done
+      continue
+    fi
+    __backup_dotfiles ".${f}"
     __create_symbolic_link "${f}"
   done
 }
 
-function __backup_dotfiles() {
+__backup_dotfiles() {
   local f="$1"
   if [ -e "${HOME}/${f}" ]; then
-    mv "${HOME}/${f}" "${HOME}/${f}.backup" && echo "backuped ${HOME}/${f}"
+    mv "${HOME}/${f}" "$HOME/${f}.${exe_time}_backup" && echo "backuped ${HOME}/${f}"
   fi
 }
 
-function __create_symbolic_link() {
+__create_symbolic_link() {
   local f="$1"
-  ln -s "${script_home}/${f}" "${HOME}/${f}" && echo "created symbolic link: ${f}"
+  ln -s "${script_home}/config/${f}" "${HOME}/.${f}" && echo "created symbolic link: ${f}"
 }
 
-main
-
-exit 0;
+main && exit 0;
