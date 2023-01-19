@@ -96,6 +96,10 @@ set updatetime=250             " 反映時間
 set t_Co=256
 set termguicolors
 
+" help xterm-true-color参照
+let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+
 " colorscheme iceberg
 colorscheme tokyonight
 let g:tokyonight_style = 'night'
