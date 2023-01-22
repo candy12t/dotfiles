@@ -2,3 +2,5 @@
 .DS_Store
 .devcontainer/
 .vscode/
+
+vendor/
