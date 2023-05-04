@@ -4,7 +4,7 @@
 [core]
 	excludesfile = ~/.gitignore
 	quotepath = false
-	editor = vim
+	editor = nvim
 [alias]
 	lol = log --oneline
 	s = status -uall

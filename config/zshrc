@@ -17,6 +17,7 @@ alias g='git'
 alias t='tmux'
 alias :q='exit'
 alias gd='cd "$(git rev-parse --show-toplevel)"'
+alias nv='nvim'
 
 
 # python
