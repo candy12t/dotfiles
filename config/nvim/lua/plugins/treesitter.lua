@@ -15,6 +15,7 @@ return {
         'c',
         'comment',
         'css',
+        'diff',
         'dockerfile',
         'git_config',
         'gitcommit',
