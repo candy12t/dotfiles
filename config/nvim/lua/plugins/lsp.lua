@@ -2,7 +2,8 @@ return {
   {
     'neovim/nvim-lspconfig',
     dependencies = {
-      'SmiteshP/nvim-navic'
+      'SmiteshP/nvim-navic',
+      'hrsh7th/cmp-nvim-lsp',
     },
     lazy = true,
     event = {
@@ -13,9 +14,17 @@ return {
         if client.server_capabilities.documentSymbolProvider then
           require('navic').attach(client, bufnr)
         end
+
+        local opts = { buffer = bufnr }
+        vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
+        vim.keymap.set('n', '<leader>gh', vim.lsp.buf.hover, opts)
+        vim.keymap.set('n', '<leader>gf', vim.lsp.buf.references, opts)
+        vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
       end
 
-      require('lspconfig')['lua_ls'].setup({
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      local lspconfig = require('lspconfig')
+      lspconfig.lua_ls.setup({
         on_attach = on_attach,
         settings = {
           Lua = {
@@ -24,9 +33,11 @@ return {
             },
           },
         },
+        capabilities = capabilities,
       })
-      require('lspconfig')['gopls'].setup({
-        on_attach = on_attach
+      lspconfig.gopls.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
       })
     end
   },
