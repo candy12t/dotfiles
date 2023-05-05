@@ -30,6 +30,7 @@ return {
         'lua',
         'make',
         'markdown',
+        'markdown_inline',
         'python',
         'ruby',
         'rust',

@@ -12,14 +12,8 @@ return {
     config = function()
       local on_attach = function(client, bufnr)
         if client.server_capabilities.documentSymbolProvider then
-          require('navic').attach(client, bufnr)
+          require('nvim-navic').attach(client, bufnr)
         end
-
-        local opts = { buffer = bufnr }
-        vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, opts)
-        vim.keymap.set('n', '<leader>gh', vim.lsp.buf.hover, opts)
-        vim.keymap.set('n', '<leader>gf', vim.lsp.buf.references, opts)
-        vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, opts)
       end
 
       local capabilities = require('cmp_nvim_lsp').default_capabilities()

@@ -76,8 +76,9 @@ return {
       })
 
       local builtin = require('telescope.builtin')
-      vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-      vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+      local keymap_opts = { noremap = true, silent = true }
+      vim.keymap.set('n', '<leader>ff', builtin.find_files, keymap_opts)
+      vim.keymap.set('n', '<leader>fg', builtin.live_grep, keymap_opts)
       vim.keymap.set('n', '<leader>fb', ':Telescope file_browser<CR>', {})
 
       require('telescope').load_extension('fzf')

@@ -66,8 +66,9 @@ return {
       })
 
       local gitsigns = require('gitsigns')
-      vim.keymap.set('n', '<leader>gb', gitsigns.toggle_current_line_blame, {})
-      vim.keymap.set('n', '<leader>gd', gitsigns.toggle_deleted, {})
+      local keymap_opts = { noremap = true, silent = true }
+      vim.keymap.set('n', '<leader>gb', gitsigns.toggle_current_line_blame, keymap_opts)
+      vim.keymap.set('n', '<leader>gd', gitsigns.toggle_deleted, keymap_opts)
     end
   },
   {
@@ -85,5 +86,27 @@ return {
       'BufRead'
     },
     config = true,
+  },
+  {
+    'glepnir/lspsaga.nvim',
+    event = {
+      'LspAttach'
+    },
+    config = function()
+      require('lspsaga').setup()
+
+      local keymap_opts = { noremap = true, silent = true }
+      vim.keymap.set('n', '<leader>lf', ':Lspsaga lsp_finder<CR>', keymap_opts)
+      vim.keymap.set('n', '<leader>lr', ':Lspsaga rename<CR>', keymap_opts)
+      vim.keymap.set('n', '<leader>ld', ':Lspsaga goto_definition<CR>', keymap_opts)
+      vim.keymap.set('n', '<leader>lt', ':Lspsaga goto_type_definition<CR>', keymap_opts)
+      vim.keymap.set('n', '<leader>lh', ':Lspsaga hover_doc<CR>', keymap_opts)
+      vim.keymap.set('n', '<leader>lo', ':Lspsaga outline<CR>', keymap_opts)
+      vim.keymap.set('n', '<leader><C-t>', ':Lspsaga term_toggle<CR>', keymap_opts)
+    end,
+    dependencies = {
+      'nvim-tree/nvim-web-devicons',
+      'nvim-treesitter/nvim-treesitter'
+    }
   }
 }
