@@ -39,6 +39,7 @@ return {
               ['<C-j>'] = actions.move_selection_next,
               ['<C-k>'] = actions.move_selection_previous,
               ['<C-o>'] = actions.select_default,
+              ['<CR>'] = actions.select_default,
               ['<esc>'] = actions.close
             }
           },
