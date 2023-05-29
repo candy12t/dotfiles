@@ -11,12 +11,6 @@ return {
       'hrsh7th/cmp-cmdline',
       'onsails/lspkind.nvim',
       {
-        'hrsh7th/cmp-copilot',
-        dependencies = {
-          'github/copilot.vim'
-        }
-      },
-      {
         'saadparwaiz1/cmp_luasnip',
         dependencies = {
           'L3MON4D3/LuaSnip',
