@@ -22,7 +22,7 @@ return {
       })
 
       local keymap_opts = { noremap = true, silent = true }
-      vim.keymap.set('n', '<C-e>', ':NeoTreeShowToggle<CR>', keymap_opts)
+      vim.keymap.set('n', '<C-e>', ':NeoTreeFocusToggle<CR>', keymap_opts)
     end
   }
 }
