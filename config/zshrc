@@ -10,7 +10,7 @@ if [ "$(uname -sm)" = "Darwin arm64" ]; then
   export PATH="/opt/homebrew/bin:$PATH"
 fi
 
-alias ls="ls -FG"
+alias ls="ls -F --color"
 alias la="ls -A"
 alias ll="ls -Al"
 alias g="git"
