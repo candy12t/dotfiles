@@ -95,10 +95,7 @@ export FZF_DEFAULT_OPTS='--height 60% --border horizontal --reverse --preview "b
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # starship
-if [ -x "$(which starship)" ]; then
-  eval "$(starship init zsh)"
-  export STARSHIP_CONFIG="$HOME/.starship/config.toml"
-fi
+[ -x "$(which starship)" ] && eval "$(starship init zsh)"
 
 # direnv
 [ -x "$(which direnv)" ] && eval "$(direnv hook zsh)"
