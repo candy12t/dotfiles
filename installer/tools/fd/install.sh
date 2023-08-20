@@ -1,7 +1,7 @@
 #! /bin/bash
 
 #
-# ghq installer
+# fd installer
 #
 
 set -eu
@@ -11,9 +11,9 @@ script_home="$(cd $(dirname "$0") && pwd)"
 cd "${script_home}"
 
 sources_path="$HOME/sources"
-release_url="https://github.com/x-motemen/ghq/releases"
+release_url="https://github.com/sharkdp/fd/releases"
 prefix="/usr/local"
-version="1.4.2"
+version="8.7.0"
 
 err() {
   echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
@@ -31,23 +31,22 @@ install() {
   wget -q "${archive_url}" -O "${tarball_path}" || err "Failed download archive."
 
   echo "Installing..."
-  tar -xzf "${tarball_path}" -C "${prefix}/ghq" --strip-components=1 && \
-    ln -s "${prefix}/ghq/ghq" "${prefix}/bin/ghq" || err "Failed install."
+  tar -xzf "${tarball_path}" -C "${prefix}/fd" --strip-components=1 && \
+    ln -s "${prefix}/fd/fd" "${prefix}/bin/fd" && \
+    ln -s "${prefix}/fd/fd.1" "${prefix}/share/man/man1/fd.1" || err "Failed install."
   echo "Installed!!"
 }
 
 init() {
-  mkdir -p "${sources_path}" "${prefix}/ghq"
+  mkdir -p "${sources_path}" "${prefix}/fd"
 }
 
 main() {
   local arch=$(uname -sm)
   case "${arch}" in
-    "Darwin x86_64") install "${version}" "ghq_darwin_amd64.zip" ;;
-    "Darwin arm64")  install "${version}" "ghq_darwin_arm64.zip" ;;
-    "Linux x86_64")  install "${version}" "ghq_linux_amd64.zip"  ;;
-    "Linux arm64")   install "${version}" "ghq_linux_arm64.zip"  ;;
-    *)               echo "Sorry! Not supported architectures."  ;;
+    "Darwin x86_64") install "${version}" "fd-v${version}-x86_64-apple-darwin.tar.gz"      ;;
+    "Linux x86_64")  install "${version}" "fd-v${version}-x86_64-unknown-linux-musl.tar.gz" ;;
+    *)               echo "Sorry! Not supported architectures." ;;
   esac
 }
 

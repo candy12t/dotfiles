@@ -1,7 +1,7 @@
 #! /bin/bash
 
 #
-# bat installer
+# delta installer
 #
 
 set -eu
@@ -11,9 +11,9 @@ script_home="$(cd $(dirname "$0") && pwd)"
 cd "${script_home}"
 
 sources_path="$HOME/sources"
-release_url="https://github.com/sharkdp/bat/releases"
+release_url="https://github.com/dandavison/delta/releases"
 prefix="/usr/local"
-version="0.23.0"
+version="0.16.5"
 
 err() {
   echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
@@ -25,27 +25,26 @@ install() {
   local tarball="$2"
 
   local tarball_path="${sources_path}/${tarball}"
-  local archive_url="${release_url}/download/v${version}/${tarball}"
+  local archive_url="${release_url}/download/${version}/${tarball}"
 
   echo "Downloading..."
   wget -q "${archive_url}" -O "${tarball_path}" || err "Failed download archive."
 
   echo "Installing..."
-  tar -xzf "${tarball_path}" -C "${prefix}/bat" --strip-components=1 && \
-    ln -s "${prefix}/bat/bat" "${prefix}/bin/bat" && \
-    ln -s "${prefix}/bat/bat.1" "${prefix}/share/man/man1/bat.1" || err "Failed install."
+  tar -xzf "${tarball_path}" -C "${prefix}/delta" --strip-components=1 && \
+    ln -s "${prefix}/delta/delta" "${prefix}/bin/delta" || err "Failed install."
   echo "Installed!!"
 }
 
 init() {
-  mkdir -p "${sources_path}" "${prefix}/bat"
+  mkdir -p "${sources_path}" "${prefix}/delta"
 }
 
 main() {
   local arch=$(uname -sm)
   case "${arch}" in
-    "Darwin x86_64") install "${version}" "bat-v${version}-x86_64-apple-darwin.tar.gz"      ;;
-    "Linux x86_64")  install "${version}" "bat-v${version}-x86_64-unknown-linux-musl.tar.gz" ;;
+    "Darwin x86_64") install "${version}" "delta-${version}-x86_64-apple-darwin.tar.gz"      ;;
+    "Linux x86_64")  install "${version}" "delta-${version}-x86_64-unknown-linux-musl.tar.gz" ;;
     *)               echo "Sorry! Not supported architectures." ;;
   esac
 }

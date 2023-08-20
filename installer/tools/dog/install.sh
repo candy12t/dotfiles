@@ -1,7 +1,7 @@
 #! /bin/bash
 
 #
-# ghq installer
+# dog installer
 #
 
 set -eu
@@ -11,9 +11,9 @@ script_home="$(cd $(dirname "$0") && pwd)"
 cd "${script_home}"
 
 sources_path="$HOME/sources"
-release_url="https://github.com/x-motemen/ghq/releases"
+release_url="https://github.com/ogham/dog/releases"
 prefix="/usr/local"
-version="1.4.2"
+version="0.1.0"
 
 err() {
   echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
@@ -31,23 +31,22 @@ install() {
   wget -q "${archive_url}" -O "${tarball_path}" || err "Failed download archive."
 
   echo "Installing..."
-  tar -xzf "${tarball_path}" -C "${prefix}/ghq" --strip-components=1 && \
-    ln -s "${prefix}/ghq/ghq" "${prefix}/bin/ghq" || err "Failed install."
+  tar -xzf "${tarball_path}" -C "${prefix}/dog" && \
+    ln -s "${prefix}/dog/bin/dog" "${prefix}/bin/dog" && \
+    ln -s "${prefix}/dog/man/dog.1" "${prefix}/share/man/man1/dog.1" || err "Failed install."
   echo "Installed!!"
 }
 
 init() {
-  mkdir -p "${sources_path}" "${prefix}/ghq"
+  mkdir -p "${sources_path}" "${prefix}/dog"
 }
 
 main() {
   local arch=$(uname -sm)
   case "${arch}" in
-    "Darwin x86_64") install "${version}" "ghq_darwin_amd64.zip" ;;
-    "Darwin arm64")  install "${version}" "ghq_darwin_arm64.zip" ;;
-    "Linux x86_64")  install "${version}" "ghq_linux_amd64.zip"  ;;
-    "Linux arm64")   install "${version}" "ghq_linux_arm64.zip"  ;;
-    *)               echo "Sorry! Not supported architectures."  ;;
+    "Darwin x86_64") install "${version}" "dog-v${version}-x86_64-apple-darwin.zip"      ;;
+    "Linux x86_64")  install "${version}" "dog-v${version}-x86_64-unknown-linux-gnu.zip" ;;
+    *)               echo "Sorry! Not supported architectures." ;;
   esac
 }
 

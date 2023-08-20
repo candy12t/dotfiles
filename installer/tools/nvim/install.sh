@@ -5,35 +5,49 @@
 #
 
 set -eu
+set -o pipefail
 
 script_home="$(cd $(dirname "$0") && pwd)"
 cd "${script_home}"
 
-release_version="stable"
-repo_url="https://github.com/neovim/neovim"
-repo_dir="neovim"
-
+sources_path="$HOME/sources"
+release_url="https://github.com/neovim/neovim/releases"
 prefix="/usr/local"
-build_type="Release"
+version="0.9.1"
 
-if [ ! -e "/etc/debian_version" ]; then
-  echo "Error: This script is only for Debian"
+err() {
+  echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
   exit 1
-fi
+}
 
-sudo apt install -y build-essential
-sudo apt install -y ninja-build gettext cmake unzip curl libtool-bin
+install() {
+  local version="$1"
+  local tarball="$2"
 
-if [ ! -d "${repo_dir}" ]; then
-  git clone "${repo_url}" "${repo_dir}"
-fi
+  local tarball_path="${sources_path}/${tarball}"
+  local archive_url="${release_url}/download/v${version}/${tarball}"
 
-cd "${repo_dir}" && \
-  git checkout "${release_version}" && \
-  make CMAKE_BUILD_TYPE="${build_type}" CMAKE_EXTRA_FLAGS="-DCMAKE_INSTALL_PREFIX=${prefix}"
+  echo "Downloading..."
+  wget -q "${archive_url}" -O "${tarball_path}" || err "Failed download archive."
 
-cd build && \
-  cpack -G DEB && \
-  sudo dpkg -i nvim-linux64.deb
+  echo "Installing..."
+  tar -xzf "${tarball_path}" -C "${prefix}/nvim" --strip-components=1 && \
+    ln -s "${prefix}/nvim/bin/nvim" "${prefix}/bin/nvim" && \
+    ln -s "${prefix}/nvim/share/man/man1/nvim.1" "${prefix}/share/man/man1/nvim.1" || err "Failed install."
+  echo "Installed!!"
+}
 
-exit 0;
+init() {
+  mkdir -p "${sources_path}" "${prefix}/nvim"
+}
+
+main() {
+  local arch=$(uname -sm)
+  case "${arch}" in
+    Darwin*64) install "${version}" "nvim-macos.tar.gz"   ;;
+    Linux*64)  install "${version}" "nvim-linux64.tar.gz" ;;
+    *)         echo "Sorry! Not supported architectures." ;;
+  esac
+}
+
+init && main "$@" && exit 0;
