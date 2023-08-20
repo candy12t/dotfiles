@@ -5,18 +5,29 @@ fi
 autoload -U compinit
 compinit -u
 
-if [ "$(uname -s)" = 'Darwin' ] && [ "$(uname -m)" = "arm64" ]; then
+if [ "$(uname -sm)" = "Darwin arm64" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
   export PATH="/opt/homebrew/bin:$PATH"
 fi
 
-alias ls='ls -F --color'
-alias la='ls -A'
-alias ll='ls -Al'
-alias g='git'
-alias t='tmux'
-alias :q='exit'
+alias ls="ls -FG"
+alias la="ls -A"
+alias ll="ls -Al"
+alias g="git"
+alias t="tmux"
+alias :q="exit"
 alias gd='cd "$(git rev-parse --show-toplevel)"'
+
+[ $(command -v bat) ] && alias cat="bat"
+[ $(command -v delta) ] && alias diff="delta"
+[ $(command -v dog) ] && alias dig="dog"
+
+if [ $(command -v exa) ]; then
+  alias ls="exa --classify"
+  alias la="exa --all --classify"
+  alias ll="exa --all --binary --classify --group --header --long"
+  alias tree='exa --all --binary --classify --group --header --long --tree --ignore-glob=".git|.node_modules"'
+fi
 
 
 # python
@@ -90,9 +101,7 @@ if [ -x "$(which starship)" ]; then
 fi
 
 # direnv
-if [ -x "$(which direnv)" ]; then
-  eval "$(direnv hook zsh)"
-fi
+[ -x "$(which direnv)" ] && eval "$(direnv hook zsh)"
 
 # gcloud
 if [ -d "/usr/local/Caskroom/google-cloud-sdk" ]; then
@@ -107,9 +116,7 @@ if [ -d "$HOME/.bookmarks" ]; then
   alias goto="cd -P"
 fi
 
-if [ -e "$HOME/local" ]; then
-  export PATH="$HOME/local/bin:$PATH"
-fi
+[ -e "$HOME/local" ] && export PATH="$HOME/local/bin:$PATH"
 
 [ -e "/usr/local/opt/mysql-client" ] && export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
