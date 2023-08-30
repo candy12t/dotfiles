@@ -30,13 +30,15 @@ link_rc() {
 
   mkdir -p "${HOME}/.config"
   mkdir -p "${HOME}/.config/git"
+  mkdir -p "${HOME}/.config/tmux"
 
   ln -sf "${DOTFILES_PATH}/config/nvim" "${HOME}/.config/nvim"
+
   ln -sf "${DOTFILES_PATH}/config/gitignore" "${HOME}/.config/git/ignore"
+  ln -sf "${DOTFILES_PATH}/config/gitconfig" "${HOME}/.config/git/config"
+  ln -sf "${DOTFILES_PATH}/config/tmux.conf" "${HOME}/.config/tmux/tmux.conf"
   ln -sf "${DOTFILES_PATH}/config/starship.toml" "${HOME}/.config/starship.toml"
 
-  ln -sf "${DOTFILES_PATH}/config/gitconfig" "${HOME}/.gitconfig"
-  ln -sf "${DOTFILES_PATH}/config/tmux.conf" "${HOME}/.tmux.conf"
   ln -sf "${DOTFILES_PATH}/config/zpreztorc" "${HOME}/.zpreztorc"
   ln -sf "${DOTFILES_PATH}/config/zshrc" "${HOME}/.zshrc"
 }
