@@ -97,7 +97,7 @@ return {
       require('lspsaga').setup()
 
       local keymap_opts = { noremap = true, silent = true }
-      vim.keymap.set('n', '<leader>lf', ':Lspsaga lsp_finder<CR>', keymap_opts)
+      vim.keymap.set('n', '<leader>lf', ':Lspsaga finder<CR>', keymap_opts)
       vim.keymap.set('n', '<leader>lr', ':Lspsaga rename<CR>', keymap_opts)
       vim.keymap.set('n', '<leader>ld', ':Lspsaga goto_definition<CR>', keymap_opts)
       vim.keymap.set('n', '<leader>lt', ':Lspsaga goto_type_definition<CR>', keymap_opts)
