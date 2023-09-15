@@ -14,6 +14,8 @@ sources_path="$HOME/sources"
 release_url="https://go.dev/dl"
 prefix="/usr/local"
 
+lastest_version=$(curl --silent https://go.dev/VERSION?m=text | head -1)
+
 err() {
   echo "[$(date +'%Y-%m-%dT%H:%M:%S%z')]: $*" >&2
   exit 1
@@ -29,17 +31,17 @@ install() {
   wget -q "${archive_url}" -O "${tarball_path}" || err "Failed download archive."
 
   echo "Installing..."
-  rm -rf "${prefix}/go" && tar -xzf "${tarball_path}" -C "${prefix}" || err "Failed install."
+  sudo rm -rf "${prefix}/go" && sudo tar -xzf "${tarball_path}" -C "${prefix}" || err "Failed install."
   echo "Installed!! Check \`go version\`."
 }
 
 main() {
-  local version="$1"
+  local version="${1:-${lastest_version}}"
   local arch=$(uname -sm)
   case "${arch}" in
-    "Darwin x86_64") install "go${version}.darwin-amd64.tar.gz" ;;
-    "Darwin arm64")  install "go${version}.darwin-arm64.tar.gz" ;;
-    "Linux x86_64")  install "go${version}.linux-amd64.tar.gz"  ;;
+    "Darwin x86_64") install "${version}.darwin-amd64.tar.gz" ;;
+    "Darwin arm64")  install "${version}.darwin-arm64.tar.gz" ;;
+    "Linux x86_64")  install "${version}.linux-amd64.tar.gz"  ;;
     *)               echo "Sorry! Not supported architectures." ;;
   esac
 }
