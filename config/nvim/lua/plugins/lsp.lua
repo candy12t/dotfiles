@@ -32,6 +32,11 @@ return {
       lspconfig.gopls.setup({
         on_attach = on_attach,
         capabilities = capabilities,
+        filetypes = {'go', 'gomod'}
+      })
+      lspconfig.rust_analyzer.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
       })
     end
   },
@@ -48,7 +53,7 @@ return {
     config = function()
       require('mason').setup()
       require('mason-lspconfig').setup({
-        ensure_installed = { 'gopls', 'lua_ls'}
+        ensure_installed = { 'gopls', 'lua_ls', 'rust_analyzer'}
       })
     end
   }
