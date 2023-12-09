@@ -7,21 +7,8 @@ readonly DOTFILES_PATH="${HOME}/dotfiles"
 readonly DOTFILES_REPO="https://github.com/candy12t/dotfiles.git"
 readonly DOTFILES_BRANCH="master"
 
-download_or_update_repository() {
-  if [ -d "${DOTFILES_PATH}" ]; then
-    echo "Updating dotfiles..."
-    update_repository
-  elif [ ! -d "${DOTFILES_PATH}" ]; then
-    echo "Downloading dotfiles..."
-    download_repository
-  fi
-}
-
-update_repository() {
-  git --git-dir="${DOTFILES_PATH}/.git" pull origin master
-}
-
 download_repository() {
+  echo "Downloading dotfiles..."
   git clone "${DOTFILES_REPO}" --branch "${DOTFILES_BRANCH}" "${DOTFILES_PATH}"
 }
 
@@ -41,12 +28,14 @@ link_rc() {
 
   ln -sf "${DOTFILES_PATH}/config/zpreztorc" "${HOME}/.zpreztorc"
   ln -sf "${DOTFILES_PATH}/config/zshrc" "${HOME}/.zshrc"
+
+  ln -sf "${DOTFILES_PATH}/config/hammerspoon" "${HOME}/.hammerspoon"
 }
 
 main() {
-  download_or_update_repository
+  download_repository
   link_rc
-  echo "success!"
+  echo "Success!! Then install any tools and languages you want."
 }
 
 main "$@" && exit 0;
