@@ -29,6 +29,7 @@ if [ $(command -v exa) ]; then
   alias tree='exa --all --binary --classify --group --header --long --tree --ignore-glob=".git|.node_modules"'
 fi
 
+export CDPATH="$HOME:$(ghq root)/github.com/candy12t:$(ghq root)/github.com"
 
 # python
 ## pyenv
