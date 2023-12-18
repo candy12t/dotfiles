@@ -359,33 +359,6 @@
 			<key>Text</key>
 			<string></string>
 		</dict>
-		<key>0x62-0x80000-0xb</key>
-		<dict>
-			<key>Action</key>
-			<integer>10</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string>b</string>
-		</dict>
-		<key>0x64-0x80000-0x2</key>
-		<dict>
-			<key>Action</key>
-			<integer>10</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string>d</string>
-		</dict>
-		<key>0x66-0x80000-0x3</key>
-		<dict>
-			<key>Action</key>
-			<integer>10</integer>
-			<key>Label</key>
-			<string></string>
-			<key>Text</key>
-			<string>f</string>
-		</dict>
 		<key>0x9-0x40000</key>
 		<dict>
 			<key>Action</key>
@@ -1168,7 +1141,7 @@
 			<key>Only The Default BG Color Uses Transparency</key>
 			<true/>
 			<key>Option Key Sends</key>
-			<integer>0</integer>
+			<integer>2</integer>
 			<key>Prompt Before Closing 2</key>
 			<false/>
 			<key>Reduce Flicker</key>
