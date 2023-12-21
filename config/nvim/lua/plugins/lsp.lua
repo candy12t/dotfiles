@@ -1,60 +1,85 @@
+local servers = {
+  "gopls",
+  "rust_analyzer",
+  "lua_ls",
+}
+
 return {
   {
-    'neovim/nvim-lspconfig',
+    "neovim/nvim-lspconfig",
     dependencies = {
-      'SmiteshP/nvim-navic',
-      'hrsh7th/cmp-nvim-lsp',
+      "SmiteshP/nvim-navic",
+      "hrsh7th/nvim-cmp",
+      "williamboman/mason-lspconfig.nvim",
+      "j-hui/fidget.nvim",
     },
+    version = "v0.1",
     lazy = true,
     event = {
-      'BufRead'
+      "BufRead",
+      "BufNewFile",
     },
     config = function()
+      local lspconfig = require("lspconfig")
+      local capabilities = require("cmp_nvim_lsp").default_capabilities()
       local on_attach = function(client, bufnr)
         if client.server_capabilities.documentSymbolProvider then
-          require('nvim-navic').attach(client, bufnr)
+          require("nvim-navic").attach(client, bufnr)
         end
       end
 
-      local capabilities = require('cmp_nvim_lsp').default_capabilities()
-      local lspconfig = require('lspconfig')
-      lspconfig.lua_ls.setup({
-        on_attach = on_attach,
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = { 'vim' },
-            },
-          },
-        },
-        capabilities = capabilities,
-      })
-      lspconfig.gopls.setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-        filetypes = {'go', 'gomod'}
-      })
-      lspconfig.rust_analyzer.setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-      })
-    end
+      for _, server in ipairs(servers) do
+        lspconfig[server].setup({
+          on_attach = on_attach,
+          capabilities = capabilities,
+        })
+      end
+    end,
   },
   {
-    'williamboman/mason.nvim',
+    "williamboman/mason.nvim",
+    version = "v1.*",
+    lazy = true,
+    config = true,
+  },
+  {
+    "williamboman/mason-lspconfig.nvim",
+    version = "v1.*",
     dependencies = {
-      'williamboman/mason-lspconfig.nvim'
+      "williamboman/mason.nvim",
+    },
+    lazy = true,
+    opts = {
+      ensure_installed = servers,
+    },
+  },
+  {
+    "j-hui/fidget.nvim",
+    version = "v1.*",
+    lazy = true,
+    config = true,
+  },
+  {
+    "glepnir/lspsaga.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+      "nvim-treesitter/nvim-treesitter",
     },
     lazy = true,
     event = {
-      'BufRead',
-      'CmdlineEnter'
+      "LspAttach",
     },
     config = function()
-      require('mason').setup()
-      require('mason-lspconfig').setup({
-        ensure_installed = { 'gopls', 'lua_ls', 'rust_analyzer'}
-      })
-    end
-  }
+      require("lspsaga").setup({})
+
+      local keymap_opts = { noremap = true, silent = true }
+      vim.keymap.set("n", "<leader>lf", ":Lspsaga finder<CR>", keymap_opts)
+      vim.keymap.set("n", "<leader>lr", ":Lspsaga rename<CR>", keymap_opts)
+      vim.keymap.set("n", "<leader>ld", ":Lspsaga goto_definition<CR>", keymap_opts)
+      vim.keymap.set("n", "<leader>lt", ":Lspsaga goto_type_definition<CR>", keymap_opts)
+      vim.keymap.set("n", "<leader>lh", ":Lspsaga hover_doc<CR>", keymap_opts)
+      vim.keymap.set("n", "<leader>lo", ":Lspsaga outline<CR>", keymap_opts)
+      vim.keymap.set("n", "<leader><S-t>", ":Lspsaga term_toggle<CR>", keymap_opts)
+    end,
+  },
 }

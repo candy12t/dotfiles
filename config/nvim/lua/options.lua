@@ -1,6 +1,6 @@
 -- encoding
-vim.opt.fencs = 'utf-8'
-vim.opt.encoding = 'utf-8'
+vim.opt.fencs = "utf-8"
+vim.opt.encoding = "utf-8"
 
 -- indent
 vim.opt.tabstop = 2
@@ -11,7 +11,7 @@ vim.opt.autoindent = true
 vim.opt.smartindent = true
 
 -- visual
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 vim.opt.number = true
 vim.opt.showmatch = true
 vim.opt.cursorline = true
@@ -31,4 +31,4 @@ vim.opt.smartcase = true
 vim.opt.wrapscan = true
 
 -- misc
-vim.opt.clipboard:append('unnamedplus')
+vim.opt.clipboard:append("unnamedplus")

@@ -1,113 +1,86 @@
 return {
   {
-    'nvim-lualine/lualine.nvim',
+    "nvim-lualine/lualine.nvim",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
     lazy = true,
     event = {
-      'BufEnter'
-    },
-    dependencies = {
-      'nvim-tree/nvim-web-devicons'
+      "BufEnter",
     },
     opts = {
       options = {
-        theme = 'tokyonight'
-      }
-    }
+        theme = "tokyonight",
+      },
+    },
   },
   {
-    'akinsho/bufferline.nvim',
+    "akinsho/bufferline.nvim",
+    version = "v4.*",
+    dependencies = {
+      "nvim-tree/nvim-web-devicons",
+    },
     lazy = true,
     event = {
-      'BufEnter'
-    },
-    version = '4.*',
-    dependencies = {
-      'nvim-tree/nvim-web-devicons'
+      "BufEnter",
     },
     opts = {
       options = {
-        highlights = 'tokyonight'
-      }
-    }
+        highlights = "tokyonight",
+      },
+    },
   },
   {
-    'lukas-reineke/indent-blankline.nvim',
-    lazy = true,
-    event = {
-      'BufRead'
-    },
-    config = true
-  },
-  {
-    'utilyre/barbecue.nvim',
-    lazy = true,
-    event = {
-      'BufRead'
-    },
-    name = 'barbecue',
-    version = '*',
+    "utilyre/barbecue.nvim",
+    version = "v1.*",
     dependencies = {
-      'SmiteshP/nvim-navic',
-      'nvim-tree/nvim-web-devicons'
+      "SmiteshP/nvim-navic",
+      "nvim-tree/nvim-web-devicons",
+    },
+    lazy = true,
+    event = {
+      "BufRead",
+      "BufNewFile",
     },
     opts = {
-      theme = 'tokyonight'
-    }
-  },
-  {
-    'lewis6991/gitsigns.nvim',
-    lazy = true,
-    event = {
-      'BufRead'
+      theme = "tokyonight",
     },
-    config = function()
-      require('gitsigns').setup({
-        numhl = true
-      })
-
-      local gitsigns = require('gitsigns')
-      local keymap_opts = { noremap = true, silent = true }
-      vim.keymap.set('n', '<leader>gb', gitsigns.toggle_current_line_blame, keymap_opts)
-      vim.keymap.set('n', '<leader>gd', gitsigns.toggle_deleted, keymap_opts)
-    end
   },
   {
-    'norcalli/nvim-colorizer.lua',
+    "lukas-reineke/indent-blankline.nvim",
+    version = "v3.*",
+    main = "ibl",
     lazy = true,
     event = {
-      'BufRead'
+      "BufRead",
+      "BufNewFile",
+    },
+    opts = {
+      scope = {
+        enabled = false,
+      },
+    },
+  },
+  {
+    "lewis6991/gitsigns.nvim",
+    vesion = "v0.*",
+    lazy = true,
+    event = {
+      "BufRead",
+      "BufNewFile",
+    },
+    opts = {
+      numhl = true,
+      current_line_blame = true,
+    },
+  },
+  {
+    "norcalli/nvim-colorizer.lua",
+    lazy = true,
+    event = {
+      "BufRead",
+      "BufNewFile",
     },
     config = true,
   },
-  {
-    'j-hui/fidget.nvim',
-    tag = 'legacy',
-    lazy = true,
-    event = {
-      'BufRead'
-    },
-    config = true,
-  },
-  {
-    'glepnir/lspsaga.nvim',
-    event = {
-      'LspAttach'
-    },
-    config = function()
-      require('lspsaga').setup()
-
-      local keymap_opts = { noremap = true, silent = true }
-      vim.keymap.set('n', '<leader>lf', ':Lspsaga finder<CR>', keymap_opts)
-      vim.keymap.set('n', '<leader>lr', ':Lspsaga rename<CR>', keymap_opts)
-      vim.keymap.set('n', '<leader>ld', ':Lspsaga goto_definition<CR>', keymap_opts)
-      vim.keymap.set('n', '<leader>lt', ':Lspsaga goto_type_definition<CR>', keymap_opts)
-      vim.keymap.set('n', '<leader>lh', ':Lspsaga hover_doc<CR>', keymap_opts)
-      vim.keymap.set('n', '<leader>lo', ':Lspsaga outline<CR>', keymap_opts)
-      vim.keymap.set('n', '<leader><C-t>', ':Lspsaga term_toggle<CR>', keymap_opts)
-    end,
-    dependencies = {
-      'nvim-tree/nvim-web-devicons',
-      'nvim-treesitter/nvim-treesitter'
-    }
-  }
 }
