@@ -1,5 +1,5 @@
 local function hideOrActiveApp(appName)
-  return function ()
+  return function()
     local app = hs.application.get(appName)
     if app:isHidden() then
       app:activate()
