@@ -29,7 +29,8 @@ if [ $(command -v exa) ]; then
   alias tree='exa --all --binary --classify --group --header --long --tree --ignore-glob=".git|.node_modules"'
 fi
 
-export CDPATH="$HOME:$(ghq root)/github.com/candy12t:$(ghq root)/github.com:.."
+export CDPATH="$HOME"
+[ $(command -v ghq) ] && export CDPATH="$CDPATH:$(ghq root)/github.com/candy12t:$(ghq root)/github.com:.."
 export EDITOR="nvim"
 export VISUAL="nvim"
 
@@ -185,3 +186,15 @@ gtc() {
   go tool cover -html=cover.out
   rm -rf cover.out
 }
+
+check_go_version() {
+  if [ ! $(command -v go) ]; then
+    return
+  fi
+  local latest_version=$(curl --silent https://go.dev/VERSION\?m=text | head -1)
+  local current_version=$(go version | awk '{print $3}')
+  if [ "${latest_version}" != "${current_version}" ]; then
+    echo "new release of go is available: ${current_version} -> ${latest_version}"
+  fi
+}
+check_go_version
