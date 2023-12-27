@@ -29,13 +29,15 @@ link_rc() {
   ln -sf "${DOTFILES_PATH}/config/zpreztorc" "${HOME}/.zpreztorc"
   ln -sf "${DOTFILES_PATH}/config/zshrc" "${HOME}/.zshrc"
 
-  ln -sf "${DOTFILES_PATH}/config/hammerspoon" "${HOME}/.hammerspoon"
+  if [ $(uname -s) = "Darwin" ]; then
+    ln -sf "${DOTFILES_PATH}/config/hammerspoon" "${HOME}/.hammerspoon"
+  fi
 }
 
 main() {
-  download_repository
-  link_rc
-  echo "Success!! Then install any tools and languages you want."
+  download_repository && \
+    link_rc && \
+    echo "Success!! Then install any tools and languages you want."
 }
 
 main "$@" && exit 0;
