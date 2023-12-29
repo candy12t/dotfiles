@@ -13,7 +13,7 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "j-hui/fidget.nvim",
     },
-    version = "v0.1",
+    version = "v0.1.x",
     lazy = true,
     event = {
       "BufRead",
