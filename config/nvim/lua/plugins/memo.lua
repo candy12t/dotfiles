@@ -10,7 +10,7 @@ return {
   },
   build = "go install github.com/mattn/memo@latest",
   init = function()
-    vim.g.memolist_path = "$HOME/.config/memo/notes"
+    vim.g.memolist_path = "$HOME/.config/memo/notes/memo"
     vim.g.memolist_memo_suffix = "md"
     vim.g.memolist_memo_date = "%Y-%m-%d"
     vim.g.memolist_template_dir_path = "$HOME/.config/memo/templates"
