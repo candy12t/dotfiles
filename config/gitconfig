@@ -14,6 +14,16 @@
 	cam = commit --amend -m
 	df = diff
 	co = checkout
+  dft = difftool
+  dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
 [ghq]
 	root = ~/go/src
 	root = ~/dev
+[diff]
+  tool = difftastic
+[difftool]
+  prompt = false
+[difftool "difftastic"]
+  cmd = difft "$LOCAL" "$REMOTE"
+[pager]
+  difftool = true
