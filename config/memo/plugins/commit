@@ -1,0 +1,11 @@
+#! /bin/bash
+
+set -eu
+set -o pipefail
+
+cd ~/.config/memo/notes
+
+if [ $(git rev-parse --is-inside-work-tree 2> /dev/null) ]; then
+  find . -name "*.md" -exec git add {} \; && \
+    git commit -m "auto commit" &> /dev/null
+fi
