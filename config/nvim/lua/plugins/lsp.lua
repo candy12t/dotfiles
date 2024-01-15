@@ -35,6 +35,16 @@ return {
         })
       end
 
+      lspconfig.rust_analyzer.setup({
+        settings = {
+          ["rust-analyzer"] = {
+            check = {
+              command = "clippy",
+            },
+          },
+        },
+      })
+
       lspconfig.lua_ls.setup({
         settings = {
           Lua = {
