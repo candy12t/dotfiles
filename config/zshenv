@@ -1,0 +1,36 @@
+export EDITOR="nvim"
+export VISUAL="nvim"
+export CDPATH=".:$HOME"
+
+# homebrew
+if [ -d "/opt/homebrew/bin/brew" ]; then
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+  export PATH="/opt/homebrew/bin:$PATH"
+fi
+
+# mysql-client
+[ -d "/usr/local/opt/mysql-client" ] && export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+
+# protobuf
+[ -d "/usr/local/protobuf" ] && export PATH="$PATH:/usr/local/protobuf/bin"
+
+# go
+if [ -d "/usr/local/go" ]; then
+  export PATH="$PATH:/usr/local/go/bin"
+  export PATH="$PATH:$(go env GOPATH)/bin"
+fi
+
+# rust
+if [ -d "$HOME/.cargo" ]; then
+  export CARGO_ROOT="$HOME/.cargo"
+  source "$HOME/.cargo/env"
+fi
+
+# node.js
+## volta
+if [ -d "$HOME/.volta" ]; then
+  export VOLTA_HOME="$HOME/.volta"
+  export PATH="$VOLTA_HOME/bin:$PATH"
+fi
+
+[ -d "$HOME/local" ] && export PATH="$PATH:$HOME/local/bin"

@@ -43,6 +43,8 @@ link_rc() {
   # zsh
   ln -sfn "$DOTFILES_PATH/config/zpreztorc" "$HOME/.zpreztorc"
   ln -sfn "$DOTFILES_PATH/config/zshrc"     "$HOME/.zshrc"
+  ln -sfn "$DOTFILES_PATH/config/zshenv"     "$HOME/.zshenv"
+  ln -sfn "$DOTFILES_PATH/config/zprofile"     "$HOME/.zprofile"
 
   if [ $(uname -s) = "Darwin" ]; then
     # hammerspoon

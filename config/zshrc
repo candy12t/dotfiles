@@ -5,11 +5,6 @@ fi
 autoload -U compinit
 compinit -u
 
-if [ -e "/opt/homebrew/bin/brew" ]; then
-  eval "$(/opt/homebrew/bin/brew shellenv)"
-  export PATH="/opt/homebrew/bin:$PATH"
-fi
-
 alias ls="ls -F --color"
 alias la="ls -A"
 alias ll="ls -Al"
@@ -29,86 +24,33 @@ if [ $(command -v eza) ]; then
   alias tree='eza --all --binary --classify --group --header --long --tree --ignore-glob=".git|.node_modules"'
 fi
 
-export CDPATH="$HOME"
-[ $(command -v ghq) ] && export CDPATH="$CDPATH:$(ghq root)/github.com/candy12t:$(ghq root)/github.com:.."
-export EDITOR="nvim"
-export VISUAL="nvim"
-
-# python
-## pyenv
-if [ -e "$HOME/.pyenv" ]; then
-  export PYENV_ROOT="$HOME/.pyenv"
-  export PATH="$PYENV_ROOT/bin:$PATH"
-  eval "$(pyenv init --path)"
-fi
-## rye
-if [ -e "$HOME/.rye" ]; then
-  export RYE_HOME="$HOME/.rye"
-  source "$HOME/.rye/env"
-fi
-
-# go
-if [ -e "/usr/local/go" ]; then
-  export PATH="$PATH:/usr/local/go/bin"
-  export PATH="$PATH:$(go env GOPATH)/bin"
-fi
-## goenv
-if [ -e "$HOME/.goenv" ]; then
-  export GOENV_ROOT="$HOME/.goenv"
-  export PATH="$GOENV_ROOT/bin:$PATH"
-  eval "$(goenv init -)"
-  export PATH="$GOROOT/bin:$PATH"
-  export GOENV_DISABLE_GOPATH=1
-  export GOPATH=$HOME/go
-  export GO111MODULE=on
-  export PATH="$PATH:$GOPATH/bin"
-fi
-
-# ruby
-## rbenv
-if [ -e "$HOME/.rbenv" ]; then
-  export RBENV_ROOT="$HOME/.rbenv"
-  export PATH="$RBENV_ROOT/bin:$PATH"
-  eval "$(rbenv init -)"
-fi
-
-# node
-## volta
-if [ -e "$HOME/.volta" ]; then
-  export VOLTA_HOME="$HOME/.volta"
-  export PATH="$VOLTA_HOME/bin:$PATH"
-fi
-
-# jdk
-if [ -d "$HOME/.jdk" ]; then
-  export JAVA_HOME="$HOME/.jdk"
-  export PATH="$JAVA_HOME/bin:$PATH"
-fi
-
-# rust
-# how to install rustup (ref: "https://www.rust-lang.org/tools/install")
-# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-if [ -e "$HOME/.cargo" ]; then
-  export CARGO_ROOT="$HOME/.cargo"
-  source "$HOME/.cargo/env"
-fi
-
 # fzf
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
 export FZF_DEFAULT_OPTS='--height 60% --border horizontal --reverse --preview "bat --color=always --style=grid -r :15 {}"'
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# starship
-[ -x "$(which starship)" ] && eval "$(starship init zsh)"
-
 # direnv
-[ -x "$(which direnv)" ] && eval "$(direnv hook zsh)"
+[ "$(command -v direnv)" ] && eval "$(direnv hook zsh)"
 
-# gcloud
-if [ -d "/usr/local/Caskroom/google-cloud-sdk" ]; then
-  source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/completion.zsh.inc
-  source /usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.zsh.inc
-fi
+# starship
+[ "$(command -v starship)" ] && eval "$(starship init zsh)"
+
+build_cdpath() {
+  [ ! $(command -v ghq) ] && return
+  [ ! $(command -v gh) ] && return
+  [ ! $(command -v jq) ] && return
+
+  local gh_path="$(ghq root)/github.com"
+  local gh_user="$(gh api user | jq -r '.login')"
+  local gh_orgs="$(gh api user/orgs | jq -r '.[].login')"
+
+  local cp="$gh_path/$gh_user"
+  for gh_org in "$gh_orgs"; do
+    cp="$cp:$gh_path/$gh_org"
+  done
+  echo "$cp:$gh_path"
+}
+export CDPATH="$CDPATH:$(build_cdpath):.."
 
 # bookmark
 # ref: https://threkk.medium.com/how-to-use-bookmarks-in-bash-zsh-6b8074e40774
@@ -116,10 +58,6 @@ if [ -d "$HOME/.bookmarks" ]; then
   export CDPATH=".:$HOME/.bookmarks:/"
   alias goto="cd -P"
 fi
-
-[ -e "$HOME/local" ] && export PATH="$HOME/local/bin:$PATH"
-
-[ -e "/usr/local/opt/mysql-client" ] && export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 
 fbr() {
   local branches branch
@@ -158,13 +96,6 @@ fshow() {
 FZF-EOF"
 }
 
-fgt() {
-  local bookmarks bookmark
-  bookmarks=$(ls ~/.bookmarks | sed "s/@$//") &&
-  bookmark=$(echo "${bookmarks}" | fzf --ansi +m --preview "") &&
-  cd -P "${bookmark}"
-}
-
 fq() {
   local repository fullpath_repository
   repository=$(ghq list | fzf +m --preview "") &&
@@ -186,15 +117,3 @@ gtc() {
   go tool cover -html=cover.out
   rm -rf cover.out
 }
-
-check_go_version() {
-  if [ ! $(command -v go) ]; then
-    return
-  fi
-  local latest_version=$(curl --silent https://go.dev/VERSION\?m=text | head -1)
-  local current_version=$(go version | awk '{print $3}')
-  if [ "${latest_version}" != "${current_version}" ]; then
-    echo "new release of go is available: ${current_version} -> ${latest_version}"
-  fi
-}
-check_go_version
