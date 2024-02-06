@@ -10,6 +10,7 @@ fi
 
 # mysql-client
 [ -d "/usr/local/opt/mysql-client" ] && export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+[ -d "/opt/homebrew/opt/mysql-client" ] && export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 
 # protobuf
 [ -d "/usr/local/protobuf" ] && export PATH="$PATH:/usr/local/protobuf/bin"
