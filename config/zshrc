@@ -35,22 +35,8 @@ export FZF_DEFAULT_OPTS='--height 60% --border horizontal --reverse --preview "b
 # starship
 [ "$(command -v starship)" ] && eval "$(starship init zsh)"
 
-build_cdpath() {
-  [ ! $(command -v ghq) ] && return
-  [ ! $(command -v gh) ] && return
-  [ ! $(command -v jq) ] && return
-
-  local gh_path="$(ghq root)/github.com"
-  local gh_user="$(gh api user | jq -r '.login')"
-  local gh_orgs="$(gh api user/orgs | jq -r '.[].login')"
-
-  local cp="$gh_path/$gh_user"
-  for gh_org in "$gh_orgs"; do
-    cp="$cp:$gh_path/$gh_org"
-  done
-  echo "$cp:$gh_path"
-}
-export CDPATH="$CDPATH:$(build_cdpath):.."
+ghq_root="$(ghq root)"
+export CDPATH="$CDPATH:${ghq_root}/github.com/candy12t:${ghq_root}/github.com:.."
 
 # bookmark
 # ref: https://threkk.medium.com/how-to-use-bookmarks-in-bash-zsh-6b8074e40774
