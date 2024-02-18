@@ -1,0 +1,11 @@
+#!/bin/bash
+#
+# generate own certificate with go
+
+if [ ! $(command -v go) ]; then
+  echo "shoud be install go." >&2
+  exit 1;
+fi
+
+host="$1"
+go run $(go env GOROOT)/src/crypto/tls/generate_cert.go -rsa-bits 2048 -host "${host}"

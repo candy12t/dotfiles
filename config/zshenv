@@ -2,6 +2,8 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export CDPATH=".:$HOME"
 
+export PATH="$HOME/dotfiles/bin:$PATH"
+
 # homebrew
 if [ -d "/opt/homebrew/bin/brew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -33,5 +35,3 @@ if [ -d "$HOME/.volta" ]; then
   export VOLTA_HOME="$HOME/.volta"
   export PATH="$VOLTA_HOME/bin:$PATH"
 fi
-
-[ -d "$HOME/local" ] && export PATH="$PATH:$HOME/local/bin"
