@@ -26,8 +26,9 @@ return {
         if client.server_capabilities.documentSymbolProvider then
           require("nvim-navic").attach(client, bufnr)
         end
-
-        vim.lsp.inlay_hint.enable(bufnr)
+        if client.server_capabilities.inlayHintProvider then
+          vim.lsp.inlay_hint.enable(bufnr)
+        end
       end
 
       lspconfig.gopls.setup({
