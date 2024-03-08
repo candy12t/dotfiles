@@ -26,16 +26,31 @@ return {
         if client.server_capabilities.documentSymbolProvider then
           require("nvim-navic").attach(client, bufnr)
         end
+
+        vim.lsp.inlay_hint.enable(bufnr)
       end
 
-      for _, server in ipairs(servers) do
-        lspconfig[server].setup({
-          on_attach = on_attach,
-          capabilities = capabilities,
-        })
-      end
+      lspconfig.gopls.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        settings = {
+          gopls = {
+            hints = {
+              assignVariableTypes = true,
+              compositeLiteralFields = true,
+              compositeLiteralTypes = true,
+              constantValues = true,
+              functionTypeParameters = true,
+              parameterNames = true,
+              rangeVariableTypes = true,
+            },
+          },
+        },
+      })
 
       lspconfig.rust_analyzer.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
         settings = {
           ["rust-analyzer"] = {
             check = {
@@ -46,10 +61,21 @@ return {
       })
 
       lspconfig.lua_ls.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
         settings = {
           Lua = {
+            workspace = {
+              library = {
+                vim.fn.expand("$VIMRUNTIME/lua"),
+              },
+            },
             diagnostics = {
-              globals = { "vim", "hs" },
+              globals = { "hs" },
+            },
+            hint = {
+              enable = true,
+              setType = true,
             },
           },
         },
