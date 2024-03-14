@@ -4,6 +4,11 @@ export CDPATH=".:$HOME"
 
 export PATH="$HOME/dotfiles/bin:$PATH"
 
+if [ $(command -v ghq) ]; then
+  ghq_root="$(ghq root)"
+  export CDPATH="$CDPATH:${ghq_root}/github.com/candy12t:${ghq_root}/github.com:.."
+fi
+
 # homebrew
 if [ -f "/opt/homebrew/bin/brew" ]; then
   eval "$(/opt/homebrew/bin/brew shellenv)"
@@ -21,6 +26,7 @@ fi
 if [ -d "/usr/local/go" ]; then
   export PATH="$PATH:/usr/local/go/bin"
   export PATH="$PATH:$(go env GOPATH)/bin"
+  export GOPRIVATE="github.com/candy12t"
 fi
 
 # rust
