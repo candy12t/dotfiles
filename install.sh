@@ -40,11 +40,14 @@ link_rc() {
   # starship
   ln -sfn "$DOTFILES_PATH/config/starship.toml" "$HOME/.config/starship.toml"
 
+  # wezterm
+  ln -sfn "$DOTFILES_PATH/config/wezterm" "$HOME/.config/wezterm"
+
   # zsh
   ln -sfn "$DOTFILES_PATH/config/zpreztorc" "$HOME/.zpreztorc"
   ln -sfn "$DOTFILES_PATH/config/zshrc"     "$HOME/.zshrc"
-  ln -sfn "$DOTFILES_PATH/config/zshenv"     "$HOME/.zshenv"
-  ln -sfn "$DOTFILES_PATH/config/zprofile"     "$HOME/.zprofile"
+  ln -sfn "$DOTFILES_PATH/config/zshenv"    "$HOME/.zshenv"
+  ln -sfn "$DOTFILES_PATH/config/zprofile"  "$HOME/.zprofile"
 
   if [ $(uname -s) = "Darwin" ]; then
     # hammerspoon
