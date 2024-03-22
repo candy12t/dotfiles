@@ -10,7 +10,13 @@ return {
       { "<leader>fr" },
     },
     config = function()
-      require("fzf-lua").setup({ "telescope" })
+      require("fzf-lua").setup({
+        "telescope",
+        grep = {
+          rg_opts = "--sort-files --hidden --column --line-number --no-heading "
+            .. "--color=always --smart-case -g '!{.git,node_modules}/*'",
+        },
+      })
 
       local keymap_opts = { noremap = true, silent = true }
       vim.keymap.set("n", "<leader>ff", ":FzfLua files<CR>", keymap_opts)

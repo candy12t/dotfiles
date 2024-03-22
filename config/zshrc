@@ -25,8 +25,14 @@ if [ $(command -v eza) ]; then
 fi
 
 # fzf
-export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git"'
-export FZF_DEFAULT_OPTS='--height 60% --border horizontal --reverse --preview "bat --color=always --style=grid -r :15 {}"'
+export FZF_DEFAULT_COMMAND="rg --files --sort-files --hidden --column --line-number --no-heading --smart-case -g '!{.git,node_modules}/*'"
+export FZF_DEFAULT_OPTS='--height 60% --reverse'
+# https://github.com/folke/tokyonight.nvim/blob/main/extras/fzf/tokyonight_moon.zsh
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+--color=fg:#c8d3f5,bg:#222436,hl:#ff966c \
+--color=fg+:#c8d3f5,bg+:#2f334d,hl+:#ff966c \
+--color=info:#82aaff,prompt:#86e1fc,pointer:#86e1fc \
+--color=marker:#c3e88d,spinner:#c3e88d,header:#c3e88d"
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # direnv
@@ -81,7 +87,7 @@ FZF-EOF"
 
 fq() {
   local repository fullpath_repository
-  repository=$(ghq list | fzf +m --preview "") &&
+  repository=$(ghq list | fzf) &&
   fullpath_repository=$(ghq list --full-path --exact "${repository}") &&
   cd "${fullpath_repository}"
 }
