@@ -23,7 +23,7 @@ fi
 apt install -y libevent-dev ncurses-dev build-essential bison pkg-config
 
 if [ ! -f "${tarball}" ]; then
-  wget "https://github.com/tmux/tmux/releases/download/${version}/${tarball}" -O "${tarball}"
+  curl -fsSL "https://github.com/tmux/tmux/releases/download/${version}/${tarball}" -o "${tarball}"
 fi
 
 tar zxvf "${tarball}"

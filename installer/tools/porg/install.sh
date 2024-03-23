@@ -14,21 +14,21 @@ archivedir="porg-${version}"
 prefix="/usr/local"
 
 if [ "$(uname -s)" != "Linux" ];then
-    echo "Error: porg is only for Linux"
-    exit 1
+  echo "Error: porg is only for Linux"
+  exit 1
 fi
 
 
 if [ ! -f "${tarball}" ];then
-    wget "https://sourceforge.net/projects/porg/files/${tarball}/download" -O "${tarball}"
+  curl -fsSL "https://sourceforge.net/projects/porg/files/${tarball}/download" -o "${tarball}"
 fi
 
 tar zxvf "${tarball}"
 cd "${archivedir}"
 
 ./configure \
-    --prefix="${prefix}" \
-    --disable-grop
+  --prefix="${prefix}" \
+  --disable-grop
 
 make
 

@@ -24,7 +24,7 @@ sudo apt install -y build-essential
 sudo apt build-dep -y git
 
 if [ ! -f "${tarball}" ]; then
-  wget "https://github.com/git/git/archive/refs/tags/${tarball}" -O "${tarball}"
+  curl -fsSL "https://github.com/git/git/archive/refs/tags/${tarball}" -o "${tarball_path}"
 fi
 
 tar zxvf "${tarball}"

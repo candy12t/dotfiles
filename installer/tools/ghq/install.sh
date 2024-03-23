@@ -28,7 +28,7 @@ install() {
   local archive_url="${release_url}/download/v${version}/${tarball}"
 
   echo "Downloading..."
-  wget -q "${archive_url}" -O "${tarball_path}" || err "Failed download archive."
+  curl -fsSL "${archive_url}" -o "${tarball_path}" || err "Failed download archive."
 
   echo "Installing..."
   tar -xzf "${tarball_path}" -C "${prefix}/ghq" --strip-components=1 && \

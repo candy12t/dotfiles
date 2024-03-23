@@ -20,7 +20,7 @@ install() {
 
   if [ ! -d "${JDK_DIR}" ]; then
     mkdir "${JDK_DIR}"
-    wget "${release_url}/download/${latest_release}/${tarball}" -O "${JDK_DIR}/${tarball}"
+    curl -fsSL "${release_url}/download/${latest_release}/${tarball}" -o "${JDK_DIR}/${tarball}"
     tar -xzf "${JDK_DIR}/${tarball}" -C "${JDK_DIR}" --strip-components=1
   fi
 }

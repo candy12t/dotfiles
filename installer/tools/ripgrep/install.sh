@@ -4,14 +4,6 @@
 # ripgrep installer
 #
 
-# deb="ripgrep_${version}_amd64.deb"
-#
-# if [ ! -f "${deb}" ]; then
-#   wget "https://github.com/BurntSushi/ripgrep/releases/download/${version}/${deb}" -O "${deb}"
-# fi
-#
-# sudo dpkg -i "${deb}"
-
 set -eu
 set -o pipefail
 
@@ -36,7 +28,7 @@ install() {
   local archive_url="${release_url}/download/${version}/${tarball}"
 
   echo "Downloading..."
-  wget -q "${archive_url}" -O "${tarball_path}" || err "Failed download archive."
+  curl -fsSL "${archive_url}" -o "${tarball_path}" || err "Failed download archive."
 
   echo "Installing..."
   tar -xzf "${tarball_path}" -C "${prefix}/rg" --strip-components=1 && \

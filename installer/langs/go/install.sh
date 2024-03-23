@@ -28,7 +28,7 @@ install() {
 
   echo "Downloading..."
   mkdir -p "${sources_path}"
-  wget -q "${archive_url}" -O "${tarball_path}" || err "Failed download archive."
+  curl -fsSL "${archive_url}" -o "${tarball_path}" || err "Failed download archive."
 
   echo "Installing..."
   sudo rm -rf "${prefix}/go" && sudo tar -xzf "${tarball_path}" -C "${prefix}" || err "Failed install."

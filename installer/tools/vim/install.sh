@@ -25,7 +25,7 @@ apt install -y build-essential
 apt build-dep -y vim
 
 if [ ! -f "${tarball}" ]; then
-  wget "https://github.com/vim/vim/archive/refs/tags/${tarball}" -O "${tarball}"
+  curl -fsSL "https://github.com/vim/vim/archive/refs/tags/${tarball}" -o "${tarball_path}"
 fi
 
 tar zxvf "${tarball}"
