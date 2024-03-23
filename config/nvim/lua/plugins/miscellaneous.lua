@@ -40,4 +40,12 @@ return {
     },
     config = true,
   },
+  {
+    "candy12t/github-link.nvim",
+    lazy = true,
+    event = {
+      "BufRead",
+    },
+    config = true,
+  },
 }

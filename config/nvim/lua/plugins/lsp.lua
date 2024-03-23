@@ -74,10 +74,6 @@ return {
             diagnostics = {
               globals = { "hs" },
             },
-            hint = {
-              enable = true,
-              setType = true,
-            },
           },
         },
       })
