@@ -29,6 +29,11 @@ return {
         if client.server_capabilities.inlayHintProvider then
           vim.lsp.inlay_hint.enable(bufnr)
         end
+
+        local keymap_opts = { noremap = true, silent = true }
+        vim.keymap.set("n", "<leader>lh", function()
+          vim.lsp.inlay_hint.enable(bufnr, not vim.lsp.inlay_hint.is_enabled())
+        end, keymap_opts)
       end
 
       lspconfig.gopls.setup({
