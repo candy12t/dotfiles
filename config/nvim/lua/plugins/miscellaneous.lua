@@ -31,16 +31,6 @@ return {
     end,
   },
   {
-    "numToStr/Comment.nvim",
-    version = "v0.*",
-    lazy = true,
-    event = {
-      "BufRead",
-      "BufNewFile",
-    },
-    config = true,
-  },
-  {
     "candy12t/github-link.nvim",
     lazy = true,
     event = {
