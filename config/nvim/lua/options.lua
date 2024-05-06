@@ -16,6 +16,7 @@ vim.opt.number = true
 vim.opt.showmatch = true
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
+vim.opt.laststatus = 3
 
 -- base
 vim.opt.autoread = true
