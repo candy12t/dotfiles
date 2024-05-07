@@ -13,6 +13,6 @@ skk_jisyo_url="http://openlab.jp/skk/dic/SKK-JISYO.L.gz"
 
 mkdir -p "${skk_config_path}"
 curl -fsSL "${skk_jisyo_url}" -o "${skk_config_path}/SKK-JISYO.L.gz"
-gzip -d "${skk_config_path}/SKK-JISYO.L.gz"
+gzip -d -f "${skk_config_path}/SKK-JISYO.L.gz"
 
 exit 0;
