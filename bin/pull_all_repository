@@ -1,0 +1,24 @@
+#/bin/bash
+#
+# git pull for all specified repositories.
+
+set -eu
+
+host="github.com"
+owner="$1"
+
+# TODO: switch to default branch and git pull
+# How to default branch: `git remote show origin | sed -n '/HEAD branch/s/.*: //p'`
+# However, it take time to retrive default branch because network access occurs.
+# So the default branch be cached as json object.
+# ```json
+# {
+#   "github.com": {
+#     "candy12t": {
+#       "repo1": "master",
+#       "repo2": "main"
+#     }
+#   }
+# }
+# ```
+ghq list --full-path | grep "${host}/$owner" | xargs -n1 -I@ bash -c "cd @ && echo 'pull @...' && git pull"
