@@ -23,22 +23,21 @@ return {
       local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
-      local enable_inlay_hint = true
+      local inlay_hint_state = true
       local on_attach = function(client, bufnr)
         if client.server_capabilities.documentSymbolProvider then
           require("nvim-navic").attach(client, bufnr)
         end
-        if client.server_capabilities.inlayHintProvider then
-          vim.lsp.inlay_hint.enable(bufnr, enable_inlay_hint)
-        end
 
-        -- toggle inlay_hint
-        vim.keymap.set("n", "<leader>lh", function()
-          enable_inlay_hint = not enable_inlay_hint
-          for buffer_id in pairs(vim.lsp.get_clients()[1].attached_buffers) do
-            vim.lsp.inlay_hint.enable(buffer_id, enable_inlay_hint)
-          end
-        end)
+        if client.server_capabilities.inlayHintProvider then
+          vim.lsp.inlay_hint.enable(inlay_hint_state, { bufnr = bufnr })
+
+          -- toggle inlay_hint keymap
+          vim.keymap.set("n", "<leader>lh", function()
+            inlay_hint_state = not inlay_hint_state
+            vim.lsp.inlay_hint.enable(inlay_hint_state)
+          end)
+        end
       end
 
       lspconfig.gopls.setup({
