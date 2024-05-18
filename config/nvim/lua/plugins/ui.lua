@@ -38,7 +38,9 @@ return {
   },
   {
     "akinsho/bufferline.nvim",
-    version = "v4.*",
+    -- TODO: Comment in when released larger than v4.5.3.
+    -- v4.5.3 is not support nvim v0.10.0.
+    -- version = "v4.*",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
