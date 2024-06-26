@@ -1,21 +1,22 @@
 [user]
-	name = Takumi Kanada
+	name  = Takumi Kanada
 	email = candy12t@gmail.com
 [core]
 	quotepath = false
-	editor = nvim
+	editor    = nvim
+	pager     = delta
 [alias]
-	lol = log --oneline --all --graph --decorate
-	s = status -uall
-	ss = status -s -uall
-	ssb = status -sb -uall
+	ll = log --oneline --decorate
+	lg = log --oneline --all --graph --decorate
+	ss = status -su
 	cm = commit -m
 	cv = commit -v
-	cam = commit --amend -m
 	df = diff
 	co = checkout
-	dft = difftool
-	dlog = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
+	dt = difftool
+	dl = "!f() { GIT_EXTERNAL_DIFF=difft git log -p --ext-diff $@; }; f"
+[url "git@github.com:candy12t"]
+	insteadOf = https://github.com/candy12t
 [ghq]
 	root = ~/go/src
 	root = ~/dev
@@ -27,5 +28,32 @@
 	cmd = difft "$LOCAL" "$REMOTE"
 [pager]
 	difftool = true
-[url "git@github.com:candy12t"]
-	insteadOf = https://github.com/candy12t
+[interactive]
+	diffFilter = delta --color-only
+[merge]
+	conflictstyle = diff3
+[delta]
+	features                     = tokyonight
+	file-style                   = omit
+	file-decoration-style        = none
+	hunk-header-decoration-style = blue ul
+	hunk-header-style            = file line-number syntax
+	keep-plus-minus-markers      = true
+	line-numbers                 = true
+	line-numbers-left-format     = "{nm:>4} "
+	line-numbers-right-format    = "{np:>4}│"
+	navigate                     = true
+	side-by-side                 = false
+	colorMoved                   = default
+[delta "tokyonight"]
+	minus-style                   = syntax "#3a273a"
+	minus-non-emph-style          = syntax "#3a273a"
+	minus-emph-style              = syntax "#6b2e43"
+	minus-empty-line-marker-style = syntax "#3a273a"
+	line-numbers-minus-style      = "#b55a67"
+	plus-style                    = syntax "#273849"
+	plus-non-emph-style           = syntax "#273849"
+	plus-emph-style               = syntax "#305f6f"
+	plus-empty-line-marker-style  = syntax "#273849"
+	line-numbers-plus-style       = "#627259"
+	line-numbers-zero-style       = "#3b4261"
