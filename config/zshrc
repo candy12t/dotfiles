@@ -102,3 +102,13 @@ gtc() {
   go tool cover -html=cover.out
   rm -rf cover.out
 }
+
+ff() {
+  local files="$(rg --files --hidden --follow --glob '!.git' | fzf -m --preview 'bat --color=always {}')"
+  [ -n "$files" ] && echo "$files" | xargs $EDITOR
+}
+
+fr() {
+  local files="$(rg -n '' | fzf -m --delimiter : --preview 'bat --color=always --highlight-line {2} {1}' --preview-window '+{2}+3/3' | awk -F: '{print $1}')"
+  [ -n "$files" ] && echo "$files" | xargs $EDITOR
+}
