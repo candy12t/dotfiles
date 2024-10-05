@@ -2,12 +2,13 @@
 
 set -eu
 
-if [ ! $(command -v ffmpeg) ] || [ ! $(command -v youtube-dl) ]; then
-  echo "shoud be install ffmpeg and youtube-dl." >&2
+if [ ! $(command -v ffmpeg) ] || [ ! $(command -v yt-dlp) ]; then
+  echo "shoud be install ffmpeg and yt-dlp." >&2
   exit 1;
 fi
 
 url="$1"
-youtube-dl -f 137+140 --merge-output-format mp4 -o "$HOME/Movies/%(title)s.%(ext)s" "${url}"
+download_dir="$2"
+yt-dlp -f 137+140 --merge-output-format mp4 -o "$download_dir/%(title)s.%(ext)s" "$url"
 
 exit 0;
