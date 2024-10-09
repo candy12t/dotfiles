@@ -38,9 +38,7 @@ return {
   },
   {
     "akinsho/bufferline.nvim",
-    -- TODO: Comment in when released larger than v4.5.3.
-    -- v4.5.3 is not support nvim v0.10.0.
-    -- version = "v4.*",
+    version = "v4.*",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
@@ -105,6 +103,21 @@ return {
       "BufRead",
       "BufNewFile",
     },
+    config = true,
+  },
+  {
+    "shortcuts/no-neck-pain.nvim",
+    version = "v1.*",
+    enabled = false,
+    config = true,
+  },
+  {
+    "MeanderingProgrammer/markdown.nvim",
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+    enabled = false,
     config = true,
   },
 }

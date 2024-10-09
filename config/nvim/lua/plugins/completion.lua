@@ -21,6 +21,10 @@ return {
     config = function()
       local cmp = require("cmp")
       cmp.setup({
+        performance = {
+          debounce = 0,
+          throttle = 0,
+        },
         snippet = {
           expand = function(args)
             require("luasnip").lsp_expand(args.body)

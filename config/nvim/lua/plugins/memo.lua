@@ -4,6 +4,7 @@ return {
     "ibhagwan/fzf-lua",
   },
   lazy = true,
+  enabled = false,
   keys = {
     { "<leader>mg" },
     { "<leader>mn" },
