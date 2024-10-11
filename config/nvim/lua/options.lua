@@ -9,6 +9,38 @@ vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 vim.opt.smartindent = true
+vim.opt.fixendofline = true
+
+local function set_indent(ft, expandtab, size)
+  vim.api.nvim_create_autocmd("FileType", {
+    pattern = ft,
+    callback = function()
+      vim.opt.expandtab = expandtab
+      vim.opt.tabstop = size
+      vim.opt.shiftwidth = size
+    end,
+  })
+end
+
+set_indent("go,make", false, 4)
+set_indent("rust,python", true, 4)
+set_indent("typescript,javascript,ruby,sh,yaml,json,lua,markdown", true, 2)
+set_indent("gitconfig", false, 8)
+
+local function trim_trailing_whitespace()
+  local save = vim.fn.winsaveview()
+  vim.cmd([[keeppatterns %s/\s\+$//e]])
+  vim.fn.winrestview(save)
+end
+
+vim.api.nvim_create_autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function()
+    if vim.o.filetype ~= "markdown" then
+      trim_trailing_whitespace()
+    end
+  end,
+})
 
 -- visual
 vim.opt.signcolumn = "yes"
