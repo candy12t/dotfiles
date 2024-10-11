@@ -1,3 +1,5 @@
+# vim:set filetype=gitconfig:
+
 [user]
 	name  = Takumi Kanada
 	email = candy12t@gmail.com
