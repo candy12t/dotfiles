@@ -16,42 +16,39 @@ link_rc() {
   echo "link rc..."
 
   mkdir -p "$HOME/.config" \
-    "$HOME/.config/git" \
-    "$HOME/.config/tmux" \
-    "$HOME/.config/memo" \
-    "$HOME/.config/memo/plugins" \
-    "$HOME/.config/memo/templates"
+    "$HOME/.config/tmux"
+    # "$HOME/.config/memo" \
+    # "$HOME/.config/memo/plugins" \
+    # "$HOME/.config/memo/templates"
 
   # nvim
   ln -sfn "$DOTFILES_PATH/config/nvim" "$HOME/.config/nvim"
 
   # git
-  ln -sfn "$DOTFILES_PATH/config/gitignore" "$HOME/.config/git/ignore"
-  ln -sfn "$DOTFILES_PATH/config/gitconfig" "$HOME/.config/git/config"
+  ln -sfn "$DOTFILES_PATH/config/git" "$HOME/.config/git"
 
   # tmux
   ln -sfn "$DOTFILES_PATH/config/tmux.conf" "$HOME/.config/tmux/tmux.conf"
 
   # memo(https://github.com/mattn/memo), mamolist.vim(https://github.com/glidenote/memolist.vim)
-  ln -sfn "$DOTFILES_PATH/config/memo/config.toml"      "$HOME/.config/memo/config.toml"
-  ln -sfn "$DOTFILES_PATH/config/memo/templates/md.txt" "$HOME/.config/memo/templates/md.txt"
-  ln -sfn "$DOTFILES_PATH/config/memo/plugins/commit"   "$HOME/.config/memo/plugins/commit"
+  # ln -sfn "$DOTFILES_PATH/config/memo/config.toml"      "$HOME/.config/memo/config.toml"
+  # ln -sfn "$DOTFILES_PATH/config/memo/templates/md.txt" "$HOME/.config/memo/templates/md.txt"
+  # ln -sfn "$DOTFILES_PATH/config/memo/plugins/commit"   "$HOME/.config/memo/plugins/commit"
 
   # starship
   ln -sfn "$DOTFILES_PATH/config/starship.toml" "$HOME/.config/starship.toml"
 
   # wezterm
-  ln -sfn "$DOTFILES_PATH/config/wezterm" "$HOME/.config/wezterm"
+  # ln -sfn "$DOTFILES_PATH/config/wezterm" "$HOME/.config/wezterm"
 
   # zsh
   ln -sfn "$DOTFILES_PATH/config/zpreztorc" "$HOME/.zpreztorc"
   ln -sfn "$DOTFILES_PATH/config/zshrc"     "$HOME/.zshrc"
-  ln -sfn "$DOTFILES_PATH/config/zshenv"    "$HOME/.zshenv"
 
-  if [ $(uname -s) = "Darwin" ]; then
-    # hammerspoon
-    ln -sfn "$DOTFILES_PATH/config/hammerspoon" "$HOME/.hammerspoon"
-  fi
+  # if [ $(uname -s) = "Darwin" ]; then
+  #   # hammerspoon
+  #   ln -sfn "$DOTFILES_PATH/config/hammerspoon" "$HOME/.hammerspoon"
+  # fi
 }
 
 main() {
