@@ -17,6 +17,9 @@ return {
         lua = {
           require("formatter.filetypes.lua").stylua,
         },
+        proto = {
+          require("formatter.filetypes.c").clangformat,
+        },
       },
     })
 
