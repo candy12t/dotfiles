@@ -41,6 +41,9 @@ link_rc() {
   # wezterm
   # ln -sfn "$DOTFILES_PATH/config/wezterm" "$HOME/.config/wezterm"
 
+  # ghostty
+  ln -sfn "$DOTFILES_PATH/config/ghostty" "$HOME/.config/ghostty"
+
   # zsh
   ln -sfn "$DOTFILES_PATH/config/zpreztorc" "$HOME/.zpreztorc"
   ln -sfn "$DOTFILES_PATH/config/zshrc"     "$HOME/.zshrc"
