@@ -1,0 +1,30 @@
+version: 2
+root-markers:
+  - .git/
+tools:
+  stylua: &stylua
+    format-command: 'stylua --search-parent-directories --stdin-filepath ${INPUT} -'
+    format-stdin: true
+  gofmt: &gofmt
+    format-command: 'gofmt'
+    format-stdin: true
+  goimports: &goimports
+    format-command: 'goimports'
+    format-stdin: true
+  rustfmt: &rustfmt
+    format-command: 'rustfmt --edition 2021'
+    format-stdin: true
+  clangformat: &clangformat
+    format-command: 'clang-format'
+    root-markers:
+      - '.clang-format'
+languages:
+  lua:
+    - <<: *stylua
+  go:
+    - <<: *goimports
+    - <<: *gofmt
+  rust:
+    - <<: *rustfmt
+  proto:
+    - <<: *clangformat

@@ -12,6 +12,7 @@ return {
       "hrsh7th/nvim-cmp",
       "williamboman/mason-lspconfig.nvim",
       "j-hui/fidget.nvim",
+      "lukas-reineke/lsp-format.nvim",
     },
     version = "v0.1.x",
     lazy = true,
@@ -24,6 +25,8 @@ return {
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       local on_attach = function(client, bufnr)
+        require("lsp-format").on_attach(client, bufnr)
+
         if client.server_capabilities.documentSymbolProvider then
           require("nvim-navic").attach(client, bufnr)
         end
@@ -37,6 +40,15 @@ return {
           end)
         end
       end
+
+      lspconfig.efm.setup({
+        on_attach = on_attach,
+        capabilities = capabilities,
+        init_options = {
+          documentFormatting = true,
+          documentRangeFormatting = true,
+        },
+      })
 
       lspconfig.gopls.setup({
         on_attach = on_attach,

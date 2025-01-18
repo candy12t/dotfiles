@@ -24,6 +24,9 @@ link_rc() {
   # nvim
   ln -sfn "$DOTFILES_PATH/config/nvim" "$HOME/.config/nvim"
 
+  # efm-langserver
+  ln -sfn "$DOTFILES_PATH/config/efm-langserver" "$HOME/.config/efm-langserver"
+
   # git
   ln -sfn "$DOTFILES_PATH/config/git" "$HOME/.config/git"
 
