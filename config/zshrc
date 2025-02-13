@@ -8,6 +8,8 @@ fi
 
 autoload -Uz compinit && compinit -C
 
+source ~/.forgit/forgit.plugin.zsh
+
 alias ls="ls -F --color"
 alias la="ls -A"
 alias ll="ls -Al"
@@ -71,6 +73,10 @@ if [ -d "$HOME/.volta" ]; then
   export PATH="$VOLTA_HOME/bin:$PATH"
 fi
 
+# java
+## openjdk
+[ -d "/opt/homebrew/opt/openjdk/bin" ] && export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
 # fzf
 export FZF_DEFAULT_COMMAND="rg --files --sort-files --hidden --column --line-number --no-heading --smart-case -g '!{.git,node_modules}/*'"
 export FZF_DEFAULT_OPTS='--height 60% --reverse'
@@ -90,10 +96,10 @@ export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
 
 # bookmark
 # ref: https://threkk.medium.com/how-to-use-bookmarks-in-bash-zsh-6b8074e40774
-if [ -d "$HOME/.bookmarks" ]; then
-  export CDPATH=".:$HOME/.bookmarks:/"
-  alias goto="cd -P"
-fi
+# if [ -d "$HOME/.bookmarks" ]; then
+#   export CDPATH=".:$HOME/.bookmarks:/"
+#   alias goto="cd -P"
+# fi
 
 fbr() {
   local branches branch
