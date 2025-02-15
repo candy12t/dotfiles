@@ -12,6 +12,7 @@ return {
       "L3MON4D3/LuaSnip",
       "hrsh7th/cmp-nvim-lua",
       "onsails/lspkind.nvim",
+      "zbirenbaum/copilot-cmp",
     },
     lazy = true,
     event = {
@@ -46,6 +47,7 @@ return {
           { name = "path" },
           { name = "nvim_lsp_signature_help" },
           { name = "nvim_lua" },
+          { name = "copilot" },
         }, {
           { name = "buffer" },
         }),
@@ -92,6 +94,20 @@ return {
     event = {
       "InsertEnter",
     },
+    config = true,
+  },
+  {
+    "zbirenbaum/copilot.lua",
+    config = function()
+      require("copilot").setup({
+        suggestion = { enabled = false },
+        panel = { enabled = false },
+      })
+    end,
+  },
+  {
+    "zbirenbaum/copilot-cmp",
+    lazy = true,
     config = true,
   },
 }
