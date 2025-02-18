@@ -21,40 +21,43 @@ link_rc() {
     # "$HOME/.config/memo/plugins" \
     # "$HOME/.config/memo/templates"
 
-  # nvim
-  ln -sfn "$DOTFILES_PATH/config/nvim" "$HOME/.config/nvim"
+  # bat
+  ln -sfn "$DOTFILES_PATH/config/bat" "$HOME/.config/bat"
 
   # efm-langserver
   ln -sfn "$DOTFILES_PATH/config/efm-langserver" "$HOME/.config/efm-langserver"
 
+  # ghostty
+  # ln -sfn "$DOTFILES_PATH/config/ghostty" "$HOME/.config/ghostty"
+
   # git
   ln -sfn "$DOTFILES_PATH/config/git" "$HOME/.config/git"
 
-  # tmux
-  ln -sfn "$DOTFILES_PATH/config/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+  # hammerspoon
+  # if [ $(uname -s) = "Darwin" ]; then
+  #   ln -sfn "$DOTFILES_PATH/config/hammerspoon" "$HOME/.hammerspoon"
+  # fi
 
   # memo(https://github.com/mattn/memo), mamolist.vim(https://github.com/glidenote/memolist.vim)
   # ln -sfn "$DOTFILES_PATH/config/memo/config.toml"      "$HOME/.config/memo/config.toml"
   # ln -sfn "$DOTFILES_PATH/config/memo/templates/md.txt" "$HOME/.config/memo/templates/md.txt"
   # ln -sfn "$DOTFILES_PATH/config/memo/plugins/commit"   "$HOME/.config/memo/plugins/commit"
 
-  # starship
-  ln -sfn "$DOTFILES_PATH/config/starship.toml" "$HOME/.config/starship.toml"
+  # nvim
+  ln -sfn "$DOTFILES_PATH/config/nvim" "$HOME/.config/nvim"
 
   # wezterm
   # ln -sfn "$DOTFILES_PATH/config/wezterm" "$HOME/.config/wezterm"
 
-  # ghostty
-  ln -sfn "$DOTFILES_PATH/config/ghostty" "$HOME/.config/ghostty"
-
   # zsh
-  ln -sfn "$DOTFILES_PATH/config/zpreztorc" "$HOME/.zpreztorc"
-  ln -sfn "$DOTFILES_PATH/config/zshrc"     "$HOME/.zshrc"
+  ln -sfn "$DOTFILES_PATH/dotfiles/config/zsh/zpreztorc" "$HOME/.zpreztorc"
+  ln -sfn "$DOTFILES_PATH/dotfiles/config/zsh/zshrc"     "$HOME/.zshrc"
 
-  # if [ $(uname -s) = "Darwin" ]; then
-  #   # hammerspoon
-  #   ln -sfn "$DOTFILES_PATH/config/hammerspoon" "$HOME/.hammerspoon"
-  # fi
+  # starship
+  ln -sfn "$DOTFILES_PATH/config/starship.toml" "$HOME/.config/starship.toml"
+
+  # tmux
+  ln -sfn "$DOTFILES_PATH/config/tmux.conf" "$HOME/.config/tmux/tmux.conf"
 }
 
 main() {

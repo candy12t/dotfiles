@@ -1,0 +1,123 @@
+autoload -Uz compinit && compinit -C
+
+# zprezto
+if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
+  source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+fi
+
+##################################################
+## environment variables                        ##
+##################################################
+
+# PATH
+export PATH="$HOME/dotfiles/bin:$HOME/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+
+## homebrew
+[ -d "/opt/homebrew" ] && export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
+
+## fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+## mysql-client
+[ -d "/usr/local/opt/mysql-client" ] && export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+[ -d "/opt/homebrew/opt/mysql-client" ] && export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+## protobuf
+[ -d "/usr/local/protobuf" ] && export PATH="/usr/local/protobuf/bin:$PATH"
+
+## go
+if [ -d "/usr/local/go" ]; then
+  export PATH="/usr/local/go/bin:$PATH"
+  export PATH="$(go env GOPATH)/bin:$PATH"
+  export GOPRIVATE="github.com/candy12t"
+fi
+
+## rust
+if [ -d "$HOME/.cargo" ]; then
+  export CARGO_ROOT="$HOME/.cargo"
+  source "$HOME/.cargo/env"
+fi
+
+## node.js
+### volta
+if [ -d "$HOME/.volta" ]; then
+  export VOLTA_HOME="$HOME/.volta"
+  export PATH="$VOLTA_HOME/bin:$PATH"
+fi
+
+## java
+### openjdk
+[ -d "/opt/homebrew/opt/openjdk/bin" ] && export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
+
+# EDITOR
+export EDITOR="nvim"
+export VISUAL="nvim"
+
+# FPATH
+[ $(command -v brew) ] && export FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
+
+# CDPATH
+export CDPATH=".:$HOME"
+if [ $(command -v ghq) ]; then
+  ghq_root="$(ghq root)"
+  export CDPATH="$CDPATH:${ghq_root}/github.com/candy12t:${ghq_root}/github.com:.."
+fi
+# bookmark
+# ref: https://threkk.medium.com/how-to-use-bookmarks-in-bash-zsh-6b8074e40774
+# if [ -d "$HOME/.bookmarks" ]; then
+#   export CDPATH=".:$HOME/.bookmarks:/"
+#   alias goto="cd -P"
+# fi
+
+# fzf
+export FZF_DEFAULT_COMMAND="rg --files --sort-files --hidden --column --line-number --no-heading --smart-case -g '!{.git,node_modules}/*'"
+export FZF_DEFAULT_OPTS='--height 60% --reverse'
+# https://github.com/folke/tokyonight.nvim/blob/main/extras/fzf/tokyonight_moon.zsh
+export FZF_DEFAULT_OPTS="$FZF_DEFAULT_OPTS \
+--color=fg:#c8d3f5,bg:#222436,hl:#ff966c \
+--color=fg+:#c8d3f5,bg+:#2f334d,hl+:#ff966c \
+--color=info:#82aaff,prompt:#86e1fc,pointer:#86e1fc \
+--color=marker:#c3e88d,spinner:#c3e88d,header:#c3e88d"
+
+
+##################################################
+## aliases                                      ##
+##################################################
+
+alias ls="ls -F --color"
+alias la="ls -A"
+alias ll="ls -Al"
+alias g="git"
+alias t="tmux"
+alias :q="exit"
+alias gcd='cd "$(git rev-parse --show-toplevel)"'
+
+[ $(command -v bat) ] && alias cat="bat"
+[ $(command -v delta) ] && alias diff="delta"
+[ $(command -v dog) ] && alias dig="dog"
+
+if [ $(command -v eza) ]; then
+  alias ls="eza --classify=auto"
+  alias la="eza --all --classify=auto"
+  alias ll="eza --all --binary --classify=auto --group --header --long"
+  alias tree='eza --all --binary --classify=auto --group --header --long --tree --ignore-glob=".git|.node_modules"'
+fi
+
+
+##################################################
+## functions                                    ##
+##################################################
+
+# forgit
+[ -f ~/.forgit/forgit.plugin.zsh ] && source ~/.forgit/forgit.plugin.zsh
+
+# direnv
+[ "$(command -v direnv)" ] && eval "$(direnv hook zsh)"
+
+# starship
+[ "$(command -v starship)" ] && eval "$(starship init zsh)"
+
+# my functions
+for file in $(ls $HOME/dotfiles/config/zsh/functions/*.zsh); do
+  source $file
+done
