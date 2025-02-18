@@ -9,6 +9,9 @@ readonly DOTFILES_BRANCH="master"
 
 download_repository() {
   echo "Downloading dotfiles..."
+  if [ -d "$DOTFILES_PATH" ]; then
+    echo "dotfiles already exists." && return
+  fi
   git clone "$DOTFILES_REPO" --branch "$DOTFILES_BRANCH" "$DOTFILES_PATH"
 }
 
@@ -50,8 +53,8 @@ link_rc() {
   # ln -sfn "$DOTFILES_PATH/config/wezterm" "$HOME/.config/wezterm"
 
   # zsh
-  ln -sfn "$DOTFILES_PATH/dotfiles/config/zsh/zpreztorc" "$HOME/.zpreztorc"
-  ln -sfn "$DOTFILES_PATH/dotfiles/config/zsh/zshrc"     "$HOME/.zshrc"
+  ln -sfn "$DOTFILES_PATH/config/zsh/zpreztorc" "$HOME/.zpreztorc"
+  ln -sfn "$DOTFILES_PATH/config/zsh/zshrc"     "$HOME/.zshrc"
 
   # starship
   ln -sfn "$DOTFILES_PATH/config/starship.toml" "$HOME/.config/starship.toml"
