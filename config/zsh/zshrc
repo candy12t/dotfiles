@@ -10,7 +10,7 @@ fi
 ##################################################
 
 # PATH
-export PATH="$HOME/dotfiles/bin:$HOME/.local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$HOME/dotfiles/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 ## homebrew
 [ -d "/opt/homebrew" ] && export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
@@ -58,10 +58,7 @@ export VISUAL="nvim"
 
 # CDPATH
 export CDPATH=".:$HOME"
-if [ $(command -v ghq) ]; then
-  ghq_root="$(ghq root)"
-  export CDPATH="$CDPATH:${ghq_root}/github.com/candy12t:${ghq_root}/github.com:.."
-fi
+if [ $(command -v ghq) ]; && export CDPATH="$CDPATH:$(ghq root)/github.com/candy12t:$(ghq root)/github.com:.."
 # bookmark
 # ref: https://threkk.medium.com/how-to-use-bookmarks-in-bash-zsh-6b8074e40774
 # if [ -d "$HOME/.bookmarks" ]; then
@@ -121,3 +118,7 @@ fi
 for file in $(ls $HOME/dotfiles/config/zsh/functions/*.zsh); do
   source $file
 done
+
+
+# read local settings
+[ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
