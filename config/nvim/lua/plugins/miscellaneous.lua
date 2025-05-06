@@ -1,6 +1,6 @@
 return {
   {
-    "phaazon/hop.nvim",
+    "smoka7/hop.nvim",
     version = "v2.*",
     lazy = true,
     event = {
