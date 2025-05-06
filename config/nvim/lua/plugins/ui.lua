@@ -85,7 +85,7 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
-    vesion = "v0.*",
+    vesion = "v1.*",
     lazy = true,
     event = {
       "BufRead",
@@ -97,22 +97,14 @@ return {
     },
   },
   {
-    "norcalli/nvim-colorizer.lua",
-    lazy = true,
-    event = {
-      "BufRead",
-      "BufNewFile",
-    },
-    config = true,
-  },
-  {
     "shortcuts/no-neck-pain.nvim",
-    version = "v1.*",
+    version = "v2.*",
     enabled = false,
     config = true,
   },
   {
     "MeanderingProgrammer/markdown.nvim",
+    version = "v8.*",
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",

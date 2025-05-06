@@ -5,7 +5,6 @@ return {
   },
   {
     "nvim-lua/plenary.nvim",
-    version = "v0.*",
     lazy = true,
   },
   {

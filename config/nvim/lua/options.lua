@@ -24,7 +24,7 @@ end
 
 set_indent("go,make", false, 4)
 set_indent("rust,python", true, 4)
-set_indent("typescript,javascript,ruby,sh,yaml,json,lua,markdown", true, 2)
+set_indent("typescript,javascript,ruby,sh,yaml,json,lua,markdown,typespec", true, 2)
 set_indent("gitconfig", false, 8)
 
 local function trim_trailing_whitespace()

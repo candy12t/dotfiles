@@ -1,107 +1,7 @@
-local servers = {
-  "gopls",
-  "rust_analyzer",
-  "lua_ls",
-}
-
 return {
-  {
-    "neovim/nvim-lspconfig",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "hrsh7th/nvim-cmp",
-      "williamboman/mason-lspconfig.nvim",
-      "j-hui/fidget.nvim",
-      "lukas-reineke/lsp-format.nvim",
-    },
-    version = "v0.1.x",
-    lazy = true,
-    event = {
-      "BufRead",
-      "BufNewFile",
-    },
-    config = function()
-      local lspconfig = require("lspconfig")
-      local capabilities = require("cmp_nvim_lsp").default_capabilities()
-
-      local on_attach = function(client, bufnr)
-        require("lsp-format").on_attach(client, bufnr)
-
-        if client.server_capabilities.documentSymbolProvider then
-          require("nvim-navic").attach(client, bufnr)
-        end
-
-        if client.server_capabilities.inlayHintProvider then
-          vim.lsp.inlay_hint.enable(vim.lsp.inlay_hint.is_enabled({}), { bufnr = bufnr })
-
-          -- toggle inlay_hint keymap
-          vim.keymap.set("n", "<leader>lh", function()
-            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
-          end)
-        end
-      end
-
-      lspconfig.efm.setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-        init_options = {
-          documentFormatting = true,
-          documentRangeFormatting = true,
-        },
-      })
-
-      lspconfig.gopls.setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-        settings = {
-          gopls = {
-            hints = {
-              assignVariableTypes = true,
-              compositeLiteralFields = true,
-              compositeLiteralTypes = true,
-              constantValues = true,
-              functionTypeParameters = true,
-              parameterNames = true,
-              rangeVariableTypes = true,
-            },
-          },
-        },
-      })
-
-      lspconfig.rust_analyzer.setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-        settings = {
-          ["rust-analyzer"] = {
-            check = {
-              command = "clippy",
-            },
-          },
-        },
-      })
-
-      lspconfig.lua_ls.setup({
-        on_attach = on_attach,
-        capabilities = capabilities,
-        settings = {
-          Lua = {
-            workspace = {
-              library = {
-                vim.fn.expand("$VIMRUNTIME/lua"),
-              },
-            },
-            diagnostics = {
-              globals = { "hs" },
-            },
-          },
-        },
-      })
-    end,
-  },
   {
     "williamboman/mason.nvim",
     version = "v1.*",
-    lazy = true,
     config = true,
   },
   {
@@ -109,16 +9,43 @@ return {
     version = "v1.*",
     dependencies = {
       "williamboman/mason.nvim",
+      "neovim/nvim-lspconfig",
     },
-    lazy = true,
     opts = {
-      ensure_installed = servers,
+      automatic_installation = true,
+      ensure_installed = {
+        "efm",
+        "gopls",
+        "lua_ls",
+        "rust_analyzer",
+        "tsp_server",
+      },
     },
+    init = function()
+      vim.lsp.config("*", {
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+        on_attach = function(client, bufnr)
+          require("lsp-format").on_attach(client, bufnr)
+
+          if client.server_capabilities.documentSymbolProvider then
+            require("nvim-navic").attach(client, bufnr)
+          end
+
+          if client.server_capabilities.inlayHintProvider then
+            vim.lsp.inlay_hint.enable(vim.lsp.inlay_hint.is_enabled({}), { bufnr = bufnr })
+            -- toggle inlay_hint keymap
+            vim.keymap.set("n", "<leader>lh", function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
+            end)
+          end
+        end,
+      })
+      vim.lsp.enable(require("mason-lspconfig").get_installed_servers())
+    end,
   },
   {
     "j-hui/fidget.nvim",
     version = "v1.*",
-    lazy = true,
     config = true,
   },
   {
@@ -143,5 +70,9 @@ return {
       vim.keymap.set("n", "<leader>lo", ":Lspsaga outline<CR>", keymap_opts)
       vim.keymap.set("n", "<leader><S-t>", ":Lspsaga term_toggle<CR>", keymap_opts)
     end,
+  },
+  {
+    "lukas-reineke/lsp-format.nvim",
+    config = true,
   },
 }
