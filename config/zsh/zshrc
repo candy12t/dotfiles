@@ -45,6 +45,11 @@ if [ -d "$HOME/.volta" ]; then
   export PATH="$VOLTA_HOME/bin:$PATH"
 fi
 
+## deno
+if [ -d "$HOME/.deno" ]; then
+  source "$HOME/.deno/env"
+fi
+
 ## java
 ### openjdk
 [ -d "/opt/homebrew/opt/openjdk/bin" ] && export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
@@ -55,6 +60,7 @@ export VISUAL="nvim"
 
 # FPATH
 [ $(command -v brew) ] && export FPATH="$(brew --prefix)/share/zsh/site-functions:$FPATH"
+[ -d "$HOME/.zsh/completions" ] && export FPATH="$HOME/.zsh/completions:$FPATH"
 
 # CDPATH
 export CDPATH=".:$HOME"
@@ -122,3 +128,4 @@ done
 
 # read local settings
 [ -f "$HOME/.zshrc.local" ] && source "$HOME/.zshrc.local"
+
