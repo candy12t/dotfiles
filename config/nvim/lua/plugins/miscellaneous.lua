@@ -38,4 +38,14 @@ return {
     },
     config = true,
   },
+  {
+    "candy12t/goerrfold.nvim",
+    config = function()
+      require("goerrfold").setup({})
+
+      vim.keymap.set("n", "<Leader>gf", ":GoErrFold fold<CR>", { noremap = true })
+      vim.keymap.set("n", "<Leader>gu", ":GoErrFold unfold<CR>", { noremap = true })
+      vim.keymap.set("n", "<Leader>gt", ":GoErrFold toggle<CR>", { noremap = true })
+    end,
+  },
 }
