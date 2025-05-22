@@ -1,18 +1,17 @@
 return {
   {
-    "williamboman/mason.nvim",
-    version = "v1.*",
-    config = true,
+    "mason-org/mason.nvim",
+    version = "v2.*",
+    opts = {},
   },
   {
-    "williamboman/mason-lspconfig.nvim",
-    version = "v1.*",
+    "mason-org/mason-lspconfig.nvim",
+    version = "v2.*",
     dependencies = {
-      "williamboman/mason.nvim",
+      "mason-org/mason.nvim",
       "neovim/nvim-lspconfig",
     },
     opts = {
-      automatic_installation = true,
       ensure_installed = {
         "efm",
         "gopls",
@@ -20,6 +19,7 @@ return {
         "rust_analyzer",
         "tsp_server",
       },
+      automatic_enable = true,
     },
     init = function()
       vim.lsp.config("*", {
@@ -40,7 +40,9 @@ return {
           end
         end,
       })
-      vim.lsp.enable(require("mason-lspconfig").get_installed_servers())
+      vim.diagnostic.config({
+        virtual_text = true,
+      })
     end,
   },
   {
