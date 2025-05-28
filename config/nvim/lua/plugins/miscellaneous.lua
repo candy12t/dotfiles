@@ -40,6 +40,7 @@ return {
   },
   {
     "candy12t/goerrfold.nvim",
+    enabled = false,
     config = function()
       require("goerrfold").setup({})
 
