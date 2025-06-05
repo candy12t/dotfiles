@@ -18,6 +18,7 @@ return {
         "lua_ls",
         "rust_analyzer",
         "tsp_server",
+        "yamlls",
       },
       automatic_enable = true,
     },
@@ -41,7 +42,18 @@ return {
         end,
       })
       vim.diagnostic.config({
-        virtual_text = true,
+        virtual_text = {
+          severity = {
+            max = vim.diagnostic.severity.HINT,
+            min = vim.diagnostic.severity.HINT,
+          },
+        },
+        virtual_lines = {
+          severity = {
+            max = vim.diagnostic.severity.ERROR,
+            min = vim.diagnostic.severity.INFO,
+          },
+        },
       })
     end,
   },
