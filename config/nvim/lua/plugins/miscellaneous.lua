@@ -39,14 +39,22 @@ return {
     config = true,
   },
   {
-    "candy12t/goerrfold.nvim",
-    enabled = false,
+    "kevinhwang91/nvim-ufo",
+    dependencies = {
+      "kevinhwang91/promise-async",
+    },
     config = function()
-      require("goerrfold").setup({})
+      vim.o.foldcolumn = "1"
+      vim.o.foldenable = true
 
-      vim.keymap.set("n", "<Leader>gf", ":GoErrFold fold<CR>", { noremap = true })
-      vim.keymap.set("n", "<Leader>gu", ":GoErrFold unfold<CR>", { noremap = true })
-      vim.keymap.set("n", "<Leader>gt", ":GoErrFold toggle<CR>", { noremap = true })
+      require("ufo").setup({
+        provider_selector = function(_, ft, _)
+          local ftMap = {
+            go = { "treesitter" },
+          }
+          return ftMap[ft] or ""
+        end,
+      })
     end,
   },
 }
