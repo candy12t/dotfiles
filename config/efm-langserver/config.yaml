@@ -18,6 +18,8 @@ tools:
     format-command: 'clang-format'
     root-markers:
       - '.clang-format'
+  jq: &jq
+    format-command: 'jq .'
 languages:
   lua:
     - <<: *stylua
@@ -28,3 +30,5 @@ languages:
     - <<: *rustfmt
   proto:
     - <<: *clangformat
+  json:
+    - <<: *jq
