@@ -65,4 +65,14 @@ return {
       -- model = "claude-sonnet-4",
     },
   },
+  {
+    "ravitemer/mcphub.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    build = "npm install -g mcp-hub@latest",
+    opts = {
+      config = vim.fn.expand("~/dotfiles/config/mcp/servers.json"),
+    },
+  },
 }
