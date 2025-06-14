@@ -18,8 +18,8 @@ tools:
     format-command: 'clang-format'
     root-markers:
       - '.clang-format'
-  jq: &jq
-    format-command: 'jq .'
+  json-fixjson: &fixjson
+    format-command: 'fixjson'
 languages:
   lua:
     - <<: *stylua
@@ -31,4 +31,4 @@ languages:
   proto:
     - <<: *clangformat
   json:
-    - <<: *jq
+    - <<: *fixjson
