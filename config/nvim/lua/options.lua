@@ -63,5 +63,11 @@ vim.opt.incsearch = true
 vim.opt.smartcase = true
 vim.opt.wrapscan = true
 
+-- fold
+vim.opt.foldcolumn = "1"
+vim.opt.foldenable = true
+
 -- misc
 vim.opt.clipboard:append("unnamedplus")
+
+vim.opt.splitright = true

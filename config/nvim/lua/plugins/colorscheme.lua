@@ -1,16 +1,11 @@
 return {
   "folke/tokyonight.nvim",
-  version = "v4.*",
   lazy = false,
   priority = 1000,
-  config = function()
-    require("tokyonight").setup({
-      style = "moon",
-      on_highlights = function(hl, _)
-        hl.CmpItemKindVariable = "@constructor"
-        hl.CmpItemKindFile = "Directory"
-      end,
-    })
+  opts = {
+    style = "moon",
+  },
+  init = function()
     vim.cmd([[colorscheme tokyonight]])
   end,
 }
