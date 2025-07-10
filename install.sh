@@ -61,6 +61,11 @@ link_rc() {
 
   # tmux
   ln -sfn "$DOTFILES_PATH/config/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+
+  # claude
+  mkdir -p "$HOME/.claude"
+  ln -sfn "$DOTFILES_PATH/config/claude/CLAUDE.md" "$HOME/.claude/CLAUDE.md"
+  ln -sfn "$DOTFILES_PATH/config/claude/settings.json" "$HOME/.claude/settings.json"
 }
 
 main() {
