@@ -73,8 +73,11 @@
       "Write(~/.ssh/**)"
     ]
   },
+  "statusLine": {
+    "type": "command",
+    "command": "npx ccusage@latest statusline"
+  },
   "model": "sonnet",
   "preferredNotifChannel": "iterm2_with_bell",
   "theme": "dark-daltonized"
 }
-
