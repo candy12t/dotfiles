@@ -3,7 +3,7 @@ vim.g.mapleader = " "
 local keymap_opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<ESC><ESC>", ":<C-u>set nohlsearch!<CR>", keymap_opts)
 
-vim.keymap.set("n", "ss", ":split<CR><C-w>w", keymap_opts)
+vim.keymap.set("n", "ss", ":split<CR>", keymap_opts)
 vim.keymap.set("n", "sv", ":vsplit<CR>", keymap_opts)
 vim.keymap.set("n", "sj", "<C-w>j", keymap_opts)
 vim.keymap.set("n", "sk", "<C-w>k", keymap_opts)

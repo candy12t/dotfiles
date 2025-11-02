@@ -67,7 +67,9 @@ vim.opt.wrapscan = true
 vim.opt.foldcolumn = "1"
 vim.opt.foldenable = true
 
+-- split
+vim.opt.splitright = true
+vim.opt.splitbelow = true
+
 -- misc
 vim.opt.clipboard:append("unnamedplus")
-
-vim.opt.splitright = true
