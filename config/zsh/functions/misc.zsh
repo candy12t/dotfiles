@@ -12,3 +12,8 @@ cd_daily() {
   mkdir -p "$daily"
   cd "$daily"
 }
+
+download() {
+  local url=$1
+  curl -fsSL "$1" -O
+}
