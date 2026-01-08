@@ -1,7 +1,0 @@
-# CLAUDE.md
-
-## NEVER
-
-## YOU MUST
-
-## IMPORTANT
