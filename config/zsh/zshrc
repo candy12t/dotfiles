@@ -18,6 +18,9 @@ export PATH="$HOME/dotfiles/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/u
 ## fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+## eza
+export EZA_CONFIG_DIR="$HOME/.config/eza"
+
 ## mysql-client
 [ -d "/usr/local/opt/mysql-client" ] && export PATH="/usr/local/opt/mysql-client/bin:$PATH"
 [ -d "/opt/homebrew/opt/mysql-client" ] && export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
