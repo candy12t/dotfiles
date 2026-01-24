@@ -61,3 +61,5 @@
 	plus-empty-line-marker-style  = syntax "#273849"
 	line-numbers-plus-style       = "#627259"
 	line-numbers-zero-style       = "#3b4261"
+[wt]
+	basedir = .worktrees

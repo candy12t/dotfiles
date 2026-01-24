@@ -123,6 +123,9 @@ fi
 # starship
 [ "$(command -v starship)" ] && eval "$(starship init zsh)"
 
+# git wt
+[ "$(command -v git-wt)" ] && eval "$(git wt --init zsh)"
+
 # my functions
 for file in $(ls $HOME/dotfiles/config/zsh/functions/*.zsh); do
   source $file
