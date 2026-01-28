@@ -39,6 +39,8 @@ link_rc() {
   ln -sfn "$DOTFILES_PATH/config/claude/settings.json" "$HOME/.claude/settings.json"
   # eza
   ln -sfn "$DOTFILES_PATH/config/eza" "$HOME/.config/eza"
+  # yazi
+  ln -sfn "$DOTFILES_PATH/config/yazi" "$HOME/.config/yazi"
 }
 
 main() {
