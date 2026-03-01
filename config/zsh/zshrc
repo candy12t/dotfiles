@@ -67,7 +67,7 @@ export VISUAL="nvim"
 
 # CDPATH
 export CDPATH=".:$HOME"
-if [ $(command -v ghq) ]; && export CDPATH="$CDPATH:$(ghq root)/github.com/candy12t:$(ghq root)/github.com:.."
+[ $(command -v ghq) ] && export CDPATH="$CDPATH:$(ghq root)/github.com/candy12t:$(ghq root)/github.com:.."
 # bookmark
 # ref: https://threkk.medium.com/how-to-use-bookmarks-in-bash-zsh-6b8074e40774
 # if [ -d "$HOME/.bookmarks" ]; then
