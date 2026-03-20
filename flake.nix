@@ -19,18 +19,18 @@
 
   outputs =
     { self, nixpkgs, home-manager, nix-darwin, ... }:
-    let
-      system = "aarch64-darwin";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
     {
-      homeConfigurations."candy12t" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./home-manager/home.nix ];
-      };
       darwinConfigurations."MacBookAir" = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit self; };
-        modules = [ ./nix-darwin/configuration.nix ];
+        modules = [
+          ./nix-darwin/configuration.nix
+          home-manager.darwinModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.candy12t = ./home-manager/home.nix;
+          }
+        ];
       };
     };
 }
