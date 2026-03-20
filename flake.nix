@@ -18,7 +18,7 @@
   };
 
   outputs =
-    { nixpkgs, home-manager, nix-darwin, ... }:
+    { self, nixpkgs, home-manager, nix-darwin, ... }:
     let
       system = "aarch64-darwin";
       pkgs = nixpkgs.legacyPackages.${system};
@@ -29,6 +29,7 @@
         modules = [ ./home-manager/home.nix ];
       };
       darwinConfigurations."MacBookAir" = nix-darwin.lib.darwinSystem {
+        specialArgs = { inherit self; };
         modules = [ ./nix-darwin/configuration.nix ];
       };
     };
