@@ -5,12 +5,17 @@ if [[ -s "${ZDOTDIR:-$HOME}/.zprezto/init.zsh" ]]; then
   source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
 fi
 
+# Nix
+if [ -e "$HOME/.nix-profile/etc/profile.d/hm-session-vars.sh" ]; then
+  . $HOME/.nix-profile/etc/profile.d/hm-session-vars.sh
+fi
+
 ##################################################
 ## environment variables                        ##
 ##################################################
 
 # PATH
-export PATH="$HOME/dotfiles/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="$PATH:$HOME/dotfiles/bin:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 ## homebrew
 [ -d "/opt/homebrew" ] && export PATH="/opt/homebrew/bin:/opt/homebrew/sbin:$PATH"
