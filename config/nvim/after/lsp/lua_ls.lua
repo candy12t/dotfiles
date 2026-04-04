@@ -1,9 +1,9 @@
 return {
   settings = {
     Lua = {
-      format = {
-        enable = false,
-      },
+      codeLens = { enable = false },
+      format = { enable = false },
+      hint = { enable = false },
       workspace = {
         library = {
           vim.fn.expand("$VIMRUNTIME/lua"),
