@@ -18,21 +18,6 @@ return {
         lualine_b = { "branch", "diff", "diagnostics" },
         lualine_c = { "filename" },
         lualine_x = {
-          {
-            "copilot",
-            symbols = {
-              status = {
-                icons = {
-                  enabled = require("icons").Copilot .. " ",
-                  sleep = require("icons").Copilot .. " ",
-                  disabled = require("icons").CopilotError .. " ",
-                  warning = require("icons").CopilotWarning .. " ",
-                  unknown = require("icons").Ban .. " ",
-                },
-              },
-            },
-            show_colors = true,
-          },
           { "lsp_status", ignore_lsp = { "copilot" } },
           "encoding",
           { "fileformat", icons_enabled = false },
