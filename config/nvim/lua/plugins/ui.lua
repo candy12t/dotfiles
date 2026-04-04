@@ -79,7 +79,7 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
-    vesion = "v1.*",
+    vesion = "v2.*",
     opts = {
       numhl = true,
       current_line_blame = true,
@@ -88,7 +88,7 @@ return {
   { "shortcuts/no-neck-pain.nvim", version = "v2.*", config = true },
   {
     "kevinhwang91/nvim-ufo",
-    version = "v1.*",
+    -- version = "v1.*",
     dependencies = {
       "kevinhwang91/promise-async",
     },
