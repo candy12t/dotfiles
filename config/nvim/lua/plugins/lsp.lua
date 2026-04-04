@@ -10,8 +10,18 @@ return {
     },
     init = function()
       vim.lsp.config("*", {
-        on_attach = require("lsp-format").on_attach,
         capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
+        on_attach = function(client, bufnr)
+          require("lsp-format").on_attach(client, bufnr)
+
+          if client:supports_method("textDocument/codeLens") then
+            vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled())
+          end
+
+          if client:supports_method("textDocument/inlayHint") then
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+          end
+        end,
       })
       vim.diagnostic.config({
         virtual_text = true,
