@@ -15,10 +15,14 @@
       url = "github:nix-darwin/nix-darwin";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    llm-agents = {
+      url = "github:numtide/llm-agents.nix";
+    };
   };
 
   outputs =
-    { self, nixpkgs, home-manager, nix-darwin, ... }:
+    { self, nixpkgs, home-manager, nix-darwin, llm-agents, ... }:
     {
       darwinConfigurations."MacBookAir" = nix-darwin.lib.darwinSystem {
         specialArgs = { inherit self; };
@@ -29,6 +33,11 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.candy12t = ./home-manager/home.nix;
+          }
+          {
+            environment.systemPackages = with llm-agents.packages.aarch64-darwin; [
+              claude-code
+            ];
           }
         ];
       };
