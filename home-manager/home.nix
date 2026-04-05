@@ -78,5 +78,6 @@
     ./git.nix
     ./eza.nix
     ./bat.nix
+    ./starship.nix
   ];
 }
