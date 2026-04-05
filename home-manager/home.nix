@@ -79,5 +79,6 @@
     ./eza.nix
     ./bat.nix
     ./starship.nix
+    ./tmux.nix
   ];
 }
