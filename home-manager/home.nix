@@ -77,5 +77,6 @@
   imports = [
     ./git.nix
     ./eza.nix
+    ./bat.nix
   ];
 }
