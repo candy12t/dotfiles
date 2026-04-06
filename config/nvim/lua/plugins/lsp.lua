@@ -1,15 +1,14 @@
 return {
   {
-    "mason-org/mason-lspconfig.nvim",
-    version = "2.*",
+    "neovim/nvim-lspconfig",
     dependencies = {
-      { "mason-org/mason.nvim", version = "2.*", opts = {} },
-      "neovim/nvim-lspconfig",
       "lukas-reineke/lsp-format.nvim",
       "hrsh7th/cmp-nvim-lsp",
     },
-    init = function()
-      vim.lsp.config("*", {
+    config = function()
+      local servers = { "efm", "gopls", "lua_ls", "nil_ls", "rust-analyzer" }
+
+      local opt = {
         capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
         on_attach = function(client, bufnr)
           require("lsp-format").on_attach(client, bufnr)
@@ -22,23 +21,17 @@ return {
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
           end
         end,
-      })
+      }
+
       vim.diagnostic.config({
         virtual_text = true,
       })
+
+      for _, server in ipairs(servers) do
+        vim.lsp.config(server, opt)
+        vim.lsp.enable(server)
+      end
     end,
-    opts = {
-      ensure_installed = {
-        "efm",
-        "gopls",
-        "lua_ls",
-        "rust_analyzer",
-        "terraformls",
-        "tsp_server",
-        "yamlls",
-      },
-      automatic_enable = true,
-    },
   },
   {
     "glepnir/lspsaga.nvim",

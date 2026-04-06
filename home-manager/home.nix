@@ -80,5 +80,6 @@
     ./bat.nix
     ./starship.nix
     ./tmux.nix
+    ./nvim.nix
   ];
 }
