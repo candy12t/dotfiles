@@ -8,11 +8,14 @@ let
     sha256 = "sha256-a9iRWue7DB7s/wNdxqqB51Jya5P9X6sDftqhdmKggU0=";
   };
 
-  fromYaml = path: builtins.fromJSON (
-    builtins.readFile (
-      pkgs.runCommand "yaml-to-json" { } "${pkgs.remarshal}/bin/remarshal -i ${path} -if yaml -of json > $out"
-    )
-  );
+  fromYaml =
+    path:
+    builtins.fromJSON (
+      builtins.readFile (
+        pkgs.runCommand "yaml-to-json" { }
+          "${pkgs.remarshal}/bin/remarshal -i ${path} -if yaml -of json > $out"
+      )
+    );
   theme = fromYaml "${src}/extras/eza/tokyonight_moon.yml";
 in
 {

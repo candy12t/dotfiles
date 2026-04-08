@@ -15,7 +15,6 @@
     gopls
     lua-language-server
     nil
-    rust-analyzer
 
     # formatter
     gofumpt

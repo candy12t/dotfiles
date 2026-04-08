@@ -19,20 +19,37 @@
     llm-agents = {
       url = "github:numtide/llm-agents.nix";
     };
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
-    { self, nixpkgs, home-manager, nix-darwin, llm-agents, ... }:
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      nix-darwin,
+      llm-agents,
+      nix-index-database,
+      ...
+    }@inputs:
+    let
+      inherit (self) outputs;
+    in
     {
       darwinConfigurations."MacBookAir" = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit self; };
+        specialArgs = { inherit inputs outputs; };
         modules = [
           ./nix-darwin/configuration.nix
+          nix-index-database.darwinModules.nix-index
           home-manager.darwinModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit self; };
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.candy12t = ./home-manager/home.nix;
           }
           {

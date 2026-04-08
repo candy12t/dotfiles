@@ -1,4 +1,4 @@
-{ self, ... }:
+{ inputs, ... }:
 {
   nixpkgs = {
     hostPlatform = "aarch64-darwin";
@@ -6,7 +6,7 @@
 
   system = {
     stateVersion = 6;
-    configurationRevision = self.rev or self.dirtyRev or null;
+    configurationRevision = inputs.rev or inputs.dirtyRev or null;
     primaryUser = "candy12t";
   };
 

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   # Home Manager needs a bit of information about you and the paths it should
@@ -17,7 +17,24 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = [
+  home.packages = with pkgs; [
+    comma
+    curl
+    direnv
+    docker
+    docker-buildx
+    doggo
+    gh
+    ghq
+    go
+    htop
+    jq
+    lima
+    lua
+    mycli
+    mysql84
+    nb
+    rustup
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
     # pkgs.hello
@@ -75,11 +92,15 @@
   programs.home-manager.enable = true;
 
   imports = [
+    inputs.nix-index-database.homeModules.default
     ./git.nix
     ./eza.nix
     ./bat.nix
     ./starship.nix
     ./tmux.nix
     ./nvim.nix
+    ./zsh.nix
+    ./fzf.nix
+    ./go.nix
   ];
 }
