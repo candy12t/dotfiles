@@ -30,6 +30,9 @@
     mysql84
     nb
     rustup
+
+    # font
+    hackgen-nf-font
   ];
 
   programs.home-manager.enable = true;
