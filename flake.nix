@@ -37,27 +37,46 @@
       ...
     }@inputs:
     let
-      inherit (self) outputs;
+      mkDarwinSystem =
+        hostConfig:
+        nix-darwin.lib.darwinSystem {
+          system = hostConfig.system;
+          specialArgs = {
+            inherit inputs;
+            inherit (hostConfig) username homeDir hostname;
+          };
+          modules = [
+            ./darwin
+            ./darwin/system.nix
+            nix-index-database.darwinModules.nix-index
+            home-manager.darwinModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = {
+                inherit inputs;
+                inherit (hostConfig) username homeDir;
+              };
+              home-manager.users.${hostConfig.username} = ./home/default.nix;
+            }
+            {
+              environment.systemPackages = [
+                llm-agents.packages.${hostConfig.system}.claude-code
+              ];
+            }
+          ];
+        };
     in
     {
-      darwinConfigurations."MacBookAir" = nix-darwin.lib.darwinSystem {
-        specialArgs = { inherit inputs outputs; };
-        modules = [
-          ./nix-darwin/configuration.nix
-          nix-index-database.darwinModules.nix-index
-          home-manager.darwinModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.candy12t = ./home-manager/home.nix;
-          }
-          {
-            environment.systemPackages = with llm-agents.packages.aarch64-darwin; [
-              claude-code
-            ];
-          }
-        ];
-      };
+      darwinConfigurations =
+        let
+          hosts = [ (import ./hosts/MacBookAir.nix) ];
+        in
+        builtins.listToAttrs (
+          map (h: {
+            name = h.hostname;
+            value = mkDarwinSystem h;
+          }) hosts
+        );
     };
 }
