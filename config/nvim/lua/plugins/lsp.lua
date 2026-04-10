@@ -5,14 +5,24 @@ return {
     dependencies = {
       { "mason-org/mason.nvim", version = "2.*", opts = {} },
       "neovim/nvim-lspconfig",
-      "lukas-reineke/lsp-format.nvim",
       "hrsh7th/cmp-nvim-lsp",
     },
     init = function()
       vim.lsp.config("*", {
         capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),
         on_attach = function(client, bufnr)
-          require("lsp-format").on_attach(client, bufnr)
+          local format_group = vim.api.nvim_create_augroup("LspFormat", { clear = false })
+          vim.api.nvim_clear_autocmds({
+            buffer = bufnr,
+            group = format_group,
+          })
+          vim.api.nvim_create_autocmd("BufWritePre", {
+            buffer = bufnr,
+            group = format_group,
+            callback = function()
+              vim.lsp.buf.format({ async = false, timeout_ms = 1000 })
+            end,
+          })
 
           if client:supports_method("textDocument/codeLens") then
             vim.lsp.codelens.enable(not vim.lsp.codelens.is_enabled())
