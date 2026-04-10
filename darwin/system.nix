@@ -66,4 +66,28 @@
     reattach = true;
     touchIdAuth = true;
   };
+
+  homebrew = {
+    enable = true;
+    enableZshIntegration = true;
+    onActivation = {
+      autoUpdate = true;
+      upgrade = true;
+      cleanup = "uninstall";
+    };
+
+    casks = [
+      "1password"
+      "blu-ray-player"
+      "brave-browser"
+      "chatgpt"
+      "claude"
+      "cmd-eikana"
+      "discord"
+      "google-chrome"
+      "iterm2"
+      "slack"
+      "visual-studio-code"
+    ];
+  };
 }
