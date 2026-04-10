@@ -33,6 +33,21 @@
 
     # font
     hackgen-nf-font
+
+    # # ctf
+    # aircrack-ng
+    # binwalk
+    # burpsuite
+    # exiftool
+    # exploitdb
+    # foremost
+    # ghidra-bin
+    # weechat
+    # wireshark
+    #
+    # # misc
+    # ffmpeg
+    # yt-dlp
   ];
 
   programs.home-manager.enable = true;
