@@ -35,11 +35,13 @@ nix flake update llm-agents
 
 ### ディレクトリ構成
 
-- **`flake.nix`** — エントリーポイント。`mkDarwinSystem` ヘルパー関数で `hosts/` 以下の各ホスト設定から `darwinConfigurations` を生成する。
+- **`flake.nix`** — エントリーポイント。`mkDarwinSystem` ヘルパー関数で `hosts/` 以下の各ホスト設定から `darwinConfigurations` を生成する。主要 flake inputs:
+  - `llm-agents` — `claude-code` をシステムパッケージとして提供
+  - `nix-index-database` — `comma`（`, <cmd>` で任意の nix パッケージを一時実行できる）を提供
 - **`hosts/`** — ホストごとの設定ファイル（hostname、username、system、homeDir を定義）。新しいマシンを追加する場合はここにファイルを追加し、`flake.nix` の `hosts` リストに追記する。
 - **`darwin/`** — nix-darwin モジュール。macOS システム設定（Dock、Finder、トラックパッドなど）と Homebrew の cask 管理を行う。
 - **`home/`** — home-manager モジュール。ユーザーレベルのパッケージと各ツールの設定を管理する。
-- **`config/`** — 実際の設定ファイル（nvim、efm-langserver、iterm、claude）。home-manager から `mkOutOfStoreSymlink` でシンボリックリンクされるため、**変更がリビルドなしで即反映される**。
+- **`config/`** — 実際の設定ファイル。`config/nvim/` と `config/efm-langserver/` は home-manager から `mkOutOfStoreSymlink` でシンボリックリンクされるため、**変更がリビルドなしで即反映される**。`config/iterm/` と `config/claude/` は手動管理（シンボリックリンク不使用）。
 
 ### 設定の分担
 
@@ -47,9 +49,11 @@ nix flake update llm-agents
 |---|---|
 | macOS システム設定 | `darwin/system.nix` |
 | Homebrew casks | `darwin/system.nix` |
+| ユーザー情報（username, homeDir） | `hosts/<hostname>.nix` |
 | ユーザーパッケージ（CLI ツールなど） | `home/default.nix` |
 | シェル・ツール設定（zsh、tmux など） | `home/<tool>.nix` |
 | Neovim / efm-langserver の設定 | `config/nvim/`、`config/efm-langserver/` |
+| 新しいツールモジュール追加 | `home/<tool>.nix` を作成し `home/default.nix` の `imports` に追記 |
 
 ### Neovim 設定の扱い
 
@@ -58,3 +62,13 @@ nix flake update llm-agents
 ### Lua フォーマッター
 
 `stylua.toml` がリポジトリルートにある。Neovim の Lua 設定を編集する際は stylua の設定に従うこと。
+
+### Nix メンテナンス
+
+```bash
+# 古い世代を削除してストアを整理
+nix-collect-garbage -d
+
+# システム全体のプロファイルも含めて GC
+sudo nix-collect-garbage -d
+```
