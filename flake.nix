@@ -70,7 +70,7 @@
     {
       darwinConfigurations =
         let
-          hosts = [ (import ./hosts/MacBookAir.nix) ];
+          hosts = [ (import ./hosts) ];
         in
         builtins.listToAttrs (
           map (h: {

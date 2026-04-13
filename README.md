@@ -27,6 +27,20 @@ git clone https://github.com/candy12t/dotfiles.git ~/dotfiles
 cd ~/dotfiles
 ```
 
+### Customize host configuration
+
+Edit `hosts/default.nix` to match your machine:
+
+```nix
+{
+  hostname = "MacBookAir";     # result of: scutil --get LocalHostName
+  username = "candy12t";       # result of: whoami
+  system = "aarch64-darwin";   # "aarch64-darwin" for Apple Silicon, "x86_64-darwin" for Intel
+  homeDir = "/Users/candy12t"; # result of: echo $HOME
+}
+```
+
+
 ### Apply configuration
 
 On first run (when nix-darwin is not yet installed):
