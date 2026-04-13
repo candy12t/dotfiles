@@ -20,6 +20,7 @@
     gofumpt
     stylua
     nixfmt
+    clang-tools
 
     tree-sitter
   ];
