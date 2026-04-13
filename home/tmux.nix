@@ -1,13 +1,4 @@
-{ pkgs, ... }:
-
-let
-  tokyonight = pkgs.fetchFromGitHub {
-    owner = "folke";
-    repo = "tokyonight.nvim";
-    rev = "cdc07ac78467a233fd62c493de29a17e0cf2b2b6";
-    sha256 = "sha256-a9iRWue7DB7s/wNdxqqB51Jya5P9X6sDftqhdmKggU0=";
-  };
-in
+{ pkgs, tokyonightSrc, ... }:
 {
   programs.tmux = {
     enable = true;
@@ -56,7 +47,7 @@ in
       set-option -g status-position top
 
       # colorscheme
-      source-file ${tokyonight}/extras/tmux/tokyonight_moon.tmux
+      source-file ${tokyonightSrc}/extras/tmux/tokyonight_moon.tmux
       set -g @prefix_highlight_output_prefix "#[fg=#82aaff]#[bg=#1e2030]#[fg=#1e2030]#[bg=#82aaff]"
 
       # prefix-highlight (must be loaded after colorscheme sets status-right with #{prefix_highlight})

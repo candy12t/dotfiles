@@ -1,13 +1,4 @@
-{ config, pkgs, ... }:
-
-let
-  src = pkgs.fetchFromGitHub {
-    owner = "folke";
-    repo = "tokyonight.nvim";
-    rev = "cdc07ac78467a233fd62c493de29a17e0cf2b2b6";
-    sha256 = "sha256-a9iRWue7DB7s/wNdxqqB51Jya5P9X6sDftqhdmKggU0=";
-  };
-in
+{ config, tokyonightSrc, ... }:
 {
   programs.delta = {
     enable = true;
@@ -80,7 +71,7 @@ in
     };
     includes = [
       {
-        path = "${src}/extras/delta/tokyonight_moon.gitconfig";
+        path = "${tokyonightSrc}/extras/delta/tokyonight_moon.gitconfig";
       }
     ];
     ignores = [
