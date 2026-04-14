@@ -12,6 +12,10 @@ let
   theme = fromYaml "${tokyonightSrc}/extras/eza/tokyonight_moon.yml";
 in
 {
+  home.sessionVariables = {
+    EZA_CONFIG_DIR = "$HOME/.config/eza";
+  };
+
   programs.eza = {
     enable = true;
     theme = theme;
