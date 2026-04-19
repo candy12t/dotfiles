@@ -9,4 +9,8 @@
       ];
     };
   };
+
+  home.sessionPath = [
+    "$(go env GOPATH)/bin"
+  ];
 }
