@@ -32,5 +32,6 @@
     withNodeJs = false;
     withPython3 = false;
     withRuby = false;
+    sideloadInitLua = true;
   };
 }
