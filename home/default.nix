@@ -13,6 +13,17 @@ let
     rev = "cdc07ac78467a233fd62c493de29a17e0cf2b2b6";
     sha256 = "sha256-a9iRWue7DB7s/wNdxqqB51Jya5P9X6sDftqhdmKggU0=";
   };
+
+  john = pkgs.john.overrideAttrs (old: {
+    version = "bleeding-jumbo-2026-04-12";
+    src = pkgs.fetchFromGitHub {
+      owner = "openwall";
+      repo = "john";
+      rev = "f514ece8ec4ae5e38ad75aaa322eac86d73dcd76";
+      sha256 = "sha256-Fzt9KnMFBTdPpQMSlXe/zG9LMylAZnC6uzU4yJ6HSUk=";
+    };
+    patches = [ ];
+  });
 in
 {
   _module.args.tokyonightSrc = tokyonightSrc;
@@ -47,16 +58,22 @@ in
     # font
     hackgen-nf-font
 
-    # # ctf
-    # aircrack-ng
-    # binwalk
+    # ctf
+    aircrack-ng
+    binwalk
     # burpsuite
-    # exiftool
-    # exploitdb
-    # foremost
-    # ghidra-bin
-    # weechat
-    # wireshark
+    exiftool
+    exploitdb
+    foremost
+    gdb
+    ghidra-bin
+    hashcat
+    john
+    keepassxc
+    nmap
+    rustscan
+    weechat
+    wireshark
     #
     # # misc
     # ffmpeg
