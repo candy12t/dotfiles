@@ -37,6 +37,9 @@ in
   };
 
   home.packages = with pkgs; [
+    awscli2
+    aws-sam-cli
+    bash
     comma
     curl
     direnv
@@ -45,36 +48,39 @@ in
     doggo
     gh
     ghq
+    gnumake
     go
     htop
     jq
+    k6
     lima
     lua
     mycli
     mysql84
     nb
     rustup
+    ssm-session-manager-plugin
 
     # font
     hackgen-nf-font
 
-    # ctf
-    aircrack-ng
-    binwalk
-    # burpsuite
-    exiftool
-    exploitdb
-    foremost
-    gdb
-    ghidra-bin
-    hashcat
-    john
-    keepassxc
-    nmap
-    rustscan
-    weechat
-    wireshark
-    #
+    # # ctf
+    # aircrack-ng
+    # binwalk
+    # # burpsuite
+    # exiftool
+    # exploitdb
+    # foremost
+    # gdb
+    # ghidra-bin
+    # hashcat
+    # john
+    # keepassxc
+    # nmap
+    # rustscan
+    # weechat
+    # wireshark
+
     # # misc
     # ffmpeg
     # yt-dlp
