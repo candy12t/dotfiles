@@ -42,7 +42,6 @@ in
     bash
     comma
     curl
-    direnv
     docker
     docker-buildx
     doggo
@@ -99,5 +98,6 @@ in
     ./zsh.nix
     ./fzf.nix
     ./go.nix
+    ./direnv.nix
   ];
 }
