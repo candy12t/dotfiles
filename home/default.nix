@@ -48,6 +48,7 @@ in
     nb
     rustup
     ssm-session-manager-plugin
+    w3m
 
     # font
     hackgen-nf-font
