@@ -15,7 +15,7 @@ return {
             buffer = bufnr,
             group = format_group,
           })
-          vim.api.nvim_create_autocmd("BufWritePre", {
+          vim.api.nvim_create_autocmd("BufWritePost", {
             buffer = bufnr,
             group = format_group,
             callback = function()
