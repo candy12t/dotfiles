@@ -11,6 +11,7 @@
     aggressiveResize = true;
     clock24 = true;
     shell = "${pkgs.zsh}/bin/zsh";
+    focusEvents = true;
 
     extraConfig = ''
       # select pane
