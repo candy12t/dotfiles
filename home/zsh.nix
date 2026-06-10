@@ -58,7 +58,7 @@
         name = "zsh-forgit";
         src = pkgs.zsh-forgit;
         file = "share/zsh/zsh-forgit/forgit.plugin.zsh";
-        completions = [
+        functions = [
           "share/zsh/site-functions/_git-forgit"
         ];
       }
