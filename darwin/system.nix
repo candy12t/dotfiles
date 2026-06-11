@@ -93,8 +93,10 @@
     onActivation = {
       autoUpdate = true;
       upgrade = true;
-      cleanup = "zap";
-      extraFlags = [ "--force-cleanup" ];
+      extraFlags = [
+        "--force-cleanup"
+        "--zap"
+      ];
     };
 
     casks = [
