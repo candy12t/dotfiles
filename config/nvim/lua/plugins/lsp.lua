@@ -5,7 +5,7 @@ return {
       "hrsh7th/cmp-nvim-lsp",
     },
     config = function()
-      local servers = { "efm", "gopls", "lua_ls", "nil_ls", "rust-analyzer" }
+      local servers = { "efm", "gopls", "lua_ls", "nil_ls", "rust_analyzer" }
 
       local opt = {
         capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities()),

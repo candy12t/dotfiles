@@ -46,7 +46,6 @@ in
     mycli
     mysql84
     nb
-    rustup
     rtk
     ssm-session-manager-plugin
     w3m
