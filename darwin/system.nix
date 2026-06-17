@@ -105,12 +105,10 @@
       "brave-browser"
       "chatgpt"
       "claude"
-      "cmd-eikana"
       "discord"
       "google-chrome"
       "iterm2"
       "slack"
-      "visual-studio-code"
     ];
   };
 }
