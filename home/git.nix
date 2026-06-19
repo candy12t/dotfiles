@@ -78,6 +78,7 @@
       ".DS_Store"
       ".claude/*"
       ".direnv"
+      ".wt/"
     ];
   };
 }
