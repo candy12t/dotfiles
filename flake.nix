@@ -24,6 +24,11 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    kanade = {
+      url = "github:candy12t/kanade?ref=v0.1.2";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
