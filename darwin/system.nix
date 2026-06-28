@@ -103,10 +103,7 @@
       "1password"
       "blu-ray-player"
       "brave-browser"
-      "chatgpt"
-      "claude"
       "discord"
-      "google-chrome"
       "iterm2"
       "slack"
     ];

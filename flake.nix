@@ -67,7 +67,6 @@
             {
               environment.systemPackages = [
                 llm-agents.packages.${hostConfig.system}.claude-code
-                llm-agents.packages.${hostConfig.system}.codex
               ];
             }
           ];
