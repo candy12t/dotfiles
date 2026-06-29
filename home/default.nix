@@ -38,6 +38,7 @@ in
     ghq
     gnumake
     go
+    # herdr https://github.com/NixOS/nixpkgs/pull/536015 が取り込まれたらコメントアウト外す
     htop
     jq
     k6
@@ -70,6 +71,7 @@ in
     ./bat.nix
     ./starship.nix
     ./tmux.nix
+    ./herdr.nix
     ./nvim.nix
     ./zsh.nix
     ./fzf.nix
