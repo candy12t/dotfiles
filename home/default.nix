@@ -47,6 +47,7 @@ in
     mycli
     mysql84
     nb
+    nh
     rtk
     ssm-session-manager-plugin
     w3m
@@ -72,6 +73,7 @@ in
     ./starship.nix
     ./tmux.nix
     # ./herdr.nix
+    ./nh.nix
     ./nvim.nix
     ./zsh.nix
     ./fzf.nix
