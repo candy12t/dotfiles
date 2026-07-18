@@ -27,7 +27,7 @@ in
 
   home.packages = with pkgs; [
     awscli2
-    aws-sam-cli
+    # aws-sam-cli
     bash
     comma
     curl
@@ -38,10 +38,10 @@ in
     ghq
     gnumake
     go
-    # herdr https://github.com/NixOS/nixpkgs/pull/536015 が取り込まれたらコメントアウト外す
+    # herdr
     htop
     jq
-    k6
+    # k6
     lima
     lua
     mycli
@@ -71,7 +71,7 @@ in
     ./bat.nix
     ./starship.nix
     ./tmux.nix
-    ./herdr.nix
+    # ./herdr.nix
     ./nvim.nix
     ./zsh.nix
     ./fzf.nix
