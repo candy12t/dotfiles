@@ -27,7 +27,6 @@
 
     kanade = {
       url = "github:candy12t/kanade?ref=v0.1.2";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
