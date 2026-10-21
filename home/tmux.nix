@@ -47,6 +47,9 @@
       # status bar
       set-option -g status-position top
 
+      # clock mode style
+      set -g clock-mode-style 24-with-seconds
+
       # colorscheme
       source-file ${tokyonightSrc}/extras/tmux/tokyonight_moon.tmux
       set -g @prefix_highlight_output_prefix "#[fg=#82aaff]#[bg=#1e2030]#[fg=#1e2030]#[bg=#82aaff]"
