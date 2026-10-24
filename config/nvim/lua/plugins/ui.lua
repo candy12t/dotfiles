@@ -28,11 +28,7 @@ return {
     dependencies = {
       "nvim-tree/nvim-web-devicons",
     },
-    opts = {
-      options = {
-        highlights = "tokyonight",
-      },
-    },
+    opts = {},
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -46,7 +42,7 @@ return {
   },
   {
     "lewis6991/gitsigns.nvim",
-    vesion = "v2.*",
+    version = "v2.*",
     opts = {
       numhl = true,
       current_line_blame = true,
