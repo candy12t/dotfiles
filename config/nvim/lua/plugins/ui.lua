@@ -3,22 +3,15 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = {
       "nvim-tree/nvim-web-devicons",
-      "AndreM222/copilot-lualine",
     },
     opts = {
       theme = "tokyonight",
-      options = {
-        disabled_filetypes = {
-          statusline = { "no-neck-pain" },
-          winbar = { "no-neck-pain" },
-        },
-      },
       sections = {
         lualine_a = { "mode" },
         lualine_b = { "branch", "diff", "diagnostics" },
         lualine_c = { "filename" },
         lualine_x = {
-          { "lsp_status", ignore_lsp = { "copilot" } },
+          "lsp_status",
           "encoding",
           { "fileformat", icons_enabled = false },
           "filetype",
@@ -42,17 +35,6 @@ return {
     },
   },
   {
-    "utilyre/barbecue.nvim",
-    version = "v1.*",
-    dependencies = {
-      "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons",
-    },
-    opts = {
-      theme = "tokyonight",
-    },
-  },
-  {
     "lukas-reineke/indent-blankline.nvim",
     version = "v3.*",
     main = "ibl",
@@ -70,7 +52,6 @@ return {
       current_line_blame = true,
     },
   },
-  { "shortcuts/no-neck-pain.nvim", version = "v2.*", config = true },
   {
     "kevinhwang91/nvim-ufo",
     -- version = "v1.*",

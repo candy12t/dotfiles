@@ -7,7 +7,6 @@ return {
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-path",
-      { "zbirenbaum/copilot-cmp", opts = {} },
       "onsails/lspkind.nvim",
       "saadparwaiz1/cmp_luasnip",
       {
@@ -23,7 +22,6 @@ return {
     event = { "InsertEnter", "CmdlineEnter" },
     config = function()
       local cmp = require("cmp")
-      local icons = require("icons")
 
       cmp.setup({
         snippet = {
@@ -35,7 +33,6 @@ return {
           format = require("lspkind").cmp_format({
             mode = "symbol_text",
             max_width = 50,
-            symbol_map = { Copilot = icons.Copilot },
           }),
         },
         window = {
@@ -51,7 +48,6 @@ return {
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
           { name = "nvim_lsp_signature_help" },
-          { name = "copilot" },
           { name = "luasnip" },
           { name = "buffer" },
         }, {
