@@ -17,6 +17,7 @@
   "lspkind.nvim": { "branch": "master", "commit": "c7274c48137396526b59d86232eabcdc7fed8a32" },
   "lspsaga.nvim": { "branch": "main", "commit": "562d9724e3869ffd1801c572dd149cc9f8d0cc36" },
   "lualine.nvim": { "branch": "master", "commit": "74114f0df664f14d7c228945693ba68a3b70a794" },
+  "nb.nvim": { "branch": "main", "commit": "49e98bd1af054af330a82bddbf0577fb5d325285" },
   "neo-tree.nvim": { "branch": "main", "commit": "83e7a2982fd12b9c3d35bc39dd5877cd91a02a61" },
   "nui.nvim": { "branch": "main", "commit": "de740991c12411b663994b2860f1a4fd0937c130" },
   "nvim-autopairs": { "branch": "master", "commit": "59bce2eef357189c3305e25bc6dd2d138c1683f5" },
