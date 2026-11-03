@@ -79,5 +79,6 @@ in
     ./fzf.nix
     ./go.nix
     ./direnv.nix
+    ./iterm2.nix
   ];
 }
