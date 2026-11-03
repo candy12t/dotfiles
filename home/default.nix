@@ -55,6 +55,9 @@ in
     # 自作パッケージ（別 flake の package 出力を参照）
     inputs.kanade.packages.${pkgs.stdenv.hostPlatform.system}.default
 
+    # nixpkgs 未提供のパッケージ（ローカル derivation）
+    (pkgs.callPackage ../pkgs/mo.nix { })
+
     # font
     hackgen-nf-font
 
