@@ -102,6 +102,7 @@ let
   profile = {
     Name = "Nix";
     Guid = guid;
+    Space = -1;
 
     # フォント
     "Normal Font" = "HackGenConsoleNF-Regular 16";
