@@ -48,6 +48,7 @@ in
     mysql84
     nb
     nh
+    openssl
     rtk
     ssm-session-manager-plugin
     w3m
