@@ -1,0 +1,15 @@
+# Copy to ~/.zshrc.local (not tracked by git). Sourced at the end of initContent in home/zsh.nix
+
+# Environment variables
+export GOPRIVATE="github.com/<ORG>"
+
+# cdpath is order-sensitive, so override it entirely
+cdpath=(
+  .
+  $HOME
+  "$(ghq root)/github.com/<ORG>"
+  "$(ghq root)/github.com"
+  ..
+)
+
+# Aliases and functions

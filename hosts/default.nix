@@ -1,6 +1,4 @@
 {
-  hostname = "MacBookAir";
-  username = "candy12t";
-  system = "aarch64-darwin";
-  homeDir = "/Users/candy12t";
+  MacBookAir = import ./MacBookAir.nix;
+  work = import ./work.nix;
 }

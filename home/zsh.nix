@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   home.sessionPath = [
     "$HOME/.local/bin"
@@ -9,10 +9,9 @@
     autosuggestion.enable = true;
     syntaxHighlighting.enable = true;
     defaultKeymap = "emacs";
-    cdpath = [
+    cdpath = lib.mkDefault [
       "."
       "$HOME"
-      "$(ghq root)/github.com/candy12t"
       "$(ghq root)/github.com"
       ".."
     ];
@@ -39,6 +38,8 @@
         local files="$(rg -n \'\' | fzf -m --delimiter : --preview 'bat --color=always --highlight-line {2} {1}' --preview-window '+{2}+3/3' | awk -F: '{print $1}')"
         [ -n "$files" ] && echo "$files" | xargs $EDITOR
       }
+
+      [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
     '';
     shellAliases = {
       g = "git";

@@ -38,7 +38,10 @@ nix flake update llm-agents
 - **`flake.nix`** — エントリーポイント。`mkDarwinSystem` ヘルパー関数で `hosts/` 以下の各ホスト設定から `darwinConfigurations` を生成する。主要 flake inputs:
   - `llm-agents` — `claude-code` をシステムパッケージとして提供
   - `nix-index-database` — `comma`（`, <cmd>` で任意の nix パッケージを一時実行できる）を提供
-- **`hosts/`** — ホストごとの設定ファイル（hostname、username、system、homeDir を定義）。新しいマシンを追加する場合はここにファイルを追加し、`flake.nix` の `hosts` リストに追記する。
+- **`hosts/`** — ホストごとの設定ファイル（username、system、homeDir、profile を定義）。`hosts/default.nix` の attr 名が構成名になる（`.#MacBookAir` = 個人、`.#work` = 会社 Mac）。新しいマシンを追加する場合はファイルを追加し、`hosts/default.nix` に追記する。
+- **`darwin/profiles/`, `home/profiles/`** — `personal` / `work` プロファイル固有の設定。host の `profile` に応じて flake が import する。リスト型オプション（casks、packages など）は共通設定にマージされる。
+- **`certs/`** — work プロファイルで信頼させる CA 証明書（Cato Networks）。
+- **`examples/`** — git 管理しないローカル設定（`~/.zshrc.local`、`~/.config/git/local.gitconfig`）のテンプレート。**会社名・org 名・社内用の値などはリポジトリ（public）に書かず、これらのローカルファイルに置く。**
 - **`darwin/`** — nix-darwin モジュール。macOS システム設定（Dock、Finder、トラックパッドなど）と Homebrew の cask 管理を行う。
 - **`home/`** — home-manager モジュール。ユーザーレベルのパッケージと各ツールの設定を管理する。
 - **`config/`** — 実際の設定ファイル。`config/nvim/` と `config/efm-langserver/` は home-manager から `mkOutOfStoreSymlink` でシンボリックリンクされるため、**変更がリビルドなしで即反映される**。`config/iterm/` と `config/claude/` は手動管理（シンボリックリンク不使用）。
@@ -48,8 +51,11 @@ nix flake update llm-agents
 | 変更したいもの | 編集するファイル |
 |---|---|
 | macOS システム設定 | `darwin/system.nix` |
-| Homebrew casks | `darwin/system.nix` |
-| ユーザー情報（username, homeDir） | `hosts/<hostname>.nix` |
+| Homebrew casks（共通） | `darwin/system.nix` |
+| プロファイル固有の casks・システム設定 | `darwin/profiles/<profile>.nix` |
+| プロファイル固有のパッケージ・git・zsh 設定 | `home/profiles/<profile>.nix` |
+| 公開したくないマシン固有の設定 | `~/.zshrc.local`、`~/.config/git/local.gitconfig`（`examples/` 参照） |
+| ユーザー情報（username, homeDir, profile） | `hosts/<name>.nix` |
 | ユーザーパッケージ（CLI ツールなど） | `home/default.nix` |
 | シェル・ツール設定（zsh、tmux など） | `home/<tool>.nix` |
 | Neovim / efm-langserver の設定 | `config/nvim/`、`config/efm-langserver/` |

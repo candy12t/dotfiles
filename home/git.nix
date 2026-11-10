@@ -30,20 +30,6 @@
         df = "diff";
         co = "checkout";
       };
-      user = {
-        name = "Takumi Kanada";
-        email = "candy12t@gmail.com";
-        signingKey = "${config.home.homeDirectory}/.ssh/id_ed25519_sign.pub";
-      };
-      gpg = {
-        format = "ssh";
-        ssh = {
-          program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
-        };
-      };
-      commit = {
-        gpgsign = true;
-      };
       core = {
         quotepath = false;
         editor = "nvim";
@@ -54,11 +40,6 @@
       push = {
         default = "current";
         autoSetupRemote = true;
-      };
-      url = {
-        "git@github.com:candy12t" = {
-          insteadOf = "https://github.com/candy12t";
-        };
       };
       ghq = {
         root = config.home.homeDirectory + "/dev";
@@ -72,6 +53,9 @@
     includes = [
       {
         path = "${tokyonightSrc}/extras/delta/tokyonight_moon.gitconfig";
+      }
+      {
+        path = "~/.config/git/local.gitconfig";
       }
     ];
     ignores = [

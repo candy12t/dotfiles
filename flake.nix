@@ -47,11 +47,12 @@
           system = hostConfig.system;
           specialArgs = {
             inherit inputs;
-            inherit (hostConfig) username homeDir hostname;
+            inherit (hostConfig) username homeDir;
           };
           modules = [
             ./darwin
             ./darwin/system.nix
+            ./darwin/profiles/${hostConfig.profile}.nix
             nix-index-database.darwinModules.nix-index
             home-manager.darwinModules.home-manager
             {
@@ -61,7 +62,12 @@
                 inherit inputs;
                 inherit (hostConfig) username homeDir;
               };
-              home-manager.users.${hostConfig.username} = ./home/default.nix;
+              home-manager.users.${hostConfig.username} = {
+                imports = [
+                  ./home/default.nix
+                  ./home/profiles/${hostConfig.profile}.nix
+                ];
+              };
             }
             {
               environment.systemPackages = [
@@ -72,15 +78,6 @@
         };
     in
     {
-      darwinConfigurations =
-        let
-          hosts = [ (import ./hosts) ];
-        in
-        builtins.listToAttrs (
-          map (h: {
-            name = h.hostname;
-            value = mkDarwinSystem h;
-          }) hosts
-        );
+      darwinConfigurations = builtins.mapAttrs (_: mkDarwinSystem) (import ./hosts);
     };
 }

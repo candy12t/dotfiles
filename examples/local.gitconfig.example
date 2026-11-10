@@ -1,0 +1,8 @@
+# Copy to ~/.config/git/local.gitconfig (not tracked by git). Included last in home/git.nix
+
+[user]
+	name = <NAME>
+	email = <EMAIL>
+
+[url "git@github.com:<ORG>"]
+	insteadOf = https://github.com/<ORG>
