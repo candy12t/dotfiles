@@ -34,10 +34,7 @@
     {
       self,
       nixpkgs,
-      home-manager,
       nix-darwin,
-      llm-agents,
-      nix-index-database,
       ...
     }@inputs:
     let
@@ -51,29 +48,7 @@
           };
           modules = [
             ./darwin
-            ./darwin/system.nix
-            ./darwin/profiles/${hostConfig.profile}.nix
-            nix-index-database.darwinModules.nix-index
-            home-manager.darwinModules.home-manager
-            {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.extraSpecialArgs = {
-                inherit inputs;
-                inherit (hostConfig) username homeDir;
-              };
-              home-manager.users.${hostConfig.username} = {
-                imports = [
-                  ./home/default.nix
-                  ./home/profiles/${hostConfig.profile}.nix
-                ];
-              };
-            }
-            {
-              environment.systemPackages = [
-                llm-agents.packages.${hostConfig.system}.claude-code
-              ];
-            }
+            ./profiles/${hostConfig.profile}
           ];
         };
     in

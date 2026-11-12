@@ -42,7 +42,7 @@ rec {
   username = "takumi.kanada";  # result of: whoami
   system = "aarch64-darwin";   # "aarch64-darwin" for Apple Silicon, "x86_64-darwin" for Intel
   homeDir = "/Users/${username}";
-  profile = "work";            # loads darwin/profiles/work.nix and home/profiles/work.nix
+  profile = "work";            # loads profiles/work/darwin.nix and profiles/work/home.nix
 }
 ```
 
@@ -56,7 +56,7 @@ Copy the templates in `examples/` and fill them in:
 
 ### Work machine behind TLS inspection
 
-The work profile trusts the Cato Networks root CA (`certs/`) via `security.pki`, which also passes the bundle to
+The work profile trusts the Cato Networks root CA (`profiles/work/`) via `security.pki`, which also passes the bundle to
 the Nix daemon through `NIX_SSL_CERT_FILE`. Until the first switch, however, Nix does not know the CA, so bootstrap
 a fresh work machine as follows (connected to Cato).
 
@@ -77,7 +77,7 @@ a fresh work machine as follows (connected to Cato).
 
    ```bash
    sudo mkdir -p /etc/nix
-   sudo sh -c 'cat /etc/ssl/cert.pem ~/dotfiles/certs/CatoNetworksTrustedRootCA.pem > /etc/nix/bootstrap-ca.pem'
+   sudo sh -c 'cat /etc/ssl/cert.pem ~/dotfiles/profiles/work/CatoNetworksTrustedRootCA.pem > /etc/nix/bootstrap-ca.pem'
    curl -sSfL https://artifacts.nixos.org/nix-installer | sh -s -- install --ssl-cert-file /etc/nix/bootstrap-ca.pem
    ```
 

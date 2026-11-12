@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   home.sessionVariables = {
-    NODE_EXTRA_CA_CERTS = "${../../certs/CatoNetworksTrustedRootCA.pem}";
+    NODE_EXTRA_CA_CERTS = "${./CatoNetworksTrustedRootCA.pem}";
   };
 
   home.packages = with pkgs; [

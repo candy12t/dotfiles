@@ -1,6 +1,6 @@
 { ... }:
 {
-  security.pki.certificateFiles = [ ../../certs/CatoNetworksTrustedRootCA.pem ];
+  security.pki.certificateFiles = [ ./CatoNetworksTrustedRootCA.pem ];
 
   homebrew.casks = [
     "claude"

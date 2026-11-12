@@ -1,9 +1,6 @@
-{ inputs, ... }:
+{ ... }:
 {
   system = {
-    stateVersion = 6;
-    configurationRevision = inputs.rev or inputs.dirtyRev or null;
-
     defaults = {
       NSGlobalDomain = {
         AppleEnableMouseSwipeNavigateWithScrolls = true;
@@ -54,53 +51,5 @@
       enableKeyMapping = true;
       remapCapsLockToControl = true;
     };
-  };
-
-  time = {
-    timeZone = "Asia/Tokyo";
-  };
-
-  nix = {
-    enable = true;
-    settings = {
-      auto-optimise-store = true;
-      experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-      keep-build-log = true;
-      keep-derivations = false;
-      keep-outputs = false;
-      substituters = [
-        "https://cache.nixos.org"
-        "https://nix-community.cachix.org"
-      ];
-      trusted-public-keys = [
-        "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-      ];
-    };
-  };
-
-  security.pam.services.sudo_local = {
-    reattach = true;
-    touchIdAuth = true;
-  };
-
-  homebrew = {
-    enable = true;
-    enableZshIntegration = true;
-    onActivation = {
-      autoUpdate = true;
-      upgrade = true;
-      extraFlags = [
-        "--force-cleanup"
-        "--zap"
-      ];
-    };
-
-    casks = [
-      "iterm2"
-    ];
   };
 }
