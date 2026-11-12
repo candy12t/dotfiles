@@ -8,6 +8,6 @@
   };
 
   home.sessionPath = [
-    "$(go env GOPATH)/bin"
+    "${config.programs.go.env.GOPATH}/bin"
   ];
 }

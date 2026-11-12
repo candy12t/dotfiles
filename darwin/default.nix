@@ -7,7 +7,6 @@
     ./security.nix
     ./homebrew.nix
     ./home-manager.nix
-    ./llm-agents.nix
   ];
 
   system = {
