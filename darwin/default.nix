@@ -1,9 +1,10 @@
-{ inputs, ... }:
+{ ... }:
 {
   imports = [
     ./users.nix
     ./system-defaults.nix
     ./nix.nix
+    ./nh.nix
     ./security.nix
     ./homebrew.nix
     ./home-manager.nix
@@ -11,7 +12,6 @@
 
   system = {
     stateVersion = 6;
-    configurationRevision = inputs.rev or inputs.dirtyRev or null;
   };
 
   time = {

@@ -27,7 +27,6 @@
     ./starship.nix
     ./tmux.nix
     # ./herdr.nix
-    ./nh.nix
     ./nvim.nix
     ./zsh.nix
     ./fzf.nix
