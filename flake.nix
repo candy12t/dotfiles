@@ -39,11 +39,11 @@
     }@inputs:
     let
       mkDarwinSystem =
-        hostConfig:
+        hostName: hostConfig:
         nix-darwin.lib.darwinSystem {
           system = hostConfig.system;
           specialArgs = {
-            inherit inputs;
+            inherit inputs hostName;
             inherit (hostConfig) username homeDir;
           };
           modules = [
@@ -53,6 +53,6 @@
         };
     in
     {
-      darwinConfigurations = builtins.mapAttrs (_: mkDarwinSystem) (import ./hosts);
+      darwinConfigurations = builtins.mapAttrs mkDarwinSystem (import ./hosts);
     };
 }

@@ -38,7 +38,7 @@ nix flake update llm-agents
 - **`flake.nix`** — エントリーポイント。`mkDarwinSystem` ヘルパー関数で `hosts/` 以下の各ホスト設定から `darwinConfigurations` を生成する。modules は `./darwin` と `./profiles/<profile>` の2つだけで、配線は各モジュール側で行う。主要 flake inputs:
   - `llm-agents` — `claude-code` を提供（`home/packages.nix` でインストール）
   - `nix-index-database` — `comma`（`, <cmd>` で任意の nix パッケージを一時実行できる）を提供
-- **`hosts/`** — ホストごとの設定ファイル（username、system、homeDir、profile を定義）。`hosts/default.nix` の attr 名が構成名になる（`.#MacBookAir` = 個人、`.#work` = 会社 Mac）。新しいマシンを追加する場合はファイルを追加し、`hosts/default.nix` に追記する。
+- **`hosts/`** — ホストごとの設定ファイル（username、system、homeDir、profile を定義）。`hosts/default.nix` の attr 名が構成名になる（`.#MacBookAir` = 個人、`.#work` = 会社 Mac）。attr 名は `hostName` として各モジュールに渡り、personal プロファイルではコンピュータ名・ホスト名に使う。新しいマシンを追加する場合はファイルを追加し、`hosts/default.nix` に追記する。
 - **`profiles/<profile>/`** — `personal` / `work` プロファイル固有の設定。`darwin.nix`（nix-darwin モジュール）と `home.nix`（home-manager モジュール）を置き、`default.nix` が両者を配線する（`home.nix` は `home-manager.users.<username>.imports` に追加）。host の `profile` に応じて flake が import する。リスト型オプション（casks、packages など）は共通設定にマージされる。work プロファイルで信頼させる CA 証明書（Cato Networks）も `profiles/work/` に置く。
 - **`examples/`** — git 管理しないローカル設定（`~/.zshrc.local`、`~/.config/git/local.gitconfig`）のテンプレート。**会社名・org 名・社内用の値などはリポジトリ（public）に書かず、これらのローカルファイルに置く。**
 - **`darwin/`** — nix-darwin モジュール。関心ごとにファイルを分け、`default.nix` が imports する（`users.nix`、`system-defaults.nix`、`nix.nix`、`nh.nix`、`security.nix`、`homebrew.nix`、`home-manager.nix`）。
