@@ -17,6 +17,9 @@ darwin-rebuild switch --flake .#MacBookAir
 # 適用せずにビルドのみ行う（検証用）
 darwin-rebuild build --flake .#MacBookAir
 
+# 全ホストをビルドして検証する（CI と同じ）
+nix flake check
+
 # nix-darwin 未インストール時の初回セットアップ
 nix run nix-darwin -- switch --flake .#MacBookAir
 ```

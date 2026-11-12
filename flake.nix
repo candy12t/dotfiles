@@ -54,5 +54,7 @@
     in
     {
       darwinConfigurations = builtins.mapAttrs mkDarwinSystem (import ./hosts);
+
+      checks.aarch64-darwin = builtins.mapAttrs (_: c: c.system) self.darwinConfigurations;
     };
 }

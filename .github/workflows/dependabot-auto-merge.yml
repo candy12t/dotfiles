@@ -1,5 +1,8 @@
 name: Dependabot auto-merge
-on: [pull_request, push]
+on:
+  pull_request:
+  push:
+    branches: [master]
 
 jobs:
   build:
@@ -14,8 +17,8 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v22
 
-      - name: Build
-        run: nix build --accept-flake-config --print-build-logs --no-link .#darwinConfigurations.MacBookAir.config.system.build.toplevel
+      - name: Check
+        run: nix flake check --print-build-logs
 
   merge:
     if: github.event.pull_request.user.login == 'dependabot[bot]'
