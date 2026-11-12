@@ -4,7 +4,6 @@
     awscli2
     # aws-sam-cli
     bash
-    comma
     curl
     docker
     docker-buildx

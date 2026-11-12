@@ -1,7 +1,6 @@
 { inputs, ... }:
 {
   imports = [
-    inputs.nix-index-database.darwinModules.nix-index
     ./users.nix
     ./system-defaults.nix
     ./nix.nix
