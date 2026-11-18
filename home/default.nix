@@ -33,5 +33,6 @@
     ./go.nix
     ./direnv.nix
     ./iterm2.nix
+    ./claude.nix
   ];
 }
